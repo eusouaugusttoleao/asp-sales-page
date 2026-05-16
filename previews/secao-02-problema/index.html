@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 02 PROBLEMA v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DS Mystic v1.2 · Tokens
+   ============================================================ */
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #F5B800;
+  --ambar-bright: #FFD83A;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+
+/* Grid + vinheta */
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+
+/* Halo */
+.halo {
+  position: absolute; border-radius: 50%; filter: blur(120px);
+  opacity: 0.3; pointer-events: none; z-index: 0;
+}
+.halo-magenta { background: var(--magenta); }
+.halo-rubi    { background: var(--rubi); }
+.halo-cobalt  { background: var(--cobalt); }
+
+/* ============================================================
+   NAV (igual Hero)
+   ============================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(11,11,11,0.85);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 100; padding: 0 32px; height: 60px;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  max-width: 1480px; margin: 0 auto; height: 100%;
+}
+.nav-brand {
+  font-family: var(--display); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--white);
+}
+.nav-links {
+  display: flex; gap: 22px; flex-wrap: wrap; align-items: center;
+}
+.nav-links a {
+  font-family: var(--display); font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gray-body); transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  font-family: var(--display); font-size: 10px; letter-spacing: 0.25em;
+  text-transform: uppercase; padding: 10px 20px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-bright));
+  color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4);
+  transition: transform .2s, box-shadow .2s; margin-left: 8px;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ============================================================
+   ESCASSEZ STICKY (igual Hero)
+   ============================================================ */
+.escassez-bar {
+  position: fixed; top: 60px; left: 0; right: 0;
+  background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%);
+  border-bottom: 1px solid rgba(232,31,38,0.3);
+  z-index: 99; padding: 0 32px;
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px;
+  align-items: center; height: 50px;
+  font-family: var(--display); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.escassez-vagas {
+  display: flex; align-items: center; gap: 14px; justify-content: flex-start;
+}
+.escassez-vagas .label {
+  color: var(--rubi); display: flex; align-items: center; gap: 8px;
+}
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rubi); animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); }
+}
+.vagas-progress {
+  width: 160px; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.1); overflow: hidden;
+}
+.vagas-fill {
+  height: 100%; width: 43%;
+  background: linear-gradient(90deg, var(--magenta-bright), var(--rubi));
+  transition: width 1s ease;
+}
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time {
+  font-size: 13px; letter-spacing: 0.18em; font-weight: 700;
+  color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4);
+}
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 02 · PROBLEMA · ALGEMA DE OURO
+   ============================================================ */
+.section-problema {
+  position: relative; z-index: 2;
+  padding: clamp(140px, 16vh, 200px) clamp(40px, 5vw, 96px) clamp(80px, 10vh, 140px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
+  min-height: calc(100vh - 36px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.kicker {
+  font-family: var(--display);
+  font-size: clamp(10px, 0.85vw, 13px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  font-weight: 600; color: var(--rubi);
+  margin-bottom: clamp(18px, 1.8vw, 28px);
+  display: flex; align-items: center; gap: 12px;
+}
+.kicker::before {
+  content: ""; width: 32px; height: 1px;
+  background: var(--rubi);
+}
+
+.problema-h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(36px, 4.4vw, 76px);
+  line-height: 1.0; letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: clamp(24px, 2.5vw, 40px);
+  max-width: 1100px;
+}
+.problema-h2 .hl-rubi {
+  color: var(--rubi-bright);
+  text-shadow: 0 0 24px rgba(232,31,38,0.3);
+}
+.problema-h2 .hl-magenta {
+  color: var(--magenta-bright);
+  text-shadow: 0 0 24px rgba(132,21,188,0.3);
+}
+
+.problema-intro {
+  font-size: clamp(16px, 1.25vw, 22px);
+  line-height: 1.55; color: var(--gray-body);
+  margin-bottom: clamp(28px, 3vw, 44px);
+  max-width: 880px;
+}
+.problema-intro b { color: var(--white); }
+
+/* 6 loops · grid 2 colunas em desktop, 1 em mobile */
+.loops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.4vw, 22px) clamp(28px, 3vw, 56px);
+  margin-bottom: clamp(36px, 4vw, 56px);
+  max-width: 1280px;
+}
+.loops-grid li {
+  display: flex; align-items: baseline; gap: 14px;
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.5; color: var(--gray-body);
+  list-style: none;
+  padding-left: 22px; position: relative;
+}
+.loops-grid li::before {
+  content: "→";
+  position: absolute; left: 0; top: 0;
+  color: var(--rubi); font-weight: 700; font-size: 1.1em;
+  transition: transform .25s;
+}
+.loops-grid li:hover::before {
+  transform: translateX(4px); color: var(--rubi-bright);
+}
+.loops-grid li b { color: var(--white); font-weight: 700; }
+
+/* Citação destacada */
+.problema-cite {
+  border-left: 3px solid var(--magenta-bright);
+  padding: clamp(18px, 1.8vw, 28px) clamp(20px, 2vw, 32px);
+  margin: clamp(28px, 3vw, 44px) 0;
+  background: linear-gradient(90deg, rgba(132,21,188,0.06) 0%, transparent 100%);
+  border-radius: 0 12px 12px 0;
+  max-width: 920px;
+}
+.problema-cite p {
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.6; color: var(--gray-body);
+  font-style: italic;
+}
+.problema-cite p + p { margin-top: 10px; }
+.problema-cite b { color: var(--white); font-style: normal; font-weight: 600; }
+.problema-cite .hl-magenta { color: var(--magenta-bright); font-style: normal; font-weight: 600; }
+.problema-cite .hl-cobalt { color: var(--cobalt-bright); font-style: normal; font-weight: 600; }
+
+/* Closing rock */
+.closing-rock {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.4vw, 38px);
+  font-weight: 700; line-height: 1.2;
+  color: var(--white); letter-spacing: -0.01em;
+  margin-top: clamp(32px, 3.5vw, 56px);
+  padding-top: clamp(28px, 3vw, 44px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  max-width: 1100px;
+}
+.closing-rock b { color: var(--magenta-bright); }
+.closing-rock em {
+  display: block; margin-top: 12px;
+  font-style: normal; font-weight: 400;
+  font-size: clamp(15px, 1.1vw, 18px);
+  color: var(--gray-body); letter-spacing: 0;
+}
+
+/* ============================================================
+   TICKER ROCHA-RAIL (igual Hero)
+   ============================================================ */
+.rocha-rail {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(5,5,5,0.92);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 0; z-index: 99; overflow: hidden;
+  height: 36px;
+}
+.rocha-track {
+  display: flex; gap: 64px; white-space: nowrap;
+  animation: rochaScroll 70s linear infinite;
+  width: max-content;
+}
+.rocha-track span {
+  font-family: var(--display); font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gray-body);
+}
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 1100px) {
+  .loops-grid { grid-template-columns: 1fr; gap: 14px; }
+  .escassez-bar {
+    grid-template-columns: 1fr; gap: 6px; padding: 8px 16px;
+    height: auto; text-align: center; font-size: 9.5px;
+  }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-problema { padding: 175px 20px 70px; }
+  .problema-h2 { font-size: 32px; }
+  .problema-intro { font-size: 15px; }
+  .loops-grid li { font-size: 14px; }
+  .problema-cite p { font-size: 15px; }
+  .closing-rock { font-size: 22px; }
+  .closing-rock em { font-size: 14px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+/* Preview marker */
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(245,184,0,0.95); color: #000;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 02 PROBLEMA v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ TÉCNICA -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer">
+    <span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span>
+  </div>
+  <div class="escassez-price">
+    DEPOIS · <b>R$ 3.000</b>
+  </div>
+</div>
+
+<!-- SEÇÃO 02 · PROBLEMA -->
+<section class="section-problema" id="problema">
+  <div class="halo halo-rubi" style="top:8%; right:-12%; width:520px; height:520px; opacity:0.18;"></div>
+  <div class="halo halo-magenta" style="bottom:0%; left:-8%; width:420px; height:420px; opacity:0.14;"></div>
+
+  <span class="kicker">A ALGEMA DE OURO</span>
+
+  <h2 class="problema-h2">
+    Você é capaz. Todo mundo ao seu redor sabe disso.<br>
+    O problema é que <span class="hl-rubi">você ainda não acredita</span>.
+  </h2>
+
+  <p class="problema-intro">
+    Você fatura. Você entrega. Você é referência pra quem te conhece. E mesmo assim, toda semana o <b>mesmo loop</b>:
+  </p>
+
+  <ul class="loops-grid">
+    <li><span><b>Roda, roda, roda</b> — e não escala.</span></li>
+    <li><span>Sente <b>vergonha</b> quando falta dinheiro num mês que "não devia".</span></li>
+    <li><span><b>Calendário cheio</b>, conta vazia.</span></li>
+    <li><span><b>Procrastina</b> sem entender por quê <em>(não é preguiça · é confusão)</em>.</span></li>
+    <li><span><b>Acelera sem método</b> <em>(não é foco · é ansiedade)</em>.</span></li>
+    <li><span>Compara com quem <b>sabe metade</b> mas se posiciona melhor — e fecha o contrato que era seu.</span></li>
+  </ul>
+
+  <div class="problema-cite">
+    <p><b>Não é falta de competência.</b> Você já provou que tem.</p>
+    <p>É <span class="hl-magenta">falta de confiança em si</span> + clareza pra organizar seus dons em negócio.</p>
+    <p>E tem motivo técnico: tem <span class="hl-cobalt">7 vozes operando dentro da sua cabeça</span> que sustentam essa algema.</p>
+  </div>
+
+  <div class="closing-rock">
+    <b>Você é o que pensa.</b><br>
+    <em>E o que você tem pensado tá te mantendo nessa algema.</em>
+  </div>
+</section>
+
+<!-- TICKER ROCHA -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+  </div>
+</div>
+
+<!-- VAGAS JS -->
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
