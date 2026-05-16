@@ -18,6 +18,8 @@
   --magenta-bright: #a420dd;
   --cobalt: #3818E8;
   --cobalt-bright: #5639F0;
+  --ambar: #F5B800;
+  --ambar-bright: #FFD83A;
   --white: #ffffff;
   --silver: #9A9A9A;
   --gray-body: #B8B8B8;
@@ -143,10 +145,10 @@ body::after {
   display: flex; align-items: center; gap: 10px;
   color: var(--white);
 }
-.escassez-timer .label { color: var(--silver); }
 .escassez-timer .time {
-  font-size: 13px; letter-spacing: 0.1em; font-weight: 600;
+  font-size: 13px; letter-spacing: 0.18em; font-weight: 700;
   color: var(--white);
+  text-shadow: 0 0 14px rgba(232,31,38,0.4);
 }
 .escassez-price {
   text-align: right; color: var(--silver);
@@ -159,11 +161,11 @@ body::after {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-  gap: 56px;
+  gap: clamp(40px, 5vw, 96px);
   align-items: start;
   min-height: calc(100vh - 110px);
-  padding: 130px 60px 70px;
-  max-width: 1480px; margin: 0 auto;
+  padding: clamp(120px, 11vh, 160px) clamp(40px, 5vw, 96px) clamp(60px, 7vh, 100px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
   position: relative; z-index: 2;
 }
 .hero-left {
@@ -185,14 +187,18 @@ body::after {
 }
 .hero h1 {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(34px, 4.2vw, 56px);
+  font-size: clamp(34px, 4.6vw, 80px);
   line-height: 0.96; letter-spacing: -0.02em;
 }
-.hero h1 .accent { color: var(--magenta-bright); display: block; }
+.hero h1 .accent {
+  color: var(--ambar); display: block;
+  text-shadow: 0 0 28px rgba(245,184,0,0.25);
+}
 .hero h1 .accent-cobalt { color: var(--cobalt-bright); display: block; }
 .hero-sub {
-  font-size: 15px; line-height: 1.55; color: var(--gray-body);
-  max-width: 560px;
+  font-size: clamp(15px, 1.15vw, 19px);
+  line-height: 1.55; color: var(--gray-body);
+  max-width: 640px;
 }
 .hero-sub b { color: var(--white); }
 .hl-magenta { color: var(--magenta-bright); font-weight: 600; }
@@ -206,7 +212,8 @@ body::after {
 }
 .hero-promises li {
   display: flex; align-items: baseline; gap: 12px;
-  font-size: 13.5px; line-height: 1.5; color: var(--gray-body);
+  font-size: clamp(13.5px, 1vw, 16px);
+  line-height: 1.55; color: var(--gray-body);
 }
 .hero-promises li > span:last-child { flex: 1; }
 .hero-promises li b { color: var(--white); font-weight: 700; }
@@ -221,10 +228,11 @@ body::after {
 }
 
 .hero-rock {
-  font-family: var(--display); font-size: 13px;
+  font-family: var(--display);
+  font-size: clamp(13px, 1vw, 16px);
   letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--white); font-weight: 600;
-  padding: 12px 0; margin: 4px 0;
+  padding: clamp(12px, 1vw, 18px) 0; margin: 4px 0;
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -233,8 +241,10 @@ body::after {
 }
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 24px; border-radius: 999px;
-  font-family: var(--display); font-weight: 600; font-size: 12px;
+  padding: clamp(14px, 1.1vw, 18px) clamp(24px, 1.8vw, 32px);
+  border-radius: 999px;
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(12px, 0.9vw, 14px);
   letter-spacing: 0.22em; text-transform: uppercase;
   transition: transform .2s, box-shadow .2s;
 }
@@ -268,11 +278,13 @@ body::after {
   position: relative; align-self: start;
   aspect-ratio: 4 / 5;
   width: 100%;
-  max-height: calc(100vh - 170px);
-  border-radius: 18px; overflow: hidden;
+  max-height: calc(100vh - 180px);
+  border-radius: clamp(14px, 1vw, 22px);
+  overflow: hidden;
   box-shadow: 0 30px 100px rgba(132,21,188,0.25);
   border: 1px solid rgba(255,255,255,0.06);
   margin-top: 0;
+  justify-self: stretch;
 }
 .hero-right img {
   width: 100%; height: 100%; object-fit: cover;
@@ -396,8 +408,7 @@ body::after {
     <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
   </div>
   <div class="escassez-timer">
-    <span class="label">⏱ TURMA FECHA EM</span>
-    <span class="time" id="countdown">--d --h --m --s</span>
+    <span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span>
   </div>
   <div class="escassez-price">
     DEPOIS · <b>R$ 3.000</b>
@@ -425,13 +436,11 @@ body::after {
     <ul class="hero-promises">
       <li>
         <span class="prom-n">01</span>
-        <span><b>3 cafés novos</b> com pessoas que MULTIPLICAM você
-          <em>(você aprende a SER interessante, não interessado)</em>
-        </span>
+        <span><b>3 conexões poderosas</b> — aprendendo <em>como</em> vai se conectar, confiando no que entrega.</span>
       </li>
       <li>
         <span class="prom-n">02</span>
-        <span><b>Agenda 05h-23h45 rodando</b> com 4 hábitos travados + <b>clareza total</b> dos resultados, finanças, metas — e <b>quem é você</b></span>
+        <span><b>Agenda programada</b> — <b>garantia de clareza</b> se você está sendo produtivo, procrastinador ou desorganizado.</span>
       </li>
       <li>
         <span class="prom-n">03</span>
@@ -488,41 +497,10 @@ body::after {
   </div>
 </div>
 
-<!-- CRONÔMETRO TÉCNICO · countdown 7d + vagas decrescentes -->
+<!-- CRONÔMETRO DE ESCASSEZ · vagas decrescentes -->
 <script>
 (function(){
-  // Próxima turma fecha em 7 dias a partir de AGORA
-  // (na produção, fixar uma data específica · ex: new Date('2026-05-23T23:59:59'))
-  const targetKey = 'asp_hero_target';
-  let target = localStorage.getItem(targetKey);
-  if (!target) {
-    const d = new Date();
-    d.setDate(d.getDate() + 7);
-    d.setHours(23, 59, 59);
-    target = d.toISOString();
-    localStorage.setItem(targetKey, target);
-  }
-  const targetDate = new Date(target);
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
-    const el = document.getElementById('countdown');
-    if (diff <= 0) {
-      el.textContent = 'TURMA FECHADA';
-      el.style.color = 'var(--rubi)';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    el.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(mins).padStart(2,'0')}m ${String(secs).padStart(2,'0')}s`;
-  }
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // Vagas restantes: começa em 43, simula consumo de 1 vaga a cada ~45min
+  // Vagas restantes: começa em 43 · simula consumo de 1 vaga a cada ~45min
   // (na produção, valor vem de API real do Kiwify)
   const startVagas = 43;
   const startTime = Date.now();
