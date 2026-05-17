@@ -163,43 +163,55 @@ body::after {
   position: relative;
   border-radius: 6px;
   background: rgba(0,0,0,0.4);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--display); font-size: clamp(10px, 0.9vw, 13px);
-  font-weight: 600; letter-spacing: 0.12em;
-  color: var(--silver); text-transform: uppercase;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: clamp(6px, 0.6vw, 9px) clamp(4px, 0.4vw, 6px) clamp(4px, 0.4vw, 6px);
   overflow: hidden;
+  z-index: 1;
 }
-/* MESES PERDIDOS · 6 primeiros · vermelho */
+.month-box .month-name {
+  font-family: var(--display);
+  font-size: clamp(9px, 0.78vw, 11px);
+  font-weight: 700; letter-spacing: 0.14em;
+  color: var(--silver); text-transform: uppercase;
+  text-align: center; line-height: 1;
+  position: relative; z-index: 3;
+}
+.month-box .mark {
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(22px, 2.6vw, 38px);
+  font-weight: 700;
+  opacity: 0;
+  position: relative; z-index: 3;
+  line-height: 1;
+}
+/* MESES PERDIDOS · JAN-JUN · vermelho */
 .month-box.m-loss { border: 1px solid rgba(232,31,38,0.3); }
 .month-box.m-loss .mark {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2em; color: var(--rubi-bright); font-weight: 700;
-  opacity: 0;
+  color: var(--rubi-bright);
+  text-shadow: 0 0 12px rgba(232,31,38,0.7);
   animation: monthFadeLoss 12s ease-in-out infinite;
-  text-shadow: 0 0 12px rgba(232,31,38,0.6);
 }
 .month-box.m-loss::after {
   content: ""; position: absolute; inset: 0;
-  background: rgba(232,31,38,0.50);
+  background: rgba(232,31,38,0.45);
   opacity: 0;
   animation: monthFadeLoss 12s ease-in-out infinite;
+  z-index: 2;
 }
-/* MESES GANHOS · 6 últimos · verde */
+/* MESES GANHOS · JUL-DEZ · verde */
 .month-box.m-win { border: 1px solid rgba(31,185,94,0.3); }
 .month-box.m-win .mark {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2em; color: var(--esmeralda-bright); font-weight: 700;
-  opacity: 0;
+  color: var(--esmeralda-bright);
+  text-shadow: 0 0 14px rgba(45,214,111,0.8);
   animation: monthFadeWin 12s ease-in-out infinite;
-  text-shadow: 0 0 14px rgba(45,214,111,0.7);
 }
 .month-box.m-win::after {
   content: ""; position: absolute; inset: 0;
   background: rgba(31,185,94,0.40);
   opacity: 0;
   animation: monthFadeWin 12s ease-in-out infinite;
+  z-index: 2;
 }
 
 /* Delays sequenciais por mês */
@@ -463,18 +475,18 @@ body::after {
   <!-- TIMELINE 12 MESES · CENTRALIZADA · JAN-JUN perdidos · JUL-DEZ ganhos -->
   <div class="timeline-wrapper">
     <div class="timeline-12">
-      <div class="month-box m-loss m1">JAN<span class="mark">✕</span></div>
-      <div class="month-box m-loss m2">FEV<span class="mark">✕</span></div>
-      <div class="month-box m-loss m3">MAR<span class="mark">✕</span></div>
-      <div class="month-box m-loss m4">ABR<span class="mark">✕</span></div>
-      <div class="month-box m-loss m5">MAI<span class="mark">✕</span></div>
-      <div class="month-box m-loss m6">JUN<span class="mark">✕</span></div>
-      <div class="month-box m-win  m7">JUL<span class="mark">✓</span></div>
-      <div class="month-box m-win  m8">AGO<span class="mark">✓</span></div>
-      <div class="month-box m-win  m9">SET<span class="mark">✓</span></div>
-      <div class="month-box m-win  m10">OUT<span class="mark">✓</span></div>
-      <div class="month-box m-win  m11">NOV<span class="mark">✓</span></div>
-      <div class="month-box m-win  m12">DEZ<span class="mark">✓</span></div>
+      <div class="month-box m-loss m1"><span class="month-name">JAN</span><span class="mark">✕</span></div>
+      <div class="month-box m-loss m2"><span class="month-name">FEV</span><span class="mark">✕</span></div>
+      <div class="month-box m-loss m3"><span class="month-name">MAR</span><span class="mark">✕</span></div>
+      <div class="month-box m-loss m4"><span class="month-name">ABR</span><span class="mark">✕</span></div>
+      <div class="month-box m-loss m5"><span class="month-name">MAI</span><span class="mark">✕</span></div>
+      <div class="month-box m-loss m6"><span class="month-name">JUN</span><span class="mark">✕</span></div>
+      <div class="month-box m-win  m7"><span class="month-name">JUL</span><span class="mark">✓</span></div>
+      <div class="month-box m-win  m8"><span class="month-name">AGO</span><span class="mark">✓</span></div>
+      <div class="month-box m-win  m9"><span class="month-name">SET</span><span class="mark">✓</span></div>
+      <div class="month-box m-win  m10"><span class="month-name">OUT</span><span class="mark">✓</span></div>
+      <div class="month-box m-win  m11"><span class="month-name">NOV</span><span class="mark">✓</span></div>
+      <div class="month-box m-win  m12"><span class="month-name">DEZ</span><span class="mark">✓</span></div>
     </div>
     <p class="timeline-label">
       Antes eram <b>meses perdidos</b>. Agora a <span class="hl-green">decisão de ganhar ou perder é sua</span>.<br>
