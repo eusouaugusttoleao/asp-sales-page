@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 04 HISTÓRIA · 5 Atos · Augustto Leão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --topazio: #E8782E;
+  --safira: #2A4FFF;
+  --ametista: #7B2FBE;
+  --diamante: #E0E0E0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--bg); color: var(--white);
+  font-family: var(--body); font-weight: 300;
+  line-height: 1.5; overflow-x: hidden; min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo {
+  position: absolute; border-radius: 50%; filter: blur(120px);
+  opacity: 0.3; pointer-events: none; z-index: 0;
+}
+.halo-rubi { background: var(--rubi); }
+.halo-topazio { background: var(--topazio); }
+.halo-esmeralda { background: var(--esmeralda); }
+.halo-ametista { background: var(--ametista); }
+.halo-diamante { background: var(--diamante); }
+.halo-magenta { background: var(--magenta); }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(11,11,11,0.85);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 100; padding: 0 32px; height: 60px;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar {
+  position: fixed; top: 60px; left: 0; right: 0;
+  background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%);
+  border-bottom: 1px solid rgba(232,31,38,0.3);
+  z-index: 99; padding: 0 32px;
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px;
+  align-items: center; height: 50px;
+  font-family: var(--display); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rubi); animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 04 · HISTÓRIA AUGUSTTO · 5 ATOS · v3.4
+   ============================================================ */
+.section-historia {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
+}
+
+.hist-intro {
+  text-align: center;
+  margin-bottom: clamp(60px, 7vw, 120px);
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+.hist-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.9vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--rubi);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.hist-kicker::before, .hist-kicker::after { content: ""; width: 36px; height: 1px; background: var(--rubi); }
+.hist-h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(32px, 4.2vw, 72px);
+  line-height: 1.0; letter-spacing: -0.025em; color: var(--white);
+  text-wrap: balance;
+  margin-bottom: clamp(20px, 2vw, 32px);
+}
+.hist-h2 .accent { color: var(--rubi-bright); text-shadow: 0 0 28px rgba(232,31,38,0.3); display: block; }
+.hist-sub {
+  font-size: clamp(16px, 1.3vw, 22px);
+  line-height: 1.55; color: var(--gray-body);
+  max-width: 800px; margin: 0 auto;
+}
+.hist-sub b { color: var(--white); }
+
+/* TIMELINE 5 ATOS · linha central com gradient */
+.atos-timeline {
+  position: relative;
+  display: grid; grid-template-rows: repeat(5, auto);
+  gap: clamp(60px, 7vw, 110px);
+  padding: clamp(40px, 5vw, 80px) 0;
+  max-width: 1280px; margin: 0 auto;
+}
+.atos-timeline::before {
+  content: ""; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    var(--rubi) 8%, var(--rubi) 18%,
+    var(--topazio) 25%, var(--topazio) 35%,
+    var(--esmeralda) 42%, var(--esmeralda) 52%,
+    var(--ametista) 60%, var(--ametista) 70%,
+    var(--diamante) 78%, var(--diamante) 88%,
+    transparent 100%);
+  opacity: 0.5; transform: translateX(-50%);
+}
+
+.ato {
+  display: grid;
+  grid-template-columns: 1fr clamp(80px, 8vw, 120px) 1fr;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center; position: relative; z-index: 2;
+}
+.ato-side { padding: 0; }
+.ato-side.left { text-align: right; }
+.ato-side.right { text-align: left; }
+
+.ato-cristal {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(40px, 5vw, 80px);
+  text-align: center; line-height: 1; position: relative;
+  z-index: 3;
+}
+.ato-cristal::before {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(100px, 10vw, 140px); height: clamp(100px, 10vw, 140px);
+  border-radius: 50%; background: currentColor;
+  opacity: 0.16; filter: blur(40px); z-index: -1;
+  animation: cristalBreathe 3.5s ease-in-out infinite;
+}
+@keyframes cristalBreathe {
+  0%, 100% { opacity: 0.16; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.28; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+.ato-1 .ato-cristal { color: var(--rubi-bright); }
+.ato-2 .ato-cristal { color: var(--topazio); }
+.ato-3 .ato-cristal { color: var(--esmeralda-bright); }
+.ato-4 .ato-cristal { color: var(--ametista); }
+.ato-5 .ato-cristal { color: var(--diamante); }
+
+.ato-label {
+  font-family: var(--display); font-size: clamp(10px, 0.85vw, 13px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  margin-bottom: clamp(12px, 1.2vw, 18px);
+}
+.ato-1 .ato-label { color: var(--rubi); }
+.ato-2 .ato-label { color: var(--topazio); }
+.ato-3 .ato-label { color: var(--esmeralda); }
+.ato-4 .ato-label { color: var(--ametista); }
+.ato-5 .ato-label { color: var(--diamante); }
+
+.ato-titulo {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 36px);
+  line-height: 1.12; color: var(--white);
+  margin-bottom: clamp(14px, 1.4vw, 22px);
+  letter-spacing: -0.01em;
+}
+.ato-quote {
+  font-size: clamp(14px, 1.1vw, 17px);
+  line-height: 1.65; color: var(--gray-body);
+}
+.ato-quote em {
+  display: block; margin-top: clamp(10px, 1.2vw, 16px);
+  font-style: italic; color: var(--white); font-weight: 500;
+}
+.ato-pedra {
+  font-family: var(--display); font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  margin-top: clamp(14px, 1.5vw, 22px);
+  font-weight: 600;
+}
+.ato-1 .ato-pedra { color: var(--rubi); }
+.ato-2 .ato-pedra { color: var(--topazio); }
+.ato-3 .ato-pedra { color: var(--esmeralda); }
+.ato-4 .ato-pedra { color: var(--ametista); }
+.ato-5 .ato-pedra { color: var(--diamante); }
+
+.ato-aside {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.5; color: var(--silver);
+  opacity: 0.65;
+}
+
+/* Galeria 6 fotos ATO 5 */
+.ato5-gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1vw, 16px);
+  margin-top: clamp(18px, 2vw, 26px);
+}
+.ato5-gallery img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+  filter: brightness(0.92);
+  transition: filter .35s, transform .35s;
+}
+.ato5-gallery img:hover { filter: brightness(1.08); transform: scale(1.04); }
+
+/* Fechamento megatype */
+.fechamento {
+  margin-top: clamp(60px, 7vw, 110px);
+  text-align: center;
+  padding: clamp(50px, 6vw, 90px) 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.fechamento .megatype {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(44px, 8vw, 140px);
+  line-height: 0.92; letter-spacing: -0.035em;
+}
+.fechamento .megatype .l1 { display: block; color: var(--white); }
+.fechamento .megatype .l2 {
+  display: block; color: var(--magenta-bright);
+  text-shadow:
+    0 0 40px rgba(132,21,188,0.5),
+    0 0 90px rgba(132,21,188,0.3);
+}
+.fechamento .sub {
+  margin-top: clamp(28px, 3vw, 44px);
+  font-size: clamp(15px, 1.3vw, 20px);
+  line-height: 1.55; color: var(--gray-body);
+  max-width: 760px; margin-left: auto; margin-right: auto;
+}
+.fechamento .sub b { color: var(--white); }
+.fechamento .last {
+  margin-top: clamp(20px, 2vw, 30px);
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(14px, 1.1vw, 17px);
+  color: var(--ambar);
+  text-shadow: 0 0 18px rgba(255,214,0,0.35);
+}
+
+/* TICKER */
+.rocha-rail {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(5,5,5,0.92);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 0; z-index: 99; overflow: hidden; height: 36px;
+}
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .atos-timeline::before { left: 40px; transform: none; }
+  .ato { grid-template-columns: 80px 1fr; gap: 18px; }
+  .ato-cristal { font-size: 32px; }
+  .ato-cristal::before { width: 80px; height: 80px; }
+  .ato-side.left { display: none; }
+  .ato-side.right { text-align: left; grid-column: 2; }
+  .ato-1 .ato-side.right, .ato-3 .ato-side.right { /* normal */ }
+  .ato-2 .ato-side.right, .ato-4 .ato-side.right { /* normal */ }
+  /* Reordenar pra todos atos ficarem com cristal à esquerda e texto à direita */
+  .ato {
+    grid-template-areas: "cristal texto";
+  }
+  .ato-cristal { grid-area: cristal; }
+  .ato-side.right { grid-area: texto; }
+  .ato-side.left { display: none; }
+  .ato5-gallery { grid-template-columns: repeat(2, 1fr); }
+
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-historia { padding: 175px 18px 70px; }
+  .hist-h2 { font-size: 30px; }
+  .ato-titulo { font-size: 20px; }
+  .ato-quote { font-size: 14px; }
+  .fechamento .megatype { font-size: 40px; }
+  .fechamento .sub { font-size: 14px; }
+  .ato5-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(232,31,38,0.95); color: var(--white);
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 04 HISTÓRIA · 5 ATOS v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 04 -->
+<section class="section-historia" id="atos">
+  <div class="halo halo-rubi" style="top:5%; right:8%; width:380px; height:380px; opacity:0.13;"></div>
+  <div class="halo halo-ametista" style="bottom:30%; left:-5%; width:420px; height:420px; opacity:0.14;"></div>
+  <div class="halo halo-diamante" style="bottom:5%; right:-8%; width:400px; height:400px; opacity:0.10;"></div>
+
+  <!-- INTRO -->
+  <div class="hist-intro">
+    <span class="hist-kicker">A HISTÓRIA · 5 ATOS</span>
+    <h2 class="hist-h2">
+      Eu não tô falando de fora.<br>
+      <span class="accent">Eu vivi cada uma dessas algemas.</span>
+    </h2>
+    <p class="hist-sub">
+      E <b>arrebentei todas</b>. 5 atos. 5 vozes que silenciei dentro de mim antes de te ensinar a nomear as suas.
+    </p>
+  </div>
+
+  <!-- TIMELINE 5 ATOS -->
+  <div class="atos-timeline">
+
+    <!-- ATO 1 · 15 ANOS · Rubi -->
+    <div class="ato ato-1">
+      <div class="ato-side left">
+        <div class="ato-label">Acto 01 · 15 anos · A cadeira do meu pai</div>
+        <h3 class="ato-titulo">Apanhei do meu pai. Com a cadeira.</h3>
+        <p class="ato-quote">
+          Naquele dia decidi um monte de coisa errada sobre quem eu era. Levei a bagagem por anos sem saber.
+          <em>Era a Voz #1 operando: "Tenho que cuidar com o que vão pensar de mim."</em>
+        </p>
+        <div class="ato-pedra">▸ Pedra 1 · Autocontrole · cala Voz #1</div>
+      </div>
+      <div class="ato-cristal">01</div>
+      <div class="ato-side right">
+        <p class="ato-aside">A primeira voz a calar.<br>Tudo começa aqui.</p>
+      </div>
+    </div>
+
+    <!-- ATO 2 · FILHA · Topázio -->
+    <div class="ato ato-2">
+      <div class="ato-side left">
+        <p class="ato-aside">Quando o externo te força<br>a virar a chave por dentro.</p>
+      </div>
+      <div class="ato-cristal">02</div>
+      <div class="ato-side right">
+        <div class="ato-label">Acto 02 · Minha filha no hospital público</div>
+        <h3 class="ato-titulo">Quase perdi minha filha. Naquele corredor, prometi: nunca mais ser pobre.</h3>
+        <p class="ato-quote">
+          Não era ambição. Era promessa de pai. Foi onde entendi que se eu não virasse a chave por dentro, ela ia pagar por fora.
+          <em>O seu externo é o reflexo do seu interno.</em>
+        </p>
+        <div class="ato-pedra">▸ Pedras 3-4 · Posicionamento + Disciplina</div>
+      </div>
+    </div>
+
+    <!-- ATO 3 · H****** · Esmeralda -->
+    <div class="ato ato-3">
+      <div class="ato-side left">
+        <div class="ato-label">Acto 03 · A traição dos "amigos" de trabalho</div>
+        <h3 class="ato-titulo">Saí da H******. Todo mundo me virou as costas. Tinha gente torcendo pra eu me fuder.</h3>
+        <p class="ato-quote">
+          Fui pra uma empresa que ninguém conhecia. Em pouco tempo, virei CMO da segunda melhor de vendas diretas do país em 2024 — atrás só da H******.
+          <em>Era a Voz #5 que silenciei: "Você não é bom o suficiente. Vão descobrir uma hora."</em>
+        </p>
+        <div class="ato-pedra">▸ Pedra 5 · Autoridade · cala Voz #5</div>
+      </div>
+      <div class="ato-cristal">03</div>
+      <div class="ato-side right">
+        <p class="ato-aside">Quando a joia ativa,<br>você não precisa do aval<br>de quem te traiu.</p>
+      </div>
+    </div>
+
+    <!-- ATO 4 · BURNOUT · Ametista -->
+    <div class="ato ato-4">
+      <div class="ato-side left">
+        <p class="ato-aside">A gênese do método.<br>O dia em que ATIVAR<br>virou linguagem.</p>
+      </div>
+      <div class="ato-cristal">04</div>
+      <div class="ato-side right">
+        <div class="ato-label">Acto 04 · A terceira onda · O burnout</div>
+        <h3 class="ato-titulo">Travei. Burnout. Crise de ansiedade. Vícios. Perdi tudo, literalmente tudo.</h3>
+        <p class="ato-quote">
+          No chão, precisei ATIVAR MEU PODER — não de palco, não de palestra. Pessoal. Real. Foi dessa terceira onda que nasceu o método.
+          <em>Era a Voz #7 calando: "Você precisa de permissão pra SER." Eu parei de pedir.</em>
+        </p>
+        <div class="ato-pedra">▸ Pedra 7 · Poder · cala Voz #7</div>
+      </div>
+    </div>
+
+    <!-- ATO 5 · HOJE · Diamante -->
+    <div class="ato ato-5">
+      <div class="ato-side left">
+        <div class="ato-label">Acto 05 · Onde estou hoje · o outro lado</div>
+        <h3 class="ato-titulo">E hoje? Hoje eu falo isso aqui de um lugar diferente.</h3>
+        <p class="ato-quote">
+          Família estruturada · Sellect rodando · AURA em sua 2ª turma · marca Augustto Leão consolidada · Dubai · Caribe · Harley · palestras nacionais · 100k+ pessoas treinadas · R$100M+ movimentados · ex-CMO #2 do país.
+          <em>Você não precisa virar o "Augustto". Você precisa virar VOCÊ — completo.</em>
+        </p>
+        <div class="ato-pedra">▸ As 7 Joias acesas · Resultado do método aplicado</div>
+      </div>
+      <div class="ato-cristal">05</div>
+      <div class="ato-side right">
+        <div class="ato5-gallery">
+          <img src="../../assets/ato5/ato5-dubai.svg"    alt="Dubai">
+          <img src="../../assets/ato5/ato5-caribe.svg"   alt="Caribe">
+          <img src="../../assets/ato5/ato5-harley.svg"   alt="Harley">
+          <img src="../../assets/ato5/ato5-palestra.svg" alt="Palestra">
+          <img src="../../assets/ato5/ato5-familia.svg"  alt="Família">
+          <img src="../../assets/ato5/ato5-palco.svg"    alt="Palco">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FECHAMENTO · NINGUÉM COMPRA UM DERROTADO -->
+  <div class="fechamento">
+    <div class="megatype">
+      <span class="l1">NINGUÉM COMPRA</span>
+      <span class="l2">UM DERROTADO.</span>
+    </div>
+    <p class="sub">
+      Nem o <b>mercado</b> · nem a sua <b>família</b> · nem <b>você</b> de manhã no espelho.<br>
+      Por isso o ASP existe — pra você <b>parar de parecer um</b>.
+    </p>
+    <p class="last">"Você é o que pensa."</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
