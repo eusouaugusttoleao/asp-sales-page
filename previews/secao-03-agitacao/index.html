@@ -22,6 +22,8 @@
   --gray-body: #B8B8B8;
   --rubi: #E81F26;
   --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
   --display: "Space Grotesk", system-ui, sans-serif;
   --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -132,81 +134,110 @@ body::after {
   text-shadow: 0 0 28px rgba(232,31,38,0.35);
 }
 
-/* QUESTION com timeline 12 meses */
-.agit-question-wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: clamp(40px, 5vw, 80px);
-  align-items: center;
-  margin-bottom: clamp(48px, 5vw, 80px);
-}
-.agit-question {
+/* QUESTION centralizada (no topo) */
+.agit-question-centered {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(24px, 2.6vw, 42px);
+  font-size: clamp(26px, 3vw, 48px);
   line-height: 1.15; color: var(--white);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  text-align: center;
+  max-width: 1100px; margin: 0 auto clamp(40px, 4vw, 60px);
 }
-.agit-question .hl-rubi { color: var(--rubi-bright); text-shadow: 0 0 24px rgba(232,31,38,0.3); }
+.agit-question-centered .hl-rubi { color: var(--rubi-bright); text-shadow: 0 0 24px rgba(232,31,38,0.3); }
 
-/* Timeline visual · 12 caixas representando os meses */
+/* Timeline visual · 12 meses · CENTRALIZADO 6 colunas */
+.timeline-wrapper {
+  max-width: 880px; margin: 0 auto clamp(56px, 6vw, 96px);
+}
 .timeline-12 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(6px, 0.6vw, 10px);
-  padding: clamp(20px, 2vw, 28px);
-  background: rgba(232,31,38,0.04);
-  border: 1px solid rgba(232,31,38,0.2);
-  border-radius: 14px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(8px, 0.8vw, 14px);
+  padding: clamp(20px, 2.4vw, 32px);
+  background: linear-gradient(135deg, rgba(232,31,38,0.04) 0%, rgba(31,185,94,0.04) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
 }
 .month-box {
   aspect-ratio: 1;
   position: relative;
-  border: 1px solid rgba(232,31,38,0.25);
-  border-radius: 4px;
-  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.4);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--display); font-size: 9px; letter-spacing: 0.18em;
-  color: var(--silver);
+  font-family: var(--display); font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 600; letter-spacing: 0.12em;
+  color: var(--silver); text-transform: uppercase;
   overflow: hidden;
 }
-.month-box .x-mark {
+/* MESES PERDIDOS · 6 primeiros · vermelho */
+.month-box.m-loss { border: 1px solid rgba(232,31,38,0.3); }
+.month-box.m-loss .mark {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.8em; color: var(--rubi); font-weight: 700;
+  font-size: 2em; color: var(--rubi-bright); font-weight: 700;
   opacity: 0;
-  animation: monthFade 12s ease-in-out infinite;
+  animation: monthFadeLoss 12s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(232,31,38,0.6);
 }
-.month-box::after {
+.month-box.m-loss::after {
   content: ""; position: absolute; inset: 0;
-  background: rgba(232,31,38,0.45);
+  background: rgba(232,31,38,0.50);
   opacity: 0;
-  animation: monthFade 12s ease-in-out infinite;
+  animation: monthFadeLoss 12s ease-in-out infinite;
 }
-.month-box.m1  .x-mark, .month-box.m1::after  { animation-delay: 0s; }
-.month-box.m2  .x-mark, .month-box.m2::after  { animation-delay: 0.5s; }
-.month-box.m3  .x-mark, .month-box.m3::after  { animation-delay: 1s; }
-.month-box.m4  .x-mark, .month-box.m4::after  { animation-delay: 1.5s; }
-.month-box.m5  .x-mark, .month-box.m5::after  { animation-delay: 2s; }
-.month-box.m6  .x-mark, .month-box.m6::after  { animation-delay: 2.5s; }
-.month-box.m7  .x-mark, .month-box.m7::after  { animation-delay: 3s; }
-.month-box.m8  .x-mark, .month-box.m8::after  { animation-delay: 3.5s; }
-.month-box.m9  .x-mark, .month-box.m9::after  { animation-delay: 4s; }
-.month-box.m10 .x-mark, .month-box.m10::after { animation-delay: 4.5s; }
-.month-box.m11 .x-mark, .month-box.m11::after { animation-delay: 5s; }
-.month-box.m12 .x-mark, .month-box.m12::after { animation-delay: 5.5s; }
+/* MESES GANHOS · 6 últimos · verde */
+.month-box.m-win { border: 1px solid rgba(31,185,94,0.3); }
+.month-box.m-win .mark {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2em; color: var(--esmeralda-bright); font-weight: 700;
+  opacity: 0;
+  animation: monthFadeWin 12s ease-in-out infinite;
+  text-shadow: 0 0 14px rgba(45,214,111,0.7);
+}
+.month-box.m-win::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(31,185,94,0.40);
+  opacity: 0;
+  animation: monthFadeWin 12s ease-in-out infinite;
+}
 
-@keyframes monthFade {
-  0%, 45% { opacity: 0; }
-  50%, 90% { opacity: 1; }
+/* Delays sequenciais por mês */
+.month-box.m1  .mark, .month-box.m1::after  { animation-delay: 0s; }
+.month-box.m2  .mark, .month-box.m2::after  { animation-delay: 0.5s; }
+.month-box.m3  .mark, .month-box.m3::after  { animation-delay: 1s; }
+.month-box.m4  .mark, .month-box.m4::after  { animation-delay: 1.5s; }
+.month-box.m5  .mark, .month-box.m5::after  { animation-delay: 2s; }
+.month-box.m6  .mark, .month-box.m6::after  { animation-delay: 2.5s; }
+.month-box.m7  .mark, .month-box.m7::after  { animation-delay: 3.5s; }
+.month-box.m8  .mark, .month-box.m8::after  { animation-delay: 4s; }
+.month-box.m9  .mark, .month-box.m9::after  { animation-delay: 4.5s; }
+.month-box.m10 .mark, .month-box.m10::after { animation-delay: 5s; }
+.month-box.m11 .mark, .month-box.m11::after { animation-delay: 5.5s; }
+.month-box.m12 .mark, .month-box.m12::after { animation-delay: 6s; }
+
+@keyframes monthFadeLoss {
+  0%, 20% { opacity: 0; }
+  25%, 55% { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+@keyframes monthFadeWin {
+  0%, 50% { opacity: 0; }
+  55%, 90% { opacity: 1; }
   95%, 100% { opacity: 0; }
 }
+
 .timeline-label {
-  margin-top: clamp(14px, 1.2vw, 18px);
+  margin-top: clamp(20px, 2vw, 28px);
   text-align: center;
-  font-family: var(--display); font-size: clamp(11px, 1vw, 13px);
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--rubi);
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1.55; color: var(--gray-body);
+  max-width: 720px; margin-left: auto; margin-right: auto;
 }
+.timeline-label b { color: var(--white); font-weight: 700; }
+.timeline-label .hl-green { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.4); }
+.timeline-label .hl-ambar { color: var(--ambar-bright); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
 
 /* Bullets "12 meses" */
 .agit-loops {
@@ -338,8 +369,7 @@ body::after {
 
 /* RESPONSIVO */
 @media (max-width: 1100px) {
-  .agit-question-wrap { grid-template-columns: 1fr; gap: 32px; }
-  .timeline-12 { max-width: 380px; margin: 0 auto; }
+  .timeline-12 { grid-template-columns: repeat(4, 1fr); }
   .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
   .escassez-vagas { justify-content: center; }
   .escassez-timer { justify-content: center; }
@@ -425,28 +455,31 @@ body::after {
     porque <span class="accent-rubi">já viveu — e parou</span>.
   </h2>
 
-  <!-- PERGUNTA + TIMELINE 12 MESES -->
-  <div class="agit-question-wrap">
-    <div class="agit-question">
-      Quanto custa <span class="hl-rubi">mais 12 meses iguais</span> aos últimos 12?
+  <!-- PERGUNTA CENTRALIZADA · TOPO -->
+  <div class="agit-question-centered">
+    Quanto custa <span class="hl-rubi">mais 12 meses iguais</span> aos últimos 12?
+  </div>
+
+  <!-- TIMELINE 12 MESES · CENTRALIZADA · JAN-JUN perdidos · JUL-DEZ ganhos -->
+  <div class="timeline-wrapper">
+    <div class="timeline-12">
+      <div class="month-box m-loss m1">JAN<span class="mark">✕</span></div>
+      <div class="month-box m-loss m2">FEV<span class="mark">✕</span></div>
+      <div class="month-box m-loss m3">MAR<span class="mark">✕</span></div>
+      <div class="month-box m-loss m4">ABR<span class="mark">✕</span></div>
+      <div class="month-box m-loss m5">MAI<span class="mark">✕</span></div>
+      <div class="month-box m-loss m6">JUN<span class="mark">✕</span></div>
+      <div class="month-box m-win  m7">JUL<span class="mark">✓</span></div>
+      <div class="month-box m-win  m8">AGO<span class="mark">✓</span></div>
+      <div class="month-box m-win  m9">SET<span class="mark">✓</span></div>
+      <div class="month-box m-win  m10">OUT<span class="mark">✓</span></div>
+      <div class="month-box m-win  m11">NOV<span class="mark">✓</span></div>
+      <div class="month-box m-win  m12">DEZ<span class="mark">✓</span></div>
     </div>
-    <div>
-      <div class="timeline-12">
-        <div class="month-box m1">M1<span class="x-mark">✕</span></div>
-        <div class="month-box m2">M2<span class="x-mark">✕</span></div>
-        <div class="month-box m3">M3<span class="x-mark">✕</span></div>
-        <div class="month-box m4">M4<span class="x-mark">✕</span></div>
-        <div class="month-box m5">M5<span class="x-mark">✕</span></div>
-        <div class="month-box m6">M6<span class="x-mark">✕</span></div>
-        <div class="month-box m7">M7<span class="x-mark">✕</span></div>
-        <div class="month-box m8">M8<span class="x-mark">✕</span></div>
-        <div class="month-box m9">M9<span class="x-mark">✕</span></div>
-        <div class="month-box m10">M10<span class="x-mark">✕</span></div>
-        <div class="month-box m11">M11<span class="x-mark">✕</span></div>
-        <div class="month-box m12">M12<span class="x-mark">✕</span></div>
-      </div>
-      <div class="timeline-label">12 meses perdidos</div>
-    </div>
+    <p class="timeline-label">
+      Antes eram <b>meses perdidos</b>. Agora a <span class="hl-green">decisão de ganhar ou perder é sua</span>.<br>
+      O <span class="hl-ambar">GPS está a 1 clique de distância</span>.
+    </p>
   </div>
 
   <!-- BULLETS 12 MESES IGUAIS -->
@@ -484,7 +517,7 @@ body::after {
   <!-- MEGATYPE · O DINHEIRO TÁ NA RUA -->
   <div class="dinheiro-mega">
     <div class="megatype">O DINHEIRO TÁ NA RUA.</div>
-    <p class="sub">Mas <b>só pega quem aparece</b>.</p>
+    <p class="sub">E só <b>conquista</b> quem <b>aparece e se posiciona</b>.</p>
   </div>
 
   <!-- CLOSING · NINGUÉM COMPRA UM DERROTADO -->
