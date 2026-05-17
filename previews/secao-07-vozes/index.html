@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 07 · 7 VOZES DA MENTIRA v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --citrino: #FFA500;
+  --quartzo: #FFD83A;
+  --pedra-esmeralda: #1FB95E;
+  --safira: #2A4FFF;
+  --ametista: #7B2FBE;
+  --pedra-rubi: #E81F26;
+  --diamante: #E0E0E0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-rubi { background: var(--rubi); }
+.halo-magenta { background: var(--magenta); }
+.halo-ametista { background: var(--ametista); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 07 · 7 VOZES DA MENTIRA · v3.4
+   ============================================================ */
+.section-vozes {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
+}
+
+.vozes-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--rubi);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center; width: 100%;
+}
+.vozes-kicker::before, .vozes-kicker::after { content: ""; width: 36px; height: 1px; background: var(--rubi); }
+
+.vozes-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(48px, 8vw, 128px);
+  line-height: 0.92; letter-spacing: -0.035em;
+  text-align: center; color: var(--white);
+  margin-bottom: clamp(32px, 4vw, 56px);
+  text-shadow:
+    0 0 40px rgba(232,31,38,0.4),
+    0 0 90px rgba(132,21,188,0.3);
+}
+.vozes-title-mega .accent {
+  background: linear-gradient(135deg, var(--rubi-bright), var(--magenta-bright), var(--ametista));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vozes-h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 36px);
+  line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--white); text-align: center;
+  max-width: 1000px; margin: 0 auto clamp(20px, 2vw, 32px);
+  text-wrap: balance;
+}
+.vozes-h2 .hl-rubi { color: var(--rubi-bright); text-shadow: 0 0 20px rgba(232,31,38,0.4); }
+
+.vozes-sub {
+  text-align: center;
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.6; color: var(--gray-body);
+  max-width: 880px; margin: 0 auto clamp(60px, 7vw, 100px);
+  text-wrap: balance;
+}
+.vozes-sub b { color: var(--white); }
+
+/* GRID 7 CARDS */
+.vozes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 1.8vw, 28px);
+  max-width: 1480px; margin: 0 auto clamp(60px, 7vw, 100px);
+}
+.voz-card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 4px solid var(--voz-color);
+  border-radius: 12px;
+  padding: clamp(24px, 2.4vw, 36px) clamp(24px, 2.4vw, 36px);
+  transition: background .3s, border-color .3s, transform .3s, opacity .5s, filter .5s;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(14px, 1.4vw, 22px);
+  overflow: hidden;
+}
+.voz-card::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, var(--voz-color) 0%, transparent 70%);
+  opacity: 0.08; pointer-events: none;
+  filter: blur(40px);
+}
+.voz-card:hover {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-4px);
+}
+.voz-card.silenced {
+  opacity: 0.35;
+  filter: grayscale(0.7);
+}
+.voz-card.silenced .voz-frase {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rubi);
+}
+
+.voz-card.v1 { --voz-color: var(--citrino); }
+.voz-card.v2 { --voz-color: var(--quartzo); }
+.voz-card.v3 { --voz-color: var(--pedra-esmeralda); }
+.voz-card.v4 { --voz-color: var(--safira); }
+.voz-card.v5 { --voz-color: var(--ametista); }
+.voz-card.v6 { --voz-color: var(--pedra-rubi); }
+.voz-card.v7 { --voz-color: var(--diamante); }
+
+.voz-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.voz-tag {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--voz-color);
+  text-shadow: 0 0 16px var(--voz-color);
+}
+.voz-pedra-bruta {
+  font-family: var(--display); font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--silver); opacity: 0.7;
+  padding: 4px 10px; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+}
+
+.voz-frase {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(20px, 1.9vw, 30px);
+  line-height: 1.25; color: var(--white);
+  font-style: italic;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.voz-frase::before, .voz-frase::after {
+  content: "'"; color: var(--voz-color); opacity: 0.7;
+}
+
+.voz-footer {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: clamp(14px, 1.4vw, 22px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.voz-footer .arrow {
+  color: var(--esmeralda-bright); font-weight: 700;
+  text-shadow: 0 0 8px rgba(45,214,111,0.4);
+}
+.voz-footer .desc {
+  font-family: var(--display); font-size: clamp(12px, 1vw, 14px);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gray-body); flex: 1;
+}
+.voz-footer .desc b { color: var(--white); }
+.voz-footer .pedra-cor {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--voz-color);
+  box-shadow: 0 0 12px var(--voz-color);
+}
+
+/* CLOSING insight */
+.vozes-insight {
+  max-width: 1000px; margin: 0 auto clamp(40px, 5vw, 70px);
+  padding: clamp(24px, 2.6vw, 40px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.vozes-insight p {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(18px, 1.7vw, 26px);
+  line-height: 1.45; color: var(--white);
+  text-wrap: balance;
+}
+.vozes-insight p + p {
+  margin-top: clamp(12px, 1.2vw, 18px);
+  font-weight: 400; color: var(--gray-body);
+  font-size: clamp(15px, 1.3vw, 20px);
+}
+.vozes-insight .hl-rubi { color: var(--rubi-bright); }
+
+/* MEGATYPE FINAL */
+.vozes-megatype {
+  margin-top: clamp(48px, 5vw, 80px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.vozes-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(232,31,38,0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.vozes-megatype .line {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 110px);
+  line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--white);
+  text-shadow:
+    0 0 40px rgba(132,21,188,0.5),
+    0 0 90px rgba(132,21,188,0.3);
+}
+.vozes-megatype .line .hl-magenta { color: var(--magenta-bright); }
+.vozes-megatype .sub {
+  position: relative; z-index: 1;
+  margin-top: clamp(24px, 2.5vw, 40px);
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(15px, 1.3vw, 19px);
+  color: var(--gray-body);
+  max-width: 760px; margin-left: auto; margin-right: auto;
+}
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .vozes-grid { grid-template-columns: 1fr; }
+  .voz-frase { font-size: 18px; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-vozes { padding: 175px 14px 70px; }
+  .voz-card { padding: 22px; }
+  .voz-frase { font-size: 17px; }
+  .vozes-h2 { font-size: 20px; }
+  .vozes-megatype .line { font-size: 38px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(232,31,38,0.95); color: var(--white);
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 07 · 7 VOZES DA MENTIRA v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 07 VOZES -->
+<section class="section-vozes" id="vozes">
+  <div class="halo halo-rubi" style="top:5%; right:-10%; width:500px; height:500px; opacity:0.16;"></div>
+  <div class="halo halo-ametista" style="bottom:20%; left:-8%; width:440px; height:440px; opacity:0.15;"></div>
+  <div class="halo halo-magenta" style="bottom:0%; right:5%; width:380px; height:380px; opacity:0.12;"></div>
+
+  <div style="text-align:center;">
+    <span class="vozes-kicker">INIMIGO NOMEADO</span>
+  </div>
+
+  <h1 class="vozes-title-mega">
+    AS <span class="accent">7 VOZES</span><br>
+    DA MENTIRA
+  </h1>
+
+  <h2 class="vozes-h2">
+    Antes de <b>ATIVAR</b>, você precisa <span class="hl-rubi">SILENCIAR</span>.<br>
+    Conhece estas 7 vozes?
+  </h2>
+
+  <p class="vozes-sub">
+    Cada Pedra do ASP combate <b>UMA voz específica</b>. As vozes se sustentam em cadeia — silenciar uma desestabiliza as outras.
+  </p>
+
+  <!-- GRID 7 CARDS DE VOZES -->
+  <div class="vozes-grid">
+
+    <article class="voz-card v1" data-voz="1">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #01</span>
+        <span class="voz-pedra-bruta">Citrino bruto</span>
+      </div>
+      <p class="voz-frase">Tenho que cuidar com o que vão pensar de mim.</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 1 · <b>Autoimagem</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v2" data-voz="2">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #02</span>
+        <span class="voz-pedra-bruta">Quartzo bruto</span>
+      </div>
+      <p class="voz-frase">Melhor ficar quieto antes de pagar mico.</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 2 · <b>Persuasão</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v3" data-voz="3">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #03</span>
+        <span class="voz-pedra-bruta">Esmeralda bruta</span>
+      </div>
+      <p class="voz-frase">Quem sou eu pra cobrar isso?</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 3 · <b>Posicionamento</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v4" data-voz="4">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #04</span>
+        <span class="voz-pedra-bruta">Safira bruta</span>
+      </div>
+      <p class="voz-frase">Eu nunca termino o que começo. Essa também vai pro mesmo lugar.</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 4 · <b>Disciplina</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v5" data-voz="5">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #05</span>
+        <span class="voz-pedra-bruta">Ametista bruta</span>
+      </div>
+      <p class="voz-frase">Não sou bom o suficiente.</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 5 · <b>Autoridade</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v6" data-voz="6">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #06</span>
+        <span class="voz-pedra-bruta">Rubi bruto</span>
+      </div>
+      <p class="voz-frase">O que vão achar de mim se eu fizer isso?</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 6 · <b>Irreverência</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+    <article class="voz-card v7" data-voz="7" style="grid-column: 1 / -1;">
+      <div class="voz-header">
+        <span class="voz-tag">VOZ #07 · A ÚLTIMA · A QUE SUSTENTA TODAS</span>
+        <span class="voz-pedra-bruta">Diamante bruto</span>
+      </div>
+      <p class="voz-frase">Sem aprovação dele, isso não vale.</p>
+      <div class="voz-footer">
+        <span class="pedra-cor"></span>
+        <span class="desc">Pedra 7 · <b>Poder</b></span>
+        <span class="arrow">→ cala</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- CLOSING INSIGHT -->
+  <div class="vozes-insight">
+    <p>
+      Você reconhece pelo menos <span class="hl-rubi">3 dessas vozes</span>?
+    </p>
+    <p>
+      Boas notícias: <b>elas não são você</b>. São as crenças que sustentam a prisão invisível — e têm <b>data de validade</b>.
+    </p>
+  </div>
+
+  <!-- MEGATYPE FINAL -->
+  <div class="vozes-megatype">
+    <p class="line">
+      <span class="hl-magenta">SILENCIE</span> AS VOZES.<br>
+      <span class="hl-magenta">ATIVE</span> SEU PODER.
+    </p>
+    <p class="sub">— a sequência que muda tudo.</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+  </div>
+</div>
+
+<!-- SCROLL-SILENCIA + VAGAS -->
+<script>
+(function(){
+  // VAGAS
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+
+  // SCROLL-SILENCIA · cada card que entra na viewport vira "silenced"
+  const cards = document.querySelectorAll('.voz-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.55) {
+        const card = entry.target;
+        if (!card.dataset.processed) {
+          card.dataset.processed = '1';
+          setTimeout(() => card.classList.add('silenced'), 800);
+        }
+      }
+    });
+  }, { threshold: [0.55, 0.7] });
+  cards.forEach(c => io.observe(c));
+})();
+</script>
+
+</body>
+</html>
