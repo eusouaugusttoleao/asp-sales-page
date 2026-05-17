@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 06 · 7 PEDRAS DO PODER v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  /* Pedras */
+  --citrino: #FFA500;
+  --quartzo: #FFD83A;
+  --pedra-esmeralda: #1FB95E;
+  --safira: #2A4FFF;
+  --ametista: #7B2FBE;
+  --pedra-rubi: #E81F26;
+  --diamante: #E0E0E0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-ambar { background: var(--ambar); }
+.halo-cobalt { background: var(--cobalt); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 06 · 7 PEDRAS DO PODER · v3.4
+   ============================================================ */
+.section-pedras {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
+}
+
+.pedras-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ambar);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center;
+  width: 100%;
+}
+.pedras-kicker::before, .pedras-kicker::after { content: ""; width: 36px; height: 1px; background: var(--ambar); }
+
+.pedras-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(48px, 8vw, 128px);
+  line-height: 0.92; letter-spacing: -0.035em;
+  text-align: center; color: var(--white);
+  margin-bottom: clamp(32px, 4vw, 56px);
+  text-shadow:
+    0 0 40px rgba(255,214,0,0.4),
+    0 0 90px rgba(132,21,188,0.3);
+}
+.pedras-title-mega .accent {
+  background: linear-gradient(135deg, var(--ambar), var(--magenta-bright), var(--cobalt-bright));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pedras-sub {
+  text-align: center; max-width: 920px;
+  margin: 0 auto clamp(50px, 6vw, 80px);
+  font-size: clamp(15px, 1.3vw, 20px);
+  line-height: 1.6; color: var(--gray-body);
+  text-wrap: balance;
+}
+.pedras-sub b { color: var(--white); }
+
+/* CITAÇÃO MECANISMO */
+.pedras-cite {
+  border-left: 3px solid var(--magenta-bright);
+  background: linear-gradient(90deg, rgba(132,21,188,0.06) 0%, transparent 100%);
+  padding: clamp(24px, 2.6vw, 40px) clamp(24px, 2.6vw, 40px);
+  border-radius: 0 16px 16px 0;
+  margin: 0 auto clamp(50px, 6vw, 88px);
+  max-width: 1100px;
+}
+.pedras-cite p {
+  font-size: clamp(16px, 1.3vw, 22px);
+  line-height: 1.6; color: var(--gray-body);
+  font-style: italic;
+}
+.pedras-cite b { color: var(--white); font-style: normal; font-weight: 700; }
+.pedras-cite .hl-ambar { color: var(--ambar); font-style: normal; font-weight: 700; }
+.pedras-cite .hl-magenta { color: var(--magenta-bright); font-style: normal; font-weight: 700; }
+.pedras-cite .hl-rubi { color: var(--rubi-bright); font-style: normal; font-weight: 700; }
+
+/* GRID 7 PEDRAS (com PNGs) */
+.pedras-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: clamp(12px, 1.5vw, 24px);
+  margin: 0 auto clamp(60px, 7vw, 100px);
+  max-width: 1480px;
+  padding: clamp(28px, 3vw, 48px) clamp(16px, 2vw, 32px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(132,21,188,0.04) 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.pedra-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: clamp(10px, 1vw, 16px);
+  transition: transform .35s;
+  cursor: pointer;
+}
+.pedra-card:hover { transform: translateY(-6px); }
+.pedra-img {
+  width: 100%; max-width: clamp(80px, 8vw, 140px);
+  aspect-ratio: 1; object-fit: contain;
+  animation: pedraBreathe 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px currentColor);
+  color: var(--white); /* shadow color base · sobrescrita por pedra */
+}
+@keyframes pedraBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.pedra-card:hover .pedra-img {
+  animation-duration: 1.2s;
+  filter: drop-shadow(0 0 40px currentColor) brightness(1.15);
+}
+.pedra-card.p1 .pedra-img { color: var(--citrino); }
+.pedra-card.p2 .pedra-img { color: var(--quartzo); }
+.pedra-card.p3 .pedra-img { color: var(--pedra-esmeralda); }
+.pedra-card.p4 .pedra-img { color: var(--safira); }
+.pedra-card.p5 .pedra-img { color: var(--ametista); }
+.pedra-card.p6 .pedra-img { color: var(--pedra-rubi); }
+.pedra-card.p7 .pedra-img { color: var(--diamante); }
+
+/* Delays sequenciais pra breath ficar dessincronizado */
+.pedra-card.p1 .pedra-img { animation-delay: 0s; }
+.pedra-card.p2 .pedra-img { animation-delay: 0.5s; }
+.pedra-card.p3 .pedra-img { animation-delay: 1s; }
+.pedra-card.p4 .pedra-img { animation-delay: 1.5s; }
+.pedra-card.p5 .pedra-img { animation-delay: 2s; }
+.pedra-card.p6 .pedra-img { animation-delay: 2.5s; }
+.pedra-card.p7 .pedra-img { animation-delay: 3s; }
+
+.pedra-num {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.32em; color: var(--silver);
+  margin-top: clamp(12px, 1.2vw, 18px);
+}
+.pedra-name {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(13px, 1.2vw, 18px);
+  margin-top: clamp(6px, 0.6vw, 8px);
+  letter-spacing: -0.005em;
+}
+.pedra-card.p1 .pedra-name { color: var(--citrino); }
+.pedra-card.p2 .pedra-name { color: var(--quartzo); }
+.pedra-card.p3 .pedra-name { color: var(--pedra-esmeralda); }
+.pedra-card.p4 .pedra-name { color: var(--safira); }
+.pedra-card.p5 .pedra-name { color: var(--ametista); }
+.pedra-card.p6 .pedra-name { color: var(--pedra-rubi); }
+.pedra-card.p7 .pedra-name { color: var(--diamante); }
+.pedra-gema {
+  font-family: var(--display); font-size: clamp(9px, 0.75vw, 11px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--silver); opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* TABELA DESATIVA / ATIVA */
+.pedras-tabela {
+  margin: 0 auto clamp(60px, 7vw, 100px);
+  max-width: 1480px;
+}
+.pedra-row {
+  display: grid;
+  grid-template-columns: clamp(48px, 4vw, 64px) clamp(140px, 14vw, 220px) 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 28px);
+  padding: clamp(20px, 2vw, 32px) clamp(20px, 2vw, 32px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  align-items: start;
+  border-left: 4px solid transparent;
+  transition: background .25s, border-left-color .25s;
+}
+.pedra-row:hover { background: rgba(255,255,255,0.02); }
+.pedra-row.p1 { border-left-color: var(--citrino); }
+.pedra-row.p2 { border-left-color: var(--quartzo); }
+.pedra-row.p3 { border-left-color: var(--pedra-esmeralda); }
+.pedra-row.p4 { border-left-color: var(--safira); }
+.pedra-row.p5 { border-left-color: var(--ametista); }
+.pedra-row.p6 { border-left-color: var(--pedra-rubi); }
+.pedra-row.p7 { border-left-color: var(--diamante); }
+
+.pedra-row .row-num {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(20px, 2vw, 32px);
+  line-height: 1;
+}
+.pedra-row.p1 .row-num { color: var(--citrino); }
+.pedra-row.p2 .row-num { color: var(--quartzo); }
+.pedra-row.p3 .row-num { color: var(--pedra-esmeralda); }
+.pedra-row.p4 .row-num { color: var(--safira); }
+.pedra-row.p5 .row-num { color: var(--ametista); }
+.pedra-row.p6 .row-num { color: var(--pedra-rubi); }
+.pedra-row.p7 .row-num { color: var(--diamante); }
+
+.pedra-row .row-name {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: var(--white); line-height: 1.2;
+}
+.pedra-row .row-name small {
+  display: block; font-weight: 400;
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--silver); margin-top: 4px;
+}
+.pedra-row .row-desativa, .pedra-row .row-ativa {
+  font-size: clamp(13px, 1.1vw, 16px); line-height: 1.55;
+  color: var(--gray-body);
+}
+.pedra-row .row-desativa {
+  position: relative; padding-left: 22px;
+}
+.pedra-row .row-desativa::before {
+  content: "✕"; position: absolute; left: 0; top: 0;
+  color: var(--rubi); font-weight: 700;
+}
+.pedra-row .row-ativa {
+  position: relative; padding-left: 22px; color: var(--white);
+}
+.pedra-row .row-ativa::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: var(--esmeralda-bright); font-weight: 700;
+  text-shadow: 0 0 10px rgba(45,214,111,0.4);
+}
+
+/* Headers da tabela */
+.tabela-header {
+  display: grid;
+  grid-template-columns: clamp(48px, 4vw, 64px) clamp(140px, 14vw, 220px) 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 28px);
+  padding: clamp(14px, 1.4vw, 20px) clamp(20px, 2vw, 32px);
+  border-bottom: 2px solid rgba(255,255,255,0.12);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--silver);
+}
+.tabela-header .h-desativa { color: var(--rubi); }
+.tabela-header .h-ativa { color: var(--esmeralda-bright); }
+
+/* MEGATYPE FINAL */
+.pedras-megatype {
+  margin-top: clamp(60px, 7vw, 100px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.pedras-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255,214,0,0.06) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.pedras-megatype .line {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 72px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  color: var(--white);
+  margin-bottom: clamp(14px, 1.4vw, 22px);
+}
+.pedras-megatype .line:last-child { margin-bottom: 0; }
+.pedras-megatype .line .hl-ambar {
+  color: var(--ambar);
+  text-shadow: 0 0 24px rgba(255,214,0,0.4);
+}
+.pedras-megatype .line .hl-magenta {
+  color: var(--magenta-bright);
+  text-shadow: 0 0 24px rgba(132,21,188,0.4);
+}
+.pedras-megatype .line .hl-rubi {
+  color: var(--rubi-bright);
+  text-shadow: 0 0 24px rgba(232,31,38,0.4);
+}
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .pedras-grid { grid-template-columns: repeat(4, 1fr); }
+  .pedra-row, .tabela-header { grid-template-columns: 36px 1fr; }
+  .pedra-row .row-desativa, .pedra-row .row-ativa { grid-column: 2; }
+  .pedra-row .row-name { font-size: 16px; }
+  .tabela-header .h-pedra { display: block; }
+  .tabela-header .h-num, .tabela-header .h-desativa, .tabela-header .h-ativa { display: none; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-pedras { padding: 175px 14px 70px; }
+  .pedras-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 18px 12px; }
+  .pedra-name { font-size: 12px; }
+  .pedras-megatype .line { font-size: 24px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(255,214,0,0.95); color: #000;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 06 · 7 PEDRAS DO PODER v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 06 PEDRAS -->
+<section class="section-pedras" id="joalheria">
+  <div class="halo halo-ambar" style="top:8%; right:-8%; width:480px; height:480px; opacity:0.15;"></div>
+  <div class="halo halo-magenta" style="bottom:30%; left:-10%; width:440px; height:440px; opacity:0.14;"></div>
+  <div class="halo halo-cobalt" style="bottom:5%; right:5%; width:380px; height:380px; opacity:0.12;"></div>
+
+  <div style="text-align: center;">
+    <span class="pedras-kicker">O MECANISMO</span>
+  </div>
+
+  <h2 class="pedras-title-mega">
+    AS <span class="accent">7 PEDRAS</span><br>
+    DO PODER
+  </h2>
+
+  <p class="pedras-sub">
+    Não é mais um curso de motivação. É o <b>GPS pra quem está estagnado em algema de ouro</b> — desativa o que te prende, ativa quem você nasceu pra ser, na <b>ordem que funciona</b>, com método que comprova.
+  </p>
+
+  <!-- CITAÇÃO MECANISMO -->
+  <div class="pedras-cite">
+    <p>
+      Cada Pedra é uma característica, habilidade ou crença em <span class="hl-ambar">estado BRUTO</span> dentro de você. O ASP é o programa que <span class="hl-ambar">LAPIDA</span> essa pedra até ela virar <span class="hl-ambar">JOIA</span>.
+    </p>
+    <p style="margin-top: 14px;">
+      A joia <span class="hl-magenta">ativa um poder específico</span> — e cada poder ativado <span class="hl-rubi">DESATIVA uma voz da mentira</span> que sustentava a algema.
+    </p>
+  </div>
+
+  <!-- GRID 7 PEDRAS COM PNGs -->
+  <div class="pedras-grid">
+    <div class="pedra-card p1">
+      <img class="pedra-img" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino · Autocontrole">
+      <span class="pedra-num">PEDRA 1</span>
+      <span class="pedra-name">Autocontrole</span>
+      <span class="pedra-gema">Citrino</span>
+    </div>
+    <div class="pedra-card p2">
+      <img class="pedra-img" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo · Persuasão">
+      <span class="pedra-num">PEDRA 2</span>
+      <span class="pedra-name">Persuasão</span>
+      <span class="pedra-gema">Quartzo</span>
+    </div>
+    <div class="pedra-card p3">
+      <img class="pedra-img" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda · Posicionamento">
+      <span class="pedra-num">PEDRA 3</span>
+      <span class="pedra-name">Posicionamento</span>
+      <span class="pedra-gema">Esmeralda</span>
+    </div>
+    <div class="pedra-card p4">
+      <img class="pedra-img" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira · Disciplina">
+      <span class="pedra-num">PEDRA 4</span>
+      <span class="pedra-name">Disciplina</span>
+      <span class="pedra-gema">Safira</span>
+    </div>
+    <div class="pedra-card p5">
+      <img class="pedra-img" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista · Autoridade">
+      <span class="pedra-num">PEDRA 5</span>
+      <span class="pedra-name">Autoridade</span>
+      <span class="pedra-gema">Ametista</span>
+    </div>
+    <div class="pedra-card p6">
+      <img class="pedra-img" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi · Irreverência">
+      <span class="pedra-num">PEDRA 6</span>
+      <span class="pedra-name">Irreverência</span>
+      <span class="pedra-gema">Rubi</span>
+    </div>
+    <div class="pedra-card p7">
+      <img class="pedra-img" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante · Poder">
+      <span class="pedra-num">PEDRA 7</span>
+      <span class="pedra-name">Poder</span>
+      <span class="pedra-gema">Diamante</span>
+    </div>
+  </div>
+
+  <!-- TABELA DESATIVA / ATIVA -->
+  <div class="pedras-tabela">
+    <div class="tabela-header">
+      <span class="h-num">#</span>
+      <span class="h-pedra">Pedra</span>
+      <span class="h-desativa">DESATIVA</span>
+      <span class="h-ativa">ATIVA</span>
+    </div>
+
+    <div class="pedra-row p1">
+      <span class="row-num">01</span>
+      <div class="row-name">Autocontrole<small>Citrino</small></div>
+      <div class="row-desativa">Crença de infância · piloto automático · auto-sabotagem</div>
+      <div class="row-ativa">Autoimagem reprogramada · mentalidade de dono · DISC mapeado</div>
+    </div>
+
+    <div class="pedra-row p2">
+      <span class="row-num">02</span>
+      <div class="row-name">Persuasão<small>Quartzo</small></div>
+      <div class="row-desativa">Vender empurrando · medo de se posicionar</div>
+      <div class="row-ativa">Comunicação magnética · Vendedor → Comunicador</div>
+    </div>
+
+    <div class="pedra-row p3">
+      <span class="row-num">03</span>
+      <div class="row-name">Posicionamento<small>Esmeralda</small></div>
+      <div class="row-desativa">Invisibilidade · "qualquer um do nicho"</div>
+      <div class="row-ativa">Branding pessoal · arquétipo definido · imagem fala antes de você</div>
+    </div>
+
+    <div class="pedra-row p4">
+      <span class="row-num">04</span>
+      <div class="row-name">Disciplina<small>Safira</small></div>
+      <div class="row-desativa">Promessa vazia · procrastinação · meta engavetada</div>
+      <div class="row-ativa">Hábitos rodando · Metas SMART · Mapa Produtividade Extraordinária</div>
+    </div>
+
+    <div class="pedra-row p5">
+      <span class="row-num">05</span>
+      <div class="row-name">Autoridade<small>Ametista</small></div>
+      <div class="row-desativa">Síndrome do impostor · "falta credibilidade"</div>
+      <div class="row-ativa">Percepção de especialista · congruência · de igual pra igual</div>
+    </div>
+
+    <div class="pedra-row p6">
+      <span class="row-num">06</span>
+      <div class="row-name">Irreverência<small>Rubi</small></div>
+      <div class="row-desativa">Cópia genérica · medo de quebrar padrão</div>
+      <div class="row-ativa">Autoralidade · marca que ninguém replica</div>
+    </div>
+
+    <div class="pedra-row p7">
+      <span class="row-num">07</span>
+      <div class="row-name">Poder<small>Diamante</small></div>
+      <div class="row-desativa">Dependência de validação · refém do acaso</div>
+      <div class="row-ativa">Poder pessoal integrado · constância · liderança ética</div>
+    </div>
+  </div>
+
+  <!-- MEGATYPE FINAL · 11ª frase-rocha -->
+  <div class="pedras-megatype">
+    <p class="line"><span class="hl-ambar">LAPIDE A PEDRA.</span></p>
+    <p class="line"><span class="hl-magenta">A JOIA ATIVA O PODER.</span></p>
+    <p class="line"><span class="hl-rubi">O PODER DESATIVA A VOZ DA MENTIRA.</span></p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
