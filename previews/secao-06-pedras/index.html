@@ -125,13 +125,13 @@ body::after {
 }
 .pedras-sub b { color: var(--white); }
 
-/* CITAÇÃO MECANISMO */
+/* CITAÇÃO MECANISMO · 1 cor de destaque (amarelo) */
 .pedras-cite {
-  border-left: 3px solid var(--magenta-bright);
-  background: linear-gradient(90deg, rgba(132,21,188,0.06) 0%, transparent 100%);
+  border-left: 3px solid var(--ambar);
+  background: linear-gradient(90deg, rgba(255,214,0,0.04) 0%, transparent 100%);
   padding: clamp(24px, 2.6vw, 40px) clamp(24px, 2.6vw, 40px);
   border-radius: 0 16px 16px 0;
-  margin: 0 auto clamp(50px, 6vw, 88px);
+  margin: 0 auto clamp(40px, 4vw, 60px);
   max-width: 1100px;
 }
 .pedras-cite p {
@@ -139,21 +139,31 @@ body::after {
   line-height: 1.6; color: var(--gray-body);
   font-style: italic;
 }
-.pedras-cite b { color: var(--white); font-style: normal; font-weight: 700; }
-.pedras-cite .hl-ambar { color: var(--ambar); font-style: normal; font-weight: 700; }
-.pedras-cite .hl-magenta { color: var(--magenta-bright); font-style: normal; font-weight: 700; }
-.pedras-cite .hl-rubi { color: var(--rubi-bright); font-style: normal; font-weight: 700; }
+.pedras-cite b {
+  color: var(--ambar); font-style: normal; font-weight: 700;
+  text-shadow: 0 0 14px rgba(255,214,0,0.3);
+}
 
-/* GRID 7 PEDRAS (com PNGs) */
+/* HEADER pra tabela */
+.tabela-intro {
+  text-align: center;
+  margin: clamp(40px, 5vw, 70px) 0 clamp(28px, 3vw, 44px);
+}
+.ti-kicker {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(13px, 1.2vw, 18px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ambar);
+  text-shadow: 0 0 18px rgba(255,214,0,0.3);
+}
+
+/* GRID 7 PEDRAS (com PNGs) · sem caixa de fundo */
 .pedras-grid {
   display: grid; grid-template-columns: repeat(7, 1fr);
   gap: clamp(12px, 1.5vw, 24px);
   margin: 0 auto clamp(60px, 7vw, 100px);
   max-width: 1480px;
-  padding: clamp(28px, 3vw, 48px) clamp(16px, 2vw, 32px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(132,21,188,0.04) 100%);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.06);
+  padding: clamp(40px, 4vw, 60px) clamp(16px, 2vw, 32px);
 }
 .pedra-card {
   display: flex; flex-direction: column; align-items: center;
@@ -166,7 +176,7 @@ body::after {
   width: 100%; max-width: clamp(80px, 8vw, 140px);
   aspect-ratio: 1; object-fit: contain;
   animation: pedraBreathe 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 22px currentColor);
+  filter: drop-shadow(0 0 18px currentColor);
   color: var(--white); /* shadow color base · sobrescrita por pedra */
 }
 @keyframes pedraBreathe {
@@ -175,7 +185,7 @@ body::after {
 }
 .pedra-card:hover .pedra-img {
   animation-duration: 1.2s;
-  filter: drop-shadow(0 0 40px currentColor) brightness(1.15);
+  filter: drop-shadow(0 0 32px currentColor) brightness(1.15);
 }
 .pedra-card.p1 .pedra-img { color: var(--citrino); }
 .pedra-card.p2 .pedra-img { color: var(--quartzo); }
@@ -434,25 +444,15 @@ body::after {
   </h2>
 
   <p class="pedras-sub">
-    Não é mais um curso de motivação. É o <b>GPS pra quem está estagnado em algema de ouro</b> — desativa o que te prende, ativa quem você nasceu pra ser, na <b>ordem que funciona</b>, com método que comprova.
+    Não é mais um curso de motivação. <b class="hl-ambar">É um PROGRAMA DE ATIVAÇÃO!</b> É o <b>GPS pra quem está estagnado e sem direcionamento</b> — desativa o que te prende, ativa quem você nasceu pra ser, na <b>ordem que funciona</b>, com método que comprova.
   </p>
-
-  <!-- CITAÇÃO MECANISMO -->
-  <div class="pedras-cite">
-    <p>
-      Cada Pedra é uma característica, habilidade ou crença em <span class="hl-ambar">estado BRUTO</span> dentro de você. O ASP é o programa que <span class="hl-ambar">LAPIDA</span> essa pedra até ela virar <span class="hl-ambar">JOIA</span>.
-    </p>
-    <p style="margin-top: 14px;">
-      A joia <span class="hl-magenta">ativa um poder específico</span> — e cada poder ativado <span class="hl-rubi">DESATIVA uma voz da mentira</span> que sustentava a algema.
-    </p>
-  </div>
 
   <!-- GRID 7 PEDRAS COM PNGs -->
   <div class="pedras-grid">
     <div class="pedra-card p1">
       <img class="pedra-img" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino · Autocontrole">
       <span class="pedra-num">PEDRA 1</span>
-      <span class="pedra-name">Autocontrole</span>
+      <span class="pedra-name">Autoimagem</span>
       <span class="pedra-gema">Citrino</span>
     </div>
     <div class="pedra-card p2">
@@ -493,6 +493,21 @@ body::after {
     </div>
   </div>
 
+  <!-- CITAÇÃO MECANISMO · 1 cor de destaque -->
+  <div class="pedras-cite">
+    <p>
+      Cada Pedra é uma característica, habilidade ou crença em <b>estado BRUTO</b> dentro de você. O ASP é o programa que <b>LAPIDA</b> essa pedra até ela virar <b>JOIA</b>.
+    </p>
+    <p style="margin-top: 14px;">
+      A joia ativa um poder específico — e cada poder ativado <b>desativa uma voz da mentira</b> que sustentava a algema.
+    </p>
+  </div>
+
+  <!-- HEADER tabela · "Veja o que cada pedra ativa" -->
+  <div class="tabela-intro">
+    <span class="ti-kicker">— Veja o que cada pedra ativa —</span>
+  </div>
+
   <!-- TABELA DESATIVA / ATIVA -->
   <div class="pedras-tabela">
     <div class="tabela-header">
@@ -504,7 +519,7 @@ body::after {
 
     <div class="pedra-row p1">
       <span class="row-num">01</span>
-      <div class="row-name">Autocontrole<small>Citrino</small></div>
+      <div class="row-name">Autoimagem<small>Citrino</small></div>
       <div class="row-desativa">Crença de infância · piloto automático · auto-sabotagem</div>
       <div class="row-ativa">Autoimagem reprogramada · mentalidade de dono · DISC mapeado</div>
     </div>
