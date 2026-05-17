@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 05 OFERTA v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-cobalt { background: var(--cobalt); }
+.halo-rubi { background: var(--rubi); }
+.halo-ambar { background: var(--ambar); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 05 · OFERTA · v3.4 · sem Hormozi-jargon
+   ============================================================ */
+.section-oferta {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1280px, 92vw); margin: 0 auto;
+}
+.oferta-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--magenta-bright);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.oferta-kicker::before, .oferta-kicker::after { content: ""; width: 36px; height: 1px; background: var(--magenta-bright); }
+
+/* DREAM OUTCOME */
+.dream-block {
+  margin-bottom: clamp(60px, 7vw, 100px);
+  text-align: center;
+}
+.dream-block p {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(18px, 2vw, 30px);
+  line-height: 1.35; color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(18px, 2vw, 28px);
+  text-wrap: balance;
+}
+.dream-block p + p { margin-top: 0; }
+.dream-block p b { color: var(--ambar); text-shadow: 0 0 18px rgba(255,214,0,0.3); }
+.dream-block p .hl-magenta { color: var(--magenta-bright); }
+.dream-block p .hl-cobalt { color: var(--cobalt-bright); }
+.dream-block .closer {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--gray-body);
+  margin-top: clamp(28px, 3vw, 44px);
+  padding-top: clamp(22px, 2.4vw, 32px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.dream-block .closer b { color: var(--white); }
+
+/* STACK · 11 itens */
+.stack {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; overflow: hidden;
+  margin-bottom: clamp(48px, 5vw, 80px);
+}
+.stack-divider {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.9vw, 12px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--magenta-bright);
+  padding: clamp(14px, 1.4vw, 20px) clamp(20px, 2vw, 32px);
+  background: rgba(132,21,188,0.08);
+  border-top: 1px solid rgba(132,21,188,0.18);
+  border-bottom: 1px solid rgba(132,21,188,0.18);
+}
+.stack-divider.firstclass { color: var(--ambar); background: rgba(255,214,0,0.08); border-color: rgba(255,214,0,0.18); }
+.stack-divider.firstclass::before { content: "⭐ "; }
+.stack-row {
+  display: grid; grid-template-columns: clamp(40px, 4vw, 56px) 1fr clamp(110px, 11vw, 160px);
+  padding: clamp(16px, 1.5vw, 22px) clamp(20px, 2vw, 32px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: center; gap: clamp(12px, 1.4vw, 22px);
+}
+.stack-row:last-child { border-bottom: 0; }
+.stack-row .num {
+  font-family: var(--display); color: var(--silver);
+  font-size: clamp(11px, 0.95vw, 14px); letter-spacing: 0.18em;
+  font-weight: 600;
+}
+.stack-row .item {
+  color: var(--white); font-size: clamp(14px, 1.1vw, 17px);
+  line-height: 1.4;
+}
+.stack-row .item small {
+  color: var(--gray-body); display: block; margin-top: 4px;
+  font-size: clamp(11px, 0.9vw, 13px); font-weight: 400;
+}
+.stack-row .price {
+  font-family: var(--display); color: var(--white); font-weight: 700;
+  text-align: right; font-size: clamp(14px, 1.15vw, 18px);
+  letter-spacing: 0.02em;
+}
+.stack-row .price.inestimavel {
+  color: var(--ambar); font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(255,214,0,0.4);
+}
+
+/* TOTAL · destaque */
+.stack-total {
+  padding: clamp(28px, 3vw, 44px);
+  background: linear-gradient(135deg, rgba(132,21,188,0.18) 0%, rgba(56,24,232,0.18) 100%);
+  text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.stack-total .label {
+  font-family: var(--display); font-size: clamp(10px, 0.9vw, 12px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gray-body); margin-bottom: clamp(10px, 1vw, 14px);
+}
+.stack-total .value {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(36px, 4.5vw, 64px); line-height: 1;
+  display: flex; align-items: baseline; justify-content: center;
+  gap: clamp(14px, 1.5vw, 24px); flex-wrap: wrap;
+}
+.stack-total .strike {
+  color: var(--silver); text-decoration: line-through;
+  font-size: clamp(20px, 2.2vw, 32px); opacity: 0.7;
+}
+.stack-total .now {
+  color: var(--white);
+  text-shadow: 0 0 30px rgba(132,21,188,0.5);
+}
+.stack-total .save {
+  margin-top: clamp(14px, 1.5vw, 22px);
+  font-family: var(--display); font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--magenta-bright);
+}
+.stack-total .save b { color: var(--ambar); }
+
+/* GARANTIA HERO */
+.garantia-hero {
+  position: relative;
+  padding: clamp(40px, 5vw, 64px) clamp(28px, 3vw, 48px);
+  background: linear-gradient(135deg, rgba(232,31,38,0.12) 0%, rgba(132,21,188,0.10) 100%);
+  border: 2px solid var(--rubi); border-radius: 18px;
+  box-shadow: 0 0 60px rgba(232,31,38,0.25), inset 0 0 40px rgba(232,31,38,0.05);
+  margin-bottom: clamp(24px, 2.5vw, 36px);
+  overflow: hidden;
+}
+.garantia-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(232,31,38,0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+.g-hero-tag {
+  font-family: var(--display); font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--rubi); margin-bottom: clamp(14px, 1.4vw, 20px);
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(232,31,38,0.5);
+}
+.g-hero-title {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 52px);
+  line-height: 1.05; letter-spacing: -0.02em; color: var(--white);
+  margin-bottom: clamp(20px, 2vw, 28px);
+}
+.g-hero-body {
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.65; color: var(--gray-body);
+  margin-bottom: clamp(16px, 1.5vw, 22px);
+  max-width: 880px;
+}
+.g-hero-body b { color: var(--white); }
+.g-hero-body .hl-magenta { color: var(--magenta-bright); }
+.g-hero-rock {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(16px, 1.4vw, 22px);
+  color: var(--white);
+  border-left: 3px solid var(--rubi);
+  padding-left: clamp(14px, 1.4vw, 20px);
+}
+
+/* CHIPS COMPLEMENTARES */
+.garantias-chips {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.5vw, 20px);
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.g-chip {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: clamp(18px, 2vw, 26px);
+  opacity: 0.85;
+}
+.g-chip-tag {
+  font-family: var(--display); font-size: clamp(9px, 0.8vw, 11px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--silver); display: block; margin-bottom: 8px;
+}
+.g-chip b {
+  display: block; font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.1vw, 17px);
+  color: var(--white); margin-bottom: 8px;
+}
+.g-chip p { font-size: clamp(13px, 1vw, 15px); color: var(--gray-body); line-height: 1.55; }
+
+/* COHORT */
+.cohort {
+  text-align: center;
+  padding: clamp(32px, 4vw, 56px);
+  border: 1px dashed rgba(255,255,255,0.18);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.015);
+}
+.cohort .count {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--magenta-bright), var(--cobalt-bright));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cohort .desc {
+  display: block; font-family: var(--display); font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--silver); margin-top: clamp(14px, 1.4vw, 20px);
+  line-height: 1.6;
+}
+.cohort .desc b { color: var(--white); }
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .stack-row { grid-template-columns: 38px 1fr 90px; gap: 12px; padding: 14px 18px; }
+  .stack-row .item { font-size: 13.5px; }
+  .stack-row .price { font-size: 13.5px; }
+  .garantias-chips { grid-template-columns: 1fr; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-oferta { padding: 175px 16px 70px; }
+  .dream-block p { font-size: 16px; }
+  .stack-total .value { font-size: 30px; }
+  .stack-total .strike { font-size: 18px; }
+  .g-hero-title { font-size: 24px; }
+  .g-hero-body { font-size: 14px; }
+  .cohort .count { font-size: 56px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(164,32,221,0.95); color: var(--white);
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 05 OFERTA v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 05 OFERTA -->
+<section class="section-oferta" id="offer">
+  <div class="halo halo-magenta" style="top:5%; right:-8%; width:480px; height:480px; opacity:0.16;"></div>
+  <div class="halo halo-cobalt" style="bottom:20%; left:-8%; width:420px; height:420px; opacity:0.14;"></div>
+  <div class="halo halo-ambar" style="bottom:-5%; right:5%; width:380px; height:380px; opacity:0.10;"></div>
+
+  <div style="text-align:center;">
+    <span class="oferta-kicker">A OFERTA</span>
+  </div>
+
+  <!-- DREAM OUTCOME -->
+  <div class="dream-block">
+    <p>
+      Em <b>30 dias</b>, sair da algema de ouro — silenciar as <span class="hl-magenta">primeiras 4 vozes da mentira</span> e ativar uma identidade que sabe quem é, o que entrega, quanto vale.
+    </p>
+    <p>
+      Em <b>90 dias</b>, <span class="hl-cobalt">7 Pedras lapidadas</span> — cada uma virando joia que ativa um poder específico — e <b>Certificação MINDCREATOR Nível 1</b> na mão.
+    </p>
+    <p class="closer">
+      Não é resultado financeiro mágico. <b>É a BASE do resultado.</b><br>
+      Você não está quebrado. Você está <b>bruto</b>. O ASP é a esmerilhadeira.
+    </p>
+  </div>
+
+  <!-- STACK 11 itens -->
+  <div class="stack">
+
+    <div class="stack-divider">CORE · O PROGRAMA</div>
+    <div class="stack-row">
+      <span class="num">01</span>
+      <span class="item">PROGRAMA ASP completo · 7 Pedras · 51 aulas</span>
+      <span class="price">R$ 3.000</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">02</span>
+      <span class="item">Onboarding "Ativação do Poder Infinito" · 7 aulas</span>
+      <span class="price">R$ 497</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">03</span>
+      <span class="item">MAAC · Mapa Auto Avaliação Comunicação <small>a esmerilhadeira</small></span>
+      <span class="price">R$ 497</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">04</span>
+      <span class="item">Kit Ferramentas · 5 PDFs <small>DISC + 21 Dias + SMART + Produtividade + Financeira</small></span>
+      <span class="price">R$ 397</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">05</span>
+      <span class="item">Certificação MINDCREATOR Nível 1</span>
+      <span class="price">R$ 797</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">06</span>
+      <span class="item">Bônus Fireflix embutido <small>vendido R$ 497 separado</small></span>
+      <span class="price">R$ 497</span>
+    </div>
+
+    <div class="stack-divider">COMUNIDADE + GAMIFICAÇÃO</div>
+    <div class="stack-row">
+      <span class="num">07</span>
+      <span class="item">Aulas de Dúvidas mensais ao vivo com Augustto · 90 dias</span>
+      <span class="price">R$ 497</span>
+    </div>
+
+    <div class="stack-divider firstclass">BÔNUS FIRSTCLASS · só pros 100 primeiros</div>
+    <div class="stack-row">
+      <span class="num">08</span>
+      <span class="item">3 Mentorias QUINZENAIS coletivas com Augustto <small>1 a cada 15 dias · 90min cada</small></span>
+      <span class="price">R$ 1.497</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">09</span>
+      <span class="item">Grupo VIP WhatsApp FirstClass <small>Augustto presente 2x/semana</small></span>
+      <span class="price">R$ 997</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">+</span>
+      <span class="item">Selo "Fundador FirstClass" vitalício</span>
+      <span class="price inestimavel">INESTIMÁVEL</span>
+    </div>
+    <div class="stack-row">
+      <span class="num">10</span>
+      <span class="item">Convite VIP Evento Presencial Augustto Leão</span>
+      <span class="price">R$ 197</span>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="stack-total">
+      <div class="label">Valor total declarado</div>
+      <div class="value">
+        <span class="strike">R$ 8.873</span>
+        <span class="now">R$ 1.000</span>
+      </div>
+      <div class="save">Economia <b>R$ 7.873</b> · vaga 101+ paga R$ 3.000</div>
+    </div>
+  </div>
+
+  <!-- GARANTIA HERO -->
+  <div class="garantia-hero">
+    <div class="g-hero-tag">🔥 GARANTIA PRINCIPAL</div>
+    <div class="g-hero-title">RISCO ZERO · VOCÊ SAI LUCRANDO</div>
+    <p class="g-hero-body">
+      <b>30 dias</b>. Aplica <b>Pedra 1 + MAAC + Mapa Produtividade + Planilha Financeira</b>.
+      Se a Voz #1 não silenciar, devolvo <b>R$ 1.000</b> + te pago <span class="hl-magenta">R$ 300 PIX</span> pelo seu tempo.
+      Você sai com <span class="hl-magenta">R$ 300 a mais</span> do que entrou.<br>
+      Sem formulário. Sem ligação. Sem retenção. E você fica com o Kit.
+    </p>
+    <p class="g-hero-rock">— Isso é o quanto eu confio no método.</p>
+  </div>
+
+  <!-- 2 CHIPS COMPLEMENTARES -->
+  <div class="garantias-chips">
+    <div class="g-chip">
+      <span class="g-chip-tag">Garantia 01 · Incondicional · complementar</span>
+      <b>15 dias · sem perguntas</b>
+      <p>Não gostou? Manda um e-mail. Devolvemos integral. Sem retenção. Você fica com o Kit. Fim.</p>
+    </div>
+    <div class="g-chip">
+      <span class="g-chip-tag">Garantia 02 · Condicional · complementar</span>
+      <b>"Onboarding Inquieto"</b>
+      <p>Faz as 7 aulas (1h). Se não sair INQUIETO querendo silenciar as primeiras vozes, devolvemos integral.</p>
+    </div>
+  </div>
+
+  <!-- COHORT -->
+  <div class="cohort">
+    <div class="count">100</div>
+    <span class="desc">Vagas <b>Turma FirstClass</b> · cohort fechado<br>bônus somem com aluno #101</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+    <span>Você é o que pensa</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>O dinheiro tá na rua</span>
+    <span>Fracos não vencem</span>
+    <span>Ninguém compra um derrotado</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz da mentira</span>
+    <span>Viver ≠ sobreviver</span>
+    <span>Seu externo é o reflexo do seu interno</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
