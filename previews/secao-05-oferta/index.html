@@ -79,15 +79,19 @@ body::after {
   padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
   max-width: min(1280px, 92vw); margin: 0 auto;
 }
-.oferta-kicker {
+/* Título mega "A OFERTA" · estilo cinematográfico */
+.oferta-title-mega {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(11px, 0.95vw, 14px);
-  letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--magenta-bright);
-  margin-bottom: clamp(20px, 2vw, 32px);
-  display: inline-flex; align-items: center; gap: 14px;
+  font-size: clamp(56px, 9vw, 140px);
+  line-height: 0.92; letter-spacing: -0.035em;
+  text-align: center;
+  color: var(--white);
+  margin-bottom: clamp(48px, 6vw, 80px);
+  text-shadow:
+    0 0 40px rgba(132,21,188,0.55),
+    0 0 90px rgba(132,21,188,0.35),
+    0 0 140px rgba(164,32,221,0.2);
 }
-.oferta-kicker::before, .oferta-kicker::after { content: ""; width: 36px; height: 1px; background: var(--magenta-bright); }
 
 /* DREAM OUTCOME */
 .dream-block {
@@ -115,6 +119,19 @@ body::after {
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .dream-block .closer b { color: var(--white); }
+.dream-block .closer-cta {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.3vw, 18px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ambar);
+  text-shadow: 0 0 18px rgba(255,214,0,0.4);
+  margin-top: clamp(20px, 2.4vw, 32px);
+  animation: ctaFloat 2.4s ease-in-out infinite;
+}
+@keyframes ctaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
 
 /* STACK · 11 itens */
 .stack {
@@ -377,22 +394,24 @@ body::after {
   <div class="halo halo-cobalt" style="bottom:20%; left:-8%; width:420px; height:420px; opacity:0.14;"></div>
   <div class="halo halo-ambar" style="bottom:-5%; right:5%; width:380px; height:380px; opacity:0.10;"></div>
 
-  <div style="text-align:center;">
-    <span class="oferta-kicker">A OFERTA</span>
-  </div>
+  <h2 class="oferta-title-mega">A OFERTA</h2>
 
   <!-- DREAM OUTCOME -->
   <div class="dream-block">
     <p>
-      Em <b>30 dias</b>, sair da algema de ouro — silenciar as <span class="hl-magenta">primeiras 4 vozes da mentira</span> e ativar uma identidade que sabe quem é, o que entrega, quanto vale.
+      Em <b>30 dias</b>, você vai saber <b>quanto vale a sua hora</b>, <b>quais são seus pontos fortes</b>, <b>qual a melhor área pra você empreender, comunicar e aplicar suas habilidades</b>.
+    </p>
+    <p>
+      Você vai ter <span class="hl-magenta">clareza de quais vozes estão te travando</span> — e vai <span class="hl-magenta">conseguir calar metade delas</span>. Vai ativar uma <b>identidade que sabe quem é, o que entrega, quanto vale</b>.
     </p>
     <p>
       Em <b>90 dias</b>, <span class="hl-cobalt">7 Pedras lapidadas</span> — cada uma virando joia que ativa um poder específico — e <b>Certificação MINDCREATOR Nível 1</b> na mão.
     </p>
     <p class="closer">
       Não é resultado financeiro mágico. <b>É a BASE do resultado.</b><br>
-      Você não está quebrado. Você está <b>bruto</b>. O ASP é a esmerilhadeira.
+      Você não está quebrado. Você só está <b>bruto</b>. O ASP é a <b>lapidação</b>.
     </p>
+    <p class="closer-cta">↓ veja todos os seus ganhos ↓</p>
   </div>
 
   <!-- STACK 11 itens -->
