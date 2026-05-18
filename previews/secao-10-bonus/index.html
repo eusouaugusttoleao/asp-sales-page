@@ -319,6 +319,9 @@ body::after {
   color: var(--ambar);
   text-shadow: 0 0 14px rgba(255,214,0,0.55);
 }
+.bonus-total .bonus-now-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
 .bonus-total .bonus-now {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(42px, 5.5vw, 88px);
@@ -327,6 +330,24 @@ body::after {
   text-shadow:
     0 0 30px rgba(255,214,0,0.5),
     0 0 70px rgba(255,214,0,0.3);
+  display: inline-flex; align-items: baseline; gap: clamp(8px, 1vw, 14px);
+}
+.bonus-total .bonus-now .vezes {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--ambar);
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 20px rgba(255,214,0,0.4);
+}
+.bonus-total .bonus-pix {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.85;
+}
+.bonus-total .bonus-pix::before {
+  content: "◆ "; color: var(--ambar); margin-right: 4px;
 }
 .bonus-total .bonus-save {
   position: relative; z-index: 1;
@@ -574,9 +595,12 @@ body::after {
     <div class="stack-row">
       <span class="bonus-strike">R$ 8.873</span>
       <span class="arrow-big">→</span>
-      <span class="bonus-now">R$ 1.000</span>
+      <div class="bonus-now-wrap">
+        <span class="bonus-now"><span class="vezes">12×</span> R$ 100</span>
+        <span class="bonus-pix">ou R$ 1.000 à vista no PIX</span>
+      </div>
     </div>
-    <p class="bonus-save">Economia de <b>R$ 7.873</b> · você paga <b>8,87× menos</b> que o valor empilhado.</p>
+    <p class="bonus-save">Economia de <b>R$ 7.873</b> · você paga <b>8,87× menos</b> que o valor declarado.</p>
   </div>
 
   <!-- ============================================
@@ -595,7 +619,7 @@ body::after {
 <!-- TICKER -->
 <div class="rocha-rail">
   <div class="rocha-track">
-    <span>4 pacotes · R$ 8.873 declarado · você paga R$ 1.000</span>
+    <span>4 pacotes · R$ 8.873 declarado · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Economia de R$ 7.873 · 8,87× menos</span>
     <span>O Programa · O Kit · Suporte · FirstClass</span>
     <span>MAAC · 5 ferramentas · Certificação MINDCREATOR</span>
@@ -604,7 +628,7 @@ body::after {
     <span>Não é um curso · é um PROGRAMA que aplicado transforma</span>
     <span>Área Netflix · suporte 24/7 · aulas mensais ao vivo</span>
     <span>Valor empilhado · Preço ridículo</span>
-    <span>4 pacotes · R$ 8.873 declarado · você paga R$ 1.000</span>
+    <span>4 pacotes · R$ 8.873 declarado · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Economia de R$ 7.873 · 8,87× menos</span>
     <span>O Programa · O Kit · Suporte · FirstClass</span>
     <span>MAAC · 5 ferramentas · Certificação MINDCREATOR</span>
