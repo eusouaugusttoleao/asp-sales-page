@@ -145,14 +145,20 @@ body::after {
 
 /* Quick stats line */
 .demo-quickstats {
-  display: flex; gap: clamp(20px, 3vw, 60px);
-  justify-content: center; align-items: center; flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
   margin: 0 auto clamp(56px, 6vw, 88px);
-  padding-bottom: clamp(28px, 3vw, 44px);
+  padding: clamp(20px, 2.2vw, 32px) clamp(12px, 1.5vw, 24px) clamp(28px, 3vw, 44px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  max-width: 1080px;
+  max-width: 1180px;
 }
-.demo-quickstats .qs { text-align: center; }
+.demo-quickstats .qs {
+  text-align: center;
+  padding: 8px clamp(8px, 1vw, 16px);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.demo-quickstats .qs:last-child { border-right: none; }
 .demo-quickstats .qs b {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(28px, 3vw, 44px);
@@ -160,19 +166,18 @@ body::after {
   color: var(--white);
   display: block;
   line-height: 1.05;
+  margin-bottom: 8px;
 }
-.demo-quickstats .qs:nth-child(1) b,
-.demo-quickstats .qs:nth-child(5) b { color: var(--cobalt-bright); text-shadow: 0 0 14px rgba(86,57,240,0.4); }
-.demo-quickstats .qs:nth-child(3) b { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.4); }
-.demo-quickstats .qs:nth-child(9) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
+.demo-quickstats .qs:nth-child(1) b { color: var(--cobalt-bright); text-shadow: 0 0 14px rgba(86,57,240,0.4); }
+.demo-quickstats .qs:nth-child(2) b { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.4); }
+.demo-quickstats .qs:nth-child(3) b { color: var(--cobalt-bright); text-shadow: 0 0 14px rgba(86,57,240,0.4); }
+.demo-quickstats .qs:nth-child(4) b { color: var(--white); text-shadow: 0 0 14px rgba(255,255,255,0.2); }
+.demo-quickstats .qs:nth-child(5) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
 .demo-quickstats .qs span {
-  font-family: var(--display); font-size: clamp(10px, 0.85vw, 12px);
-  letter-spacing: 0.28em; text-transform: uppercase;
+  font-family: var(--display); font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--silver);
-}
-.demo-quickstats .sep {
-  width: 1px; height: 36px;
-  background: rgba(255,255,255,0.15);
+  line-height: 1.4;
 }
 
 /* Grid 7 frentes */
@@ -217,23 +222,36 @@ body::after {
   position: relative; z-index: 1;
 }
 .demo-card .demo-pedra-img {
-  width: clamp(72px, 8vw, 96px);
+  position: absolute;
+  top: clamp(22px, 2vw, 34px); right: clamp(22px, 2vw, 34px);
+  width: clamp(34px, 3vw, 48px);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px var(--cobalt-bright)) drop-shadow(0 0 36px rgba(86,57,240,0.35));
+  filter: drop-shadow(0 0 10px var(--cobalt-bright));
   transition: transform .45s cubic-bezier(.22,1,.36,1), filter .45s;
-  position: relative; z-index: 1;
-  margin-bottom: 4px;
+  z-index: 3;
 }
 .demo-card:hover .demo-pedra-img {
-  transform: scale(1.06) rotate(-2deg);
-  filter: drop-shadow(0 0 24px var(--cobalt-bright)) drop-shadow(0 0 48px rgba(86,57,240,0.5));
+  transform: scale(1.15) rotate(-3deg);
 }
+/* Glow individual por pedra */
+.demo-pedra-img.p1 { filter: drop-shadow(0 0 12px var(--citrino)) drop-shadow(0 0 28px rgba(255,165,0,0.5)); }
+.demo-pedra-img.p2 { filter: drop-shadow(0 0 12px var(--quartzo)) drop-shadow(0 0 28px rgba(255,216,58,0.5)); }
+.demo-pedra-img.p3 { filter: drop-shadow(0 0 12px var(--pedra-esmeralda)) drop-shadow(0 0 28px rgba(31,185,94,0.5)); }
+.demo-pedra-img.p4 { filter: drop-shadow(0 0 12px var(--safira)) drop-shadow(0 0 28px rgba(42,79,255,0.55)); }
+.demo-pedra-img.p5 { filter: drop-shadow(0 0 12px var(--ametista)) drop-shadow(0 0 28px rgba(123,47,190,0.55)); }
+.demo-pedra-img.p6 { filter: drop-shadow(0 0 12px var(--pedra-rubi)) drop-shadow(0 0 28px rgba(232,31,38,0.5)); }
+.demo-pedra-img.p7 { filter: drop-shadow(0 0 12px var(--diamante)) drop-shadow(0 0 28px rgba(224,224,224,0.45)); }
+
 .demo-card .demo-pedra-img-pair {
-  display: flex; gap: clamp(8px, 1vw, 16px); align-items: center;
+  position: absolute;
+  top: clamp(22px, 2vw, 34px); right: clamp(22px, 2vw, 34px);
+  display: flex; gap: clamp(6px, 0.8vw, 12px); align-items: center;
+  z-index: 3;
 }
 .demo-card .demo-pedra-img-pair .demo-pedra-img {
-  width: clamp(60px, 6vw, 84px);
+  position: static;
+  width: clamp(38px, 3.4vw, 56px);
 }
 
 .demo-card .demo-pedra {
@@ -399,6 +417,10 @@ body::after {
   .demo-grid { grid-template-columns: repeat(2, 1fr); }
   .demo-card.demo-card-final { grid-column: 1 / -1; }
   .demo-card.demo-card-final .demo-content { flex-direction: column; align-items: flex-start; }
+  .demo-quickstats { grid-template-columns: repeat(3, 1fr); gap: 14px 0; }
+  .demo-quickstats .qs:nth-child(3n) { border-right: none; }
+  .demo-quickstats .qs:nth-child(4),
+  .demo-quickstats .qs:nth-child(5) { padding-top: 14px; }
   .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
   .escassez-vagas { justify-content: center; }
   .escassez-timer { justify-content: center; }
@@ -412,8 +434,10 @@ body::after {
   .section-demo { padding: 175px 14px 70px; }
   .demo-grid { grid-template-columns: 1fr; }
   .demo-megatype .line { font-size: 28px; }
-  .demo-quickstats { gap: 18px; }
-  .demo-quickstats .sep { display: none; }
+  .demo-quickstats { grid-template-columns: repeat(2, 1fr); }
+  .demo-quickstats .qs:nth-child(2n) { border-right: none; }
+  .demo-quickstats .qs:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .demo-quickstats .qs:nth-child(5) { grid-column: 1 / -1; border-right: none; padding-top: 14px; }
   .escassez-bar { font-size: 9px; padding: 6px 12px; }
   .escassez-bar .label b { font-size: 11px; }
   .escassez-timer .time { font-size: 11px; }
@@ -503,32 +527,36 @@ body::after {
   <div class="demo-grid">
 
     <div class="demo-card">
-      <img class="demo-pedra-img" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
-      <div class="demo-pedra">Pedra 1 · Autoconhecimento</div>
+      <div class="demo-n">01</div>
+      <img class="demo-pedra-img p1" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
+      <div class="demo-pedra">Autoconhecimento</div>
       <h4>DISC + revisão do passado</h4>
       <p>Você sai sabendo <b class="hl-white">quem você é em 4 dimensões</b> — e quais decisões da infância ainda estão te governando.</p>
       <span class="demo-voz">→ Voz #1 silenciada</span>
     </div>
 
     <div class="demo-card">
-      <img class="demo-pedra-img" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
-      <div class="demo-pedra">Pedra 2 · Comunicação Pessoal</div>
+      <div class="demo-n">02</div>
+      <img class="demo-pedra-img p2" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
+      <div class="demo-pedra">Comunicação Pessoal</div>
       <h4>PNL + MAAC aplicado</h4>
       <p>Falar em público · postura · presença. <b class="hl-white">MAAC preenchido (VOZ + CORPO + EMOÇÃO).</b></p>
       <span class="demo-voz">→ Voz #2 silenciada</span>
     </div>
 
     <div class="demo-card">
-      <img class="demo-pedra-img" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
-      <div class="demo-pedra">Pedra 3 · Posicionamento Digital</div>
+      <div class="demo-n">03</div>
+      <img class="demo-pedra-img p3" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
+      <div class="demo-pedra">Posicionamento Digital</div>
       <h4>Branding pessoal + arquétipo</h4>
       <p>Imagem que fala antes de você. Você para de ser <b class="hl-white">"qualquer um do nicho"</b>.</p>
       <span class="demo-voz">→ Voz #3 silenciada</span>
     </div>
 
     <div class="demo-card">
-      <img class="demo-pedra-img" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
-      <div class="demo-pedra">Pedra 4 · Produtividade</div>
+      <div class="demo-n">04</div>
+      <img class="demo-pedra-img p4" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
+      <div class="demo-pedra">Produtividade</div>
       <h4>Mapa 05h–23h45 + 21 dias de hábito</h4>
       <p>Agenda em <b class="hl-white">blocos de 15 minutos</b>. Google Agenda configurado. Hábitos rodando no piloto.</p>
       <span class="demo-voz">→ Voz #4 silenciada</span>
@@ -543,8 +571,9 @@ body::after {
     </div>
 
     <div class="demo-card">
-      <img class="demo-pedra-img" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
-      <div class="demo-pedra">Pedra 5 · Networking</div>
+      <div class="demo-n">06</div>
+      <img class="demo-pedra-img p5" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
+      <div class="demo-pedra">Networking</div>
       <h4>Conexões que multiplicam</h4>
       <p>Técnicas validadas pra marcar cafés com pessoas que <b class="hl-white">multiplicam você</b> — sem ser o cara que pede tudo.</p>
       <span class="demo-voz">→ Voz #5 silenciada</span>
@@ -552,13 +581,14 @@ body::after {
 
     <!-- CARD 07 FINAL · DESTAQUE FULL-WIDTH -->
     <div class="demo-card demo-card-final">
+      <div class="demo-pedra-img-pair">
+        <img class="demo-pedra-img p6" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
+        <img class="demo-pedra-img p7" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
+      </div>
       <div class="demo-content">
         <div class="left">
-          <div class="demo-pedra-img-pair">
-            <img class="demo-pedra-img" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
-            <img class="demo-pedra-img" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
-          </div>
-          <div class="demo-pedra">Pedras 6 + 7 · Autoralidade + Poder</div>
+          <div class="demo-n">07</div>
+          <div class="demo-pedra">Autoralidade + Poder</div>
         </div>
         <div class="right">
           <h4>Identidade nova · Certificação MINDCREATOR Nível 1</h4>
