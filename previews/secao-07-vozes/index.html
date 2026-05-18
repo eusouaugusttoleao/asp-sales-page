@@ -146,7 +146,7 @@ body::after {
   border-left: 4px solid var(--voz-color);
   border-radius: 12px;
   padding: clamp(24px, 2.4vw, 36px) clamp(24px, 2.4vw, 36px);
-  transition: background .3s, border-color .3s, transform .3s, opacity .5s, filter .5s;
+  transition: background .3s, border-color .3s, transform .3s, opacity 1.8s cubic-bezier(.22,1,.36,1), filter 1.8s cubic-bezier(.22,1,.36,1);
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: clamp(14px, 1.4vw, 22px);
@@ -228,9 +228,14 @@ body::after {
 }
 .voz-footer .desc b { color: var(--white); }
 .voz-footer .pedra-cor {
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--voz-color);
-  box-shadow: 0 0 12px var(--voz-color);
+  width: 28px; height: 28px;
+  object-fit: contain;
+  display: block; flex-shrink: 0;
+  filter: drop-shadow(0 0 8px var(--voz-color));
+  transition: filter 1.8s cubic-bezier(.22,1,.36,1), opacity 1.8s cubic-bezier(.22,1,.36,1);
+}
+.voz-card.silenced .voz-footer .pedra-cor {
+  filter: drop-shadow(0 0 4px var(--voz-color)) grayscale(0.4);
 }
 
 /* CLOSING insight */
@@ -396,7 +401,7 @@ body::after {
       </div>
       <p class="voz-frase">Tenho que cuidar com o que vão pensar de mim.</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
         <span class="desc">Pedra 1 · <b>Autoimagem</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -409,7 +414,7 @@ body::after {
       </div>
       <p class="voz-frase">Melhor ficar quieto antes de pagar mico.</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
         <span class="desc">Pedra 2 · <b>Persuasão</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -422,7 +427,7 @@ body::after {
       </div>
       <p class="voz-frase">Quem sou eu pra cobrar isso?</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
         <span class="desc">Pedra 3 · <b>Posicionamento</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -435,7 +440,7 @@ body::after {
       </div>
       <p class="voz-frase">Eu nunca termino o que começo. Essa também vai pro mesmo lugar.</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
         <span class="desc">Pedra 4 · <b>Disciplina</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -448,7 +453,7 @@ body::after {
       </div>
       <p class="voz-frase">Não sou bom o suficiente.</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
         <span class="desc">Pedra 5 · <b>Autoridade</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -461,7 +466,7 @@ body::after {
       </div>
       <p class="voz-frase">O que vão achar de mim se eu fizer isso?</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
         <span class="desc">Pedra 6 · <b>Irreverência</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -474,7 +479,7 @@ body::after {
       </div>
       <p class="voz-frase">Sem aprovação dele, isso não vale.</p>
       <div class="voz-footer">
-        <span class="pedra-cor"></span>
+        <img class="pedra-cor" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
         <span class="desc">Pedra 7 · <b>Poder</b></span>
         <span class="arrow">→ cala</span>
       </div>
