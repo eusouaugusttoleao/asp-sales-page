@@ -309,29 +309,74 @@ body::after {
   display: flex; flex-direction: column; gap: clamp(10px, 1.2vw, 16px);
 }
 .urgencia-bonus ul li {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: clamp(14px, 2vw, 32px);
-  align-items: baseline;
-  font-size: clamp(14px, 1.1vw, 16px);
+  display: grid;
+  grid-template-columns: clamp(100px, 11vw, 140px) 1fr auto;
+  gap: clamp(14px, 1.8vw, 28px);
+  align-items: center;
+  font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.5; color: var(--gray-body);
-  padding: 10px 0;
+  padding: 14px 0;
   border-bottom: 1px dashed rgba(255,255,255,0.08);
 }
 .urgencia-bonus ul li:last-child { border-bottom: none; }
 .urgencia-bonus ul li b { color: var(--white); font-weight: 600; }
+.urgencia-bonus ul li i { font-style: italic; color: var(--silver); font-size: 0.9em; }
+
+.urgencia-bonus ul li .item-marker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+.urgencia-bonus ul li .item-marker.regular {
+  color: var(--esmeralda-bright);
+  background: rgba(45,214,111,0.12);
+  border: 1px solid rgba(45,214,111,0.35);
+}
+.urgencia-bonus ul li .item-marker.fc {
+  color: #0b0b0b;
+  background: linear-gradient(135deg, var(--ambar), var(--ambar-bright));
+  box-shadow: 0 0 12px rgba(255,214,0,0.4);
+}
+
+.urgencia-bonus ul li.firstclass-only {
+  background: linear-gradient(90deg, rgba(255,214,0,0.04), transparent);
+  margin: 0 -12px;
+  padding-left: 12px; padding-right: 12px;
+  border-radius: 6px;
+}
+.urgencia-bonus ul li.firstclass-only + li.firstclass-only {
+  border-top: none;
+}
+
 .urgencia-bonus ul li .valor {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(13px, 1.1vw, 16px);
+  font-size: clamp(14px, 1.2vw, 17px);
   color: var(--ambar);
   letter-spacing: -0.01em;
   text-shadow: 0 0 10px rgba(255,214,0,0.3);
   white-space: nowrap;
+  text-align: right;
 }
 .urgencia-bonus ul li .valor.inestimavel {
   color: var(--magenta-bright);
   text-shadow: 0 0 12px rgba(132,21,188,0.45);
   font-style: italic;
 }
+.urgencia-bonus .ub-foot {
+  position: relative; z-index: 1;
+  margin-top: clamp(14px, 1.5vw, 22px);
+  text-align: center;
+  font-family: var(--display); font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ambar);
+  opacity: 0.85;
+}
+.urgencia-bonus .ub-foot b { color: var(--white); }
 .urgencia-bonus .ub-total {
   position: relative; z-index: 1;
   text-align: center;
@@ -427,8 +472,14 @@ body::after {
 @media (max-width: 1100px) {
   .compare-row { grid-template-columns: 1fr; gap: 12px; }
   .compare-arrow { transform: rotate(90deg); padding: 8px 0; }
-  .urgencia-bonus ul li { grid-template-columns: 1fr; gap: 4px; }
-  .urgencia-bonus ul li .valor { font-size: 13px; }
+  .urgencia-bonus ul li {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "marker valor" "desc desc";
+    gap: 8px 14px;
+  }
+  .urgencia-bonus ul li .item-marker { grid-area: marker; }
+  .urgencia-bonus ul li .valor { grid-area: valor; font-size: 14px; text-align: right; }
+  .urgencia-bonus ul li .item-desc { grid-area: desc; }
   .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
   .escassez-vagas { justify-content: center; }
   .escassez-timer { justify-content: center; }
@@ -510,7 +561,7 @@ body::after {
 
   <h2 class="urgencia-h2">
     ASP é <b>perpétuo</b>. Sempre fica no ar.<br>
-    Mas o <b class="hl-esmeralda">preço FirstClass</b> e <b class="hl-esmeralda">4 bônus</b> somem na <b class="hl-rubi">vaga 101</b>.
+    Mas o <b class="hl-esmeralda">preço FirstClass</b> e <b class="hl-esmeralda">R$ 2.791 + INESTIMÁVEL em bônus exclusivos</b> somem na <b class="hl-rubi">vaga 101</b>.
   </h2>
 
   <!-- ============================================
@@ -556,29 +607,49 @@ body::after {
   </div>
 
   <!-- ============================================
-       BÔNUS FIRSTCLASS · que somem
+       STACK COMPLETO · TUDO QUE VOCÊ RECEBE
        ============================================ -->
   <div class="urgencia-bonus">
-    <span class="ub-tag">4 Bônus FirstClass · somem na vaga 101</span>
+    <span class="ub-tag">Stack completo · R$ 8.973 + INESTIMÁVEL</span>
     <ul>
       <li>
-        <span><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada</span>
+        <span class="item-marker regular">✓ Incluso</span>
+        <span class="item-desc"><b>O PROGRAMA</b> · 7 Pedras · 51 aulas · área Netflix · acesso anual · comunidade FirstClass</span>
+        <span class="valor">R$ 3.000</span>
+      </li>
+      <li>
+        <span class="item-marker regular">✓ Incluso</span>
+        <span class="item-desc"><b>O KIT OPERACIONAL</b> · Onboarding 7 aulas · MAAC · 5 ferramentas práticas · Certificação MINDCREATOR Nível 1</span>
+        <span class="valor">R$ 2.685</span>
+      </li>
+      <li>
+        <span class="item-marker regular">✓ Incluso</span>
+        <span class="item-desc"><b>SUPORTE PREMIUM</b> · Suporte 24/7 · Aulas mensais AO VIVO com Augustto · cada dúvida vira aula gravada</span>
+        <span class="valor">R$ 497</span>
+      </li>
+      <li class="firstclass-only">
+        <span class="item-marker fc">★ FirstClass</span>
+        <span class="item-desc"><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada · <i>×3 sessões</i></span>
         <span class="valor">R$ 1.497</span>
       </li>
-      <li>
-        <span><b>Grupo VIP WhatsApp</b> · Augustto presente 2× por semana</span>
+      <li class="firstclass-only">
+        <span class="item-marker fc">★ FirstClass</span>
+        <span class="item-desc"><b>Grupo VIP WhatsApp</b> · Augustto presente 2× por semana</span>
         <span class="valor">R$ 997</span>
       </li>
-      <li>
-        <span>Convite VIP <b>Evento Presencial</b></span>
-        <span class="valor">R$ 197</span>
+      <li class="firstclass-only">
+        <span class="item-marker fc">★ FirstClass</span>
+        <span class="item-desc">Convite VIP <b>Evento Presencial</b></span>
+        <span class="valor">R$ 297</span>
       </li>
-      <li>
-        <span>Selo <b>"Fundador FirstClass"</b> vitalício e intransferível</span>
+      <li class="firstclass-only">
+        <span class="item-marker fc">★ FirstClass</span>
+        <span class="item-desc">Selo <b>"Fundador FirstClass"</b> vitalício e intransferível</span>
         <span class="valor inestimavel">INESTIMÁVEL</span>
       </li>
     </ul>
-    <p class="ub-total">Total dos bônus que somem: <b>R$ 2.691 + INESTIMÁVEL</b></p>
+    <p class="ub-total">Valor total declarado: <b>R$ 8.973 + INESTIMÁVEL</b></p>
+    <p class="ub-foot">★ Os <b>4 bônus FirstClass</b> (R$ 2.791 + INESTIMÁVEL) somem na vaga 101.</p>
   </div>
 
   <!-- ============================================
@@ -601,7 +672,7 @@ body::after {
     <span>100 vagas · uma abertura · ASP volta só em 2027</span>
     <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
-    <span>4 bônus FirstClass somem na vaga 101 · R$ 2.691 + INESTIMÁVEL</span>
+    <span>Stack completo R$ 8.973 · 4 bônus FirstClass R$ 2.791 somem na vaga 101</span>
     <span>Escassez real · não countdown fake</span>
     <span>A porta fecha na vaga 101</span>
     <span>Hoje ou R$ 2.000 a mais</span>
@@ -609,7 +680,7 @@ body::after {
     <span>100 vagas · uma abertura · ASP volta só em 2027</span>
     <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
-    <span>4 bônus FirstClass somem na vaga 101 · R$ 2.691 + INESTIMÁVEL</span>
+    <span>Stack completo R$ 8.973 · 4 bônus FirstClass R$ 2.791 somem na vaga 101</span>
     <span>Escassez real · não countdown fake</span>
     <span>A porta fecha na vaga 101</span>
     <span>Hoje ou R$ 2.000 a mais</span>
