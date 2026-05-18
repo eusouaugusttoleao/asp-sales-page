@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 11 · FAQ · 16 OBJEÇÕES v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-ambar { background: var(--ambar); }
+.halo-cobalt { background: var(--cobalt); }
+.halo-rubi { background: var(--rubi); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 11 · FAQ · v3.4
+   ============================================================ */
+.section-faq {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: 1100px; margin: 0 auto;
+}
+
+.faq-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--magenta-bright);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center;
+  width: 100%;
+}
+.faq-kicker::before, .faq-kicker::after {
+  content: ""; height: 1px; width: clamp(30px, 3vw, 60px);
+  background: var(--magenta-bright); opacity: 0.5;
+}
+
+.faq-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(48px, 7.5vw, 120px);
+  line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: clamp(20px, 2.4vw, 36px);
+  text-wrap: balance;
+}
+.faq-title-mega .accent {
+  color: var(--magenta-bright);
+  text-shadow:
+    0 0 30px rgba(164,32,221,0.55),
+    0 0 70px rgba(164,32,221,0.32);
+}
+
+.faq-h2 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.35; letter-spacing: -0.01em;
+  color: var(--white);
+  text-align: center;
+  max-width: 880px; margin: 0 auto clamp(20px, 2vw, 32px);
+  text-wrap: balance;
+}
+.faq-h2 b { font-weight: 700; }
+.faq-h2 .hl-magenta { color: var(--magenta-bright); text-shadow: 0 0 16px rgba(164,32,221,0.5); }
+
+.faq-sub {
+  font-family: var(--body); font-weight: 300;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.6; color: var(--gray-body);
+  text-align: center;
+  max-width: 760px; margin: 0 auto clamp(56px, 6vw, 88px);
+  text-wrap: balance;
+}
+.faq-sub b { color: var(--white); }
+
+/* ---- FAQ LIST · accordion nativo ---- */
+.faq-list {
+  display: flex; flex-direction: column;
+  gap: clamp(10px, 1.2vw, 14px);
+  max-width: 980px; margin: 0 auto;
+}
+.faq-item {
+  position: relative;
+  background: rgba(255,255,255,0.022);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background .3s, border-color .3s;
+}
+.faq-item:hover { background: rgba(255,255,255,0.035); border-color: rgba(255,255,255,0.15); }
+
+.faq-item[open] {
+  background: rgba(132,21,188,0.04);
+  border-color: rgba(164,32,221,0.32);
+}
+.faq-item[open]::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--magenta), var(--magenta-bright));
+  box-shadow: 0 0 18px rgba(164,32,221,0.5);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: clamp(18px, 1.8vw, 26px) clamp(20px, 2.2vw, 32px);
+  display: grid;
+  grid-template-columns: clamp(32px, 3vw, 44px) 1fr auto;
+  gap: clamp(14px, 1.5vw, 22px);
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { display: none; }
+
+.faq-num {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(15px, 1.3vw, 18px);
+  letter-spacing: -0.01em;
+  color: var(--silver);
+  transition: color .3s;
+}
+.faq-item[open] .faq-num,
+.faq-item:hover .faq-num { color: var(--magenta-bright); }
+
+.faq-q {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.4; color: var(--white);
+  letter-spacing: -0.005em;
+}
+.faq-q .priority-mark {
+  display: inline-block;
+  color: var(--ambar);
+  font-size: 0.75em;
+  margin-left: 6px;
+  text-shadow: 0 0 10px rgba(255,214,0,0.5);
+}
+
+.faq-toggle {
+  width: clamp(28px, 2.6vw, 36px);
+  height: clamp(28px, 2.6vw, 36px);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: var(--silver);
+  transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, border-color .3s, color .3s;
+}
+.faq-item:hover .faq-toggle {
+  border-color: rgba(164,32,221,0.55);
+  color: var(--white);
+}
+.faq-item[open] .faq-toggle {
+  transform: rotate(45deg);
+  background: var(--magenta-bright);
+  border-color: var(--magenta-bright);
+  color: var(--white);
+  box-shadow: 0 0 18px rgba(164,32,221,0.5);
+}
+
+.faq-answer {
+  padding: 0 clamp(20px, 2.2vw, 32px) clamp(18px, 1.8vw, 26px) calc(clamp(20px, 2.2vw, 32px) + clamp(32px, 3vw, 44px) + clamp(14px, 1.5vw, 22px));
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--gray-body);
+  text-wrap: pretty;
+}
+.faq-answer b { color: var(--white); font-weight: 600; }
+.faq-answer b.hl-magenta { color: var(--magenta-bright); }
+.faq-answer b.hl-ambar { color: var(--ambar); }
+.faq-answer b.hl-rubi { color: var(--rubi-bright); }
+.faq-answer b.hl-esmeralda { color: var(--esmeralda-bright); }
+
+/* Priority faq (3 estreladas) */
+.faq-item.priority {
+  border-color: rgba(255,214,0,0.22);
+  background: rgba(255,214,0,0.025);
+}
+.faq-item.priority:hover {
+  background: rgba(255,214,0,0.045);
+  border-color: rgba(255,214,0,0.4);
+}
+.faq-item.priority[open] {
+  background: rgba(255,214,0,0.05);
+  border-color: rgba(255,214,0,0.5);
+}
+.faq-item.priority[open]::before {
+  background: linear-gradient(180deg, var(--ambar), var(--ambar-bright));
+  box-shadow: 0 0 18px rgba(255,214,0,0.5);
+}
+.faq-item.priority:hover .faq-num,
+.faq-item.priority[open] .faq-num { color: var(--ambar); }
+.faq-item.priority[open] .faq-toggle {
+  background: var(--ambar);
+  border-color: var(--ambar);
+  color: #0b0b0b;
+  box-shadow: 0 0 18px rgba(255,214,0,0.5);
+}
+
+/* ---- MEGATYPE FINAL + CTA ---- */
+.faq-megatype {
+  margin-top: clamp(56px, 6vw, 100px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.faq-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(164,32,221,0.06) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.faq-megatype .line {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 4.8vw, 72px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.faq-megatype .line .hl-magenta {
+  color: var(--magenta-bright);
+  text-shadow:
+    0 0 30px rgba(164,32,221,0.6),
+    0 0 70px rgba(164,32,221,0.4);
+}
+.faq-megatype .line .hl-rubi {
+  color: var(--rubi-bright);
+  text-shadow:
+    0 0 30px rgba(255,53,64,0.55),
+    0 0 70px rgba(255,53,64,0.32);
+}
+.faq-megatype .sub {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--silver);
+  margin-top: clamp(18px, 2vw, 28px);
+  text-wrap: balance;
+}
+.faq-megatype .sub b { font-weight: 700; color: var(--white); font-style: normal; }
+.faq-megatype .megatype-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: clamp(28px, 3vw, 48px);
+  padding: clamp(16px, 1.6vw, 22px) clamp(32px, 3.5vw, 56px);
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-bright));
+  color: var(--white);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.3vw, 18px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 0 32px rgba(132,21,188,0.5), 0 12px 40px rgba(132,21,188,0.25);
+  transition: transform .3s, box-shadow .3s, background .3s;
+  cursor: pointer;
+}
+.faq-megatype .megatype-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 48px rgba(132,21,188,0.75), 0 18px 50px rgba(132,21,188,0.4);
+  background: linear-gradient(135deg, var(--magenta-bright), var(--magenta));
+}
+.faq-megatype .whatsapp-help {
+  position: relative; z-index: 1;
+  display: block;
+  margin-top: clamp(20px, 2vw, 32px);
+  font-family: var(--display); font-size: 12px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--silver);
+}
+.faq-megatype .whatsapp-help a {
+  color: var(--esmeralda-bright);
+  border-bottom: 1px dashed rgba(45,214,111,0.4);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.faq-megatype .whatsapp-help a:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--magenta-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-faq { padding: 175px 14px 70px; }
+  .faq-megatype .line { font-size: 24px; }
+  .faq-item summary { grid-template-columns: 28px 1fr 28px; gap: 12px; }
+  .faq-answer { padding-left: clamp(20px, 2.2vw, 32px); padding-right: clamp(20px, 2.2vw, 32px); }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(164,32,221,0.95); color: #fff;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 11 · FAQ · 16 OBJEÇÕES v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#demonstracao">Método</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 11 FAQ -->
+<section class="section-faq" id="faq">
+  <div class="halo halo-magenta" style="top:6%; right:-8%; width:480px; height:480px; opacity:0.16;"></div>
+  <div class="halo halo-cobalt" style="top:45%; left:-8%; width:400px; height:400px; opacity:0.13;"></div>
+  <div class="halo halo-rubi" style="bottom:8%; right:5%; width:360px; height:360px; opacity:0.12;"></div>
+
+  <div style="text-align:center;">
+    <span class="faq-kicker">PERGUNTAS QUE VOCÊ JÁ TÁ FAZENDO</span>
+  </div>
+
+  <h1 class="faq-title-mega">
+    OBJEÇÕES. <span class="accent">TODAS.</span>
+  </h1>
+
+  <h2 class="faq-h2">
+    16 perguntas reais. <b class="hl-magenta">16 respostas diretas.</b><br>
+    Nada de "depende" — nada de "fala com a equipe".
+  </h2>
+
+  <p class="faq-sub">
+    Se sua dúvida não tá aqui, é porque <b>ainda não foi feita</b>. Manda no WhatsApp do final que eu respondo pessoalmente.
+  </p>
+
+  <!-- ============================================
+       FAQ LIST · 16 PERGUNTAS
+       ============================================ -->
+  <div class="faq-list">
+
+    <details class="faq-item priority">
+      <summary>
+        <span class="faq-num">01</span>
+        <span class="faq-q">"R$ 1.000 é caro pra mim agora." <span class="priority-mark">★</span></span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Você tá faturando <b>R$ 10k/mês</b> e R$ 1.000 é caro? Esse é exatamente o problema que o ASP destrava. Parcela em <b>12× R$ 100</b>. Ou <b class="hl-ambar">R$ 700 PIX com cupom FIRSTCLASS30</b>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">02</span>
+        <span class="faq-q">"Posso parcelar?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Sim. <b>12× R$ 100</b> no cartão. Ou <b>R$ 700</b> no PIX com cupom <b class="hl-ambar">FIRSTCLASS30</b> (30% off).</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">03</span>
+        <span class="faq-q">"Tem desconto maior?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>O cupom <b>FIRSTCLASS30</b> some quando a vaga 101 entra. Depois disso, <b class="hl-rubi">R$ 3.000 cheio</b>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item priority">
+      <summary>
+        <span class="faq-num">04</span>
+        <span class="faq-q">"Sinto que vou comprar e não vou ter contato com você." <span class="priority-mark">★</span></span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Bora resolver isso agora: <b>3 mentorias quinzenais coletivas comigo</b> nos 90 dias (uma a cada 15 dias, sem furo) + <b>Grupo VIP WhatsApp</b> onde eu apareço 2× por semana + <b>Aulas de Dúvidas mensais ao vivo</b>. Você não me perde de vista. E se quiser <b>MAIS</b> — tem o upsell de <b class="hl-magenta">sessão 1:1 de 90 min</b> no checkout. Eu absorvo até 5 por mês.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">05</span>
+        <span class="faq-q">"Já fiz curso parecido e não funcionou."</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Provavelmente faltou <b>DESATIVAÇÃO antes da ATIVAÇÃO</b>. É o que ninguém faz e por isso ninguém entrega. Aqui cada Pedra <b>nomeia a voz da mentira</b> que vai silenciar.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">06</span>
+        <span class="faq-q">"Augustto é mais um coach do Instagram?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Não. Master Coach + PNL Practitioner + Neurociência aplicada + Aluno presencial de Tony Robbins 2019 + CMO de uma das maiores do país + <b>R$ 100M movimentados</b>. <b class="hl-magenta">Currículo de mercado, não de feed.</b></p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">07</span>
+        <span class="faq-q">"Não é PNL guru-rosa?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Não. PNL aqui é <b>ferramenta, não religião</b>. E tem tese técnica embaixo: Neurociência aplicada ao Desenvolvimento Humano.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">08</span>
+        <span class="faq-q">"Por que vocês falam tanto em 'pedra' e 'joia'?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Porque a metáfora é literal: cada característica forte sua tá lá dentro <b>em estado bruto</b>. O ASP é a esmerilhadeira que lapida. E joia ativa poder. <b class="hl-magenta">O mundo te dá o valor que você se dá.</b></p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">09</span>
+        <span class="faq-q">"Não tenho tempo."</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p><b>30–45 min por dia</b>, 4–5× por semana. Quem não tem tempo tá vivendo a algema — que é exatamente o que essa frase confirma.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">10</span>
+        <span class="faq-q">"E se eu atrasar?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Acesso vitalício. Mas a <b>Turma FirstClass</b> roda em cohort — você <b>perde os bônus FirstClass</b> se não entrar agora. <b class="hl-rubi">E o preço sobe pra R$ 3.000 na vaga 101.</b></p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">11</span>
+        <span class="faq-q">"E se eu não terminar?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p><b>70% terminam</b> (Técnica Netflix de retenção). E mesmo se não terminar, a <b>Pedra 1 sozinha</b> já paga o investimento.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">12</span>
+        <span class="faq-q">"Não sou o tipo certo?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Se você é empreendedor faturando entre <b>R$ 4–12k/mês</b> e travou há <b>12+ meses</b> — você é <b class="hl-magenta">exatamente o tipo</b>. Se não é, <b>te devolvo o dinheiro</b>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">13</span>
+        <span class="faq-q">"E se eu pedir reembolso?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Manda e-mail. Devolvo na hora. <b class="hl-esmeralda">15 dias incondicional.</b> Sem retenção. Sem ligação. <b>Você fica com o Kit.</b></p>
+      </div>
+    </details>
+
+    <details class="faq-item priority">
+      <summary>
+        <span class="faq-num">14</span>
+        <span class="faq-q">"É verdade que eu saio com R$ 300 a mais em bônus?" <span class="priority-mark">★</span></span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Sim. Aplica <b>Pedra 1 + MAAC + Mapa Produtividade + Planilha Financeira</b> por 30 dias e não destravou? <b class="hl-ambar">R$ 1.000 + R$ 300 PIX.</b> Você sai lucrando.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">15</span>
+        <span class="faq-q">"Quando começa?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p><b>Imediato.</b> Acesso à plataforma em <b>5 minutos</b> depois da compra.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span class="faq-num">16</span>
+        <span class="faq-q">"E depois das 7 Pedras?"</span>
+        <span class="faq-toggle">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Você qualifica pra <b class="hl-magenta">AURA</b> (mentoria de empresários · R$ 33k). ASP precede AURA. <b>Não pula etapa.</b></p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- ============================================
+       MEGATYPE FINAL + CTA
+       ============================================ -->
+  <div class="faq-megatype">
+    <p class="line">
+      VOCÊ NÃO TEM <span class="hl-magenta">DÚVIDA</span>.<br>
+      VOCÊ TEM <span class="hl-rubi">MEDO DE COMEÇAR.</span>
+    </p>
+    <p class="sub">16 respostas eliminaram a primeira. <b>Só você elimina a segunda.</b></p>
+    <a href="#offer" class="megatype-cta">Quero começar AGORA →</a>
+    <span class="whatsapp-help">Dúvida nova? <a href="https://wa.me/5561981459404" target="_blank">Manda no WhatsApp do Augustto →</a></span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>16 perguntas reais · 16 respostas diretas</span>
+    <span>Nada de "depende" · nada de "fala com a equipe"</span>
+    <span>15 dias incondicional · você fica com o Kit</span>
+    <span>R$ 1.000 + R$ 300 PIX se não destravar · você sai lucrando</span>
+    <span>Currículo de mercado · não de feed</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>Você não tem dúvida · você tem medo de começar</span>
+    <span>Só você elimina o medo</span>
+    <span>16 perguntas reais · 16 respostas diretas</span>
+    <span>Nada de "depende" · nada de "fala com a equipe"</span>
+    <span>15 dias incondicional · você fica com o Kit</span>
+    <span>R$ 1.000 + R$ 300 PIX se não destravar · você sai lucrando</span>
+    <span>Currículo de mercado · não de feed</span>
+    <span>O mundo te dá o valor que você se dá</span>
+    <span>Você não tem dúvida · você tem medo de começar</span>
+    <span>Só você elimina o medo</span>
+  </div>
+</div>
+
+<!-- VAGAS counter -->
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
