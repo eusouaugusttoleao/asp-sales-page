@@ -161,8 +161,10 @@ body::after {
   display: block;
   line-height: 1.05;
 }
-.demo-quickstats .qs:nth-child(1) b { color: var(--cobalt-bright); text-shadow: 0 0 14px rgba(86,57,240,0.4); }
-.demo-quickstats .qs:nth-child(3) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
+.demo-quickstats .qs:nth-child(1) b,
+.demo-quickstats .qs:nth-child(5) b { color: var(--cobalt-bright); text-shadow: 0 0 14px rgba(86,57,240,0.4); }
+.demo-quickstats .qs:nth-child(3) b { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.4); }
+.demo-quickstats .qs:nth-child(9) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
 .demo-quickstats .qs span {
   font-family: var(--display); font-size: clamp(10px, 0.85vw, 12px);
   letter-spacing: 0.28em; text-transform: uppercase;
@@ -213,6 +215,25 @@ body::after {
   color: rgba(255,255,255,0.08);
   -webkit-text-stroke: 1px rgba(86,57,240,0.35);
   position: relative; z-index: 1;
+}
+.demo-card .demo-pedra-img {
+  width: clamp(72px, 8vw, 96px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px var(--cobalt-bright)) drop-shadow(0 0 36px rgba(86,57,240,0.35));
+  transition: transform .45s cubic-bezier(.22,1,.36,1), filter .45s;
+  position: relative; z-index: 1;
+  margin-bottom: 4px;
+}
+.demo-card:hover .demo-pedra-img {
+  transform: scale(1.06) rotate(-2deg);
+  filter: drop-shadow(0 0 24px var(--cobalt-bright)) drop-shadow(0 0 48px rgba(86,57,240,0.5));
+}
+.demo-card .demo-pedra-img-pair {
+  display: flex; gap: clamp(8px, 1vw, 16px); align-items: center;
+}
+.demo-card .demo-pedra-img-pair .demo-pedra-img {
+  width: clamp(60px, 6vw, 84px);
 }
 
 .demo-card .demo-pedra {
@@ -462,23 +483,27 @@ body::after {
   </h2>
 
   <p class="demo-sub">
-    Você sai com <b>ferramenta na mão</b>, não com motivação na cabeça. Toda aula termina com <b>AÇÃO PRÁTICA + PDF do dia</b>.
+    Você sai com <b>ferramenta na mão</b>, não com motivação na cabeça. Toda aula termina com uma <b>Ação a ser Executada</b>.
   </p>
 
   <!-- Quick stats line -->
   <div class="demo-quickstats">
-    <div class="qs"><b>7</b><span>frentes de hábito</span></div>
+    <div class="qs"><b>7</b><span>frentes de hábitos</span></div>
     <div class="sep"></div>
     <div class="qs"><b>51</b><span>aulas no total</span></div>
     <div class="sep"></div>
-    <div class="qs"><b>1</b><span>PDF por aula</span></div>
+    <div class="qs"><b>7</b><span>dons destravados</span></div>
+    <div class="sep"></div>
+    <div class="qs"><b>5</b><span>ferramentas práticas</span></div>
+    <div class="sep"></div>
+    <div class="qs"><b>1</b><span>certificação MINDCREATOR</span></div>
   </div>
 
   <!-- GRID 7 FRENTES -->
   <div class="demo-grid">
 
     <div class="demo-card">
-      <div class="demo-n">01</div>
+      <img class="demo-pedra-img" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
       <div class="demo-pedra">Pedra 1 · Autoconhecimento</div>
       <h4>DISC + revisão do passado</h4>
       <p>Você sai sabendo <b class="hl-white">quem você é em 4 dimensões</b> — e quais decisões da infância ainda estão te governando.</p>
@@ -486,7 +511,7 @@ body::after {
     </div>
 
     <div class="demo-card">
-      <div class="demo-n">02</div>
+      <img class="demo-pedra-img" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
       <div class="demo-pedra">Pedra 2 · Comunicação Pessoal</div>
       <h4>PNL + MAAC aplicado</h4>
       <p>Falar em público · postura · presença. <b class="hl-white">MAAC preenchido (VOZ + CORPO + EMOÇÃO).</b></p>
@@ -494,7 +519,7 @@ body::after {
     </div>
 
     <div class="demo-card">
-      <div class="demo-n">03</div>
+      <img class="demo-pedra-img" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
       <div class="demo-pedra">Pedra 3 · Posicionamento Digital</div>
       <h4>Branding pessoal + arquétipo</h4>
       <p>Imagem que fala antes de você. Você para de ser <b class="hl-white">"qualquer um do nicho"</b>.</p>
@@ -502,7 +527,7 @@ body::after {
     </div>
 
     <div class="demo-card">
-      <div class="demo-n">04</div>
+      <img class="demo-pedra-img" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
       <div class="demo-pedra">Pedra 4 · Produtividade</div>
       <h4>Mapa 05h–23h45 + 21 dias de hábito</h4>
       <p>Agenda em <b class="hl-white">blocos de 15 minutos</b>. Google Agenda configurado. Hábitos rodando no piloto.</p>
@@ -512,13 +537,13 @@ body::after {
     <div class="demo-card demo-card-support">
       <div class="demo-n">05</div>
       <div class="demo-pedra">Suporte · Gestão Financeira</div>
-      <h4>Custo fixo · variável · lucro · pró-labore</h4>
-      <p>Planilha pronta. Em 7 dias você sabe <b class="hl-white">quanto gasta e quanto ganha de verdade</b>.</p>
+      <h4>Clareza financeira pra mudar o resultado</h4>
+      <p>Saiba <b class="hl-white">quanto você ganha</b> — e pare de temer calcular suas dívidas. Você só muda seu resultado financeiro quando tem clareza do <b class="hl-white">próximo passo</b>. Aqui você conquista isso.</p>
       <span class="demo-voz">→ Sustenta Pedras 4-5</span>
     </div>
 
     <div class="demo-card">
-      <div class="demo-n">06</div>
+      <img class="demo-pedra-img" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
       <div class="demo-pedra">Pedra 5 · Networking</div>
       <h4>Conexões que multiplicam</h4>
       <p>Técnicas validadas pra marcar cafés com pessoas que <b class="hl-white">multiplicam você</b> — sem ser o cara que pede tudo.</p>
@@ -529,7 +554,10 @@ body::after {
     <div class="demo-card demo-card-final">
       <div class="demo-content">
         <div class="left">
-          <div class="demo-n">07</div>
+          <div class="demo-pedra-img-pair">
+            <img class="demo-pedra-img" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
+            <img class="demo-pedra-img" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
+          </div>
           <div class="demo-pedra">Pedras 6 + 7 · Autoralidade + Poder</div>
         </div>
         <div class="right">
@@ -546,7 +574,7 @@ body::after {
   <div class="demo-closing">
     <span class="icon">▶</span>
     <p>
-      Toda aula termina com <b class="hl-cobalt">AÇÃO PRÁTICA · PDF do dia</b>.<br>
+      Toda aula termina com uma <b class="hl-cobalt">Ação a ser Executada</b>.<br>
       Você não sai sabendo. <b class="hl-magenta">Você sai tendo feito.</b>
     </p>
   </div>
@@ -564,21 +592,21 @@ body::after {
 <!-- TICKER -->
 <div class="rocha-rail">
   <div class="rocha-track">
-    <span>7 frentes · 51 aulas · 1 PDF por aula</span>
+    <span>7 frentes · 51 aulas · 7 dons destravados</span>
+    <span>5 ferramentas práticas · 1 certificação MINDCREATOR</span>
     <span>Real. Sem firula. Sem promessa de mágica</span>
     <span>Você não sai sabendo. Você sai tendo feito</span>
-    <span>DISC · MAAC · Mapa 05h-23h45 · 21 dias hábito</span>
-    <span>Branding · arquétipo · networking · MINDCREATOR Nível 1</span>
-    <span>Toda aula termina com AÇÃO PRÁTICA</span>
-    <span>Método &gt; motivação. Hábito &gt; promessa</span>
+    <span>Assessment Arquétipos · MAAC · Tracker 21 dias</span>
+    <span>Metas SMART · Mapa Produtividade 05h-23h45</span>
+    <span>Toda aula termina com uma Ação a ser Executada</span>
     <span>O que você faz é o que você vira</span>
-    <span>7 frentes · 51 aulas · 1 PDF por aula</span>
+    <span>7 frentes · 51 aulas · 7 dons destravados</span>
+    <span>5 ferramentas práticas · 1 certificação MINDCREATOR</span>
     <span>Real. Sem firula. Sem promessa de mágica</span>
     <span>Você não sai sabendo. Você sai tendo feito</span>
-    <span>DISC · MAAC · Mapa 05h-23h45 · 21 dias hábito</span>
-    <span>Branding · arquétipo · networking · MINDCREATOR Nível 1</span>
-    <span>Toda aula termina com AÇÃO PRÁTICA</span>
-    <span>Método &gt; motivação. Hábito &gt; promessa</span>
+    <span>Assessment Arquétipos · MAAC · Tracker 21 dias</span>
+    <span>Metas SMART · Mapa Produtividade 05h-23h45</span>
+    <span>Toda aula termina com uma Ação a ser Executada</span>
     <span>O que você faz é o que você vira</span>
   </div>
 </div>
