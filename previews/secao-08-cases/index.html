@@ -237,6 +237,15 @@ body::after {
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 999px;
 }
+.video-thumb .thumb-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: linear-gradient(135deg, var(--ambar), var(--ambar-bright));
+  color: #0b0b0b;
+  font-family: var(--display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 4px;
+  box-shadow: 0 4px 18px rgba(255,214,0,0.35);
+}
 .video-meta {
   padding: clamp(18px, 2vw, 26px);
   display: flex; flex-direction: column; gap: 8px;
@@ -471,30 +480,54 @@ body::after {
   color: var(--silver);
 }
 
-/* ---- BLOCO 4 · STATS AGREGADOS ---- */
+/* ---- BLOCO 3 · CREDENCIAIS DE AUTORIDADE ---- */
 .cases-stats {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: clamp(14px, 1.6vw, 26px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 28px);
   max-width: 1280px; margin: 0 auto clamp(60px, 6vw, 90px);
-  padding: clamp(28px, 3vw, 44px) clamp(20px, 2vw, 32px);
+  padding: clamp(32px, 3.5vw, 56px) clamp(24px, 2.5vw, 40px);
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
 }
-.cases-stats .stat { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.cases-stats .stat {
+  text-align: center;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: clamp(14px, 1.4vw, 22px) 8px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.cases-stats .stat:nth-child(3n) { border-right: none; }
+@media (max-width: 1100px) {
+  .cases-stats .stat:nth-child(3n) { border-right: 1px solid rgba(255,255,255,0.06); }
+  .cases-stats .stat:nth-child(2n) { border-right: none; }
+}
 .cases-stats .stat b {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(28px, 3.2vw, 48px);
-  letter-spacing: -0.02em; color: var(--white);
-  line-height: 1;
+  font-size: clamp(22px, 2.4vw, 36px);
+  letter-spacing: -0.015em; color: var(--white);
+  line-height: 1.05;
 }
-.cases-stats .stat:nth-child(odd) b { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.35); }
-.cases-stats .stat:nth-child(5) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
+.cases-stats .stat:nth-child(1) b,
+.cases-stats .stat:nth-child(5) b,
+.cases-stats .stat:nth-child(6) b {
+  color: var(--esmeralda-bright);
+  text-shadow: 0 0 14px rgba(45,214,111,0.35);
+}
+.cases-stats .stat:nth-child(2) b,
+.cases-stats .stat:nth-child(3) b {
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+.cases-stats .stat:nth-child(4) b {
+  color: var(--ambar);
+  text-shadow: 0 0 14px rgba(255,214,0,0.4);
+}
 .cases-stats .stat span {
   font-family: var(--display); font-size: clamp(10px, 0.85vw, 12px);
-  letter-spacing: 0.28em; text-transform: uppercase;
+  letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--silver);
+  line-height: 1.4;
 }
 
 /* ---- MEGATYPE FINAL ---- */
@@ -624,7 +657,7 @@ body::after {
   <div class="halo halo-magenta" style="bottom:8%; left:8%; width:380px; height:380px; opacity:0.13;"></div>
 
   <div style="text-align:center;">
-    <span class="cases-kicker">PROVA MATERIAL · 9 CASES + 1 ENDOSSO</span>
+    <span class="cases-kicker">PROVA MATERIAL · 1 ENDOSSO + 3 VÍDEOS + 6 DEPOIMENTOS</span>
   </div>
 
   <h1 class="cases-title-mega">
@@ -632,8 +665,8 @@ body::after {
   </h1>
 
   <h2 class="cases-h2">
-    Não é teoria. É <b class="hl-esmeralda">nome, rosto, número</b>.<br>
-    9 alunos, 1 endosso institucional e <b>3 vídeos prioritários</b>.
+    Não é teoria. É <b class="hl-esmeralda">nome, rosto, voz</b>.<br>
+    1 endosso institucional, 3 vídeos prioritários e <b>6 depoimentos</b>.
   </h2>
 
   <p class="cases-sub">
@@ -645,6 +678,24 @@ body::after {
   </div>
 
   <!-- ============================================
+       TOPO · ENDOSSO INSTITUCIONAL EMERSON
+       ============================================ -->
+  <div class="endorse-block">
+    <div class="endorse-photo">
+      <img src="../../assets/cases/endorse-emerson.svg" alt="Emerson Ventura · ex-presidente Luci Luci">
+    </div>
+    <div class="endorse-content">
+      <span class="endorse-tag">🏛️ Endosso Institucional · Abertura</span>
+      <h4>Emerson Ventura</h4>
+      <div class="endorse-role">Ex-presidente da Luci Luci · empresa onde Augustto foi CMO</div>
+      <p class="endorse-quote placeholder">
+        "{frase de endosso · 1-2 linhas validando o profissional Augustto · em coleta de autorização escrita}"
+      </p>
+      <span class="endorse-note">Selo de validação institucional · imagem liberada 15/05/2026</span>
+    </div>
+  </div>
+
+  <!-- ============================================
        BLOCO 1 · 3 VÍDEO-TESTIMONIALS PRIORITÁRIOS
        ============================================ -->
   <p class="videos-row-header"><span class="star">⭐</span> 3 VÍDEOS PRIORITÁRIOS · ACIMA DA DOBRA <span class="star">⭐</span></p>
@@ -652,95 +703,51 @@ body::after {
   <div class="videos-row">
     <div class="video-card tier-s">
       <div class="video-thumb">
-        <img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses · vídeo testimonial">
-        <span class="play">▶</span>
-        <span class="duration">90s</span>
-      </div>
-      <div class="video-meta">
-        <span class="vt-tag">⭐ Tier S · Prioridade Máxima</span>
-        <h4>Tony Burses</h4>
-        <p>Aluno coaching 2020 → maior infoprodutor BR · Porsche · 6 anos depois.</p>
-      </div>
-    </div>
-
-    <div class="video-card tier-s">
-      <div class="video-thumb">
-        <img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry · vídeo testimonial">
+        <img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry · vídeo antes e depois">
         <span class="play">▶</span>
         <span class="duration">60s</span>
+        <span class="thumb-badge">ANTES & DEPOIS</span>
       </div>
       <div class="video-meta">
-        <span class="vt-tag">⭐ Tier S</span>
+        <span class="vt-tag">⭐ Tier S · Antes & Depois</span>
         <h4>Kauê Petry</h4>
         <p>iPhone usado → 1º milhão antes dos 30 · 3 negócios.</p>
       </div>
     </div>
 
-    <div class="video-card tier-a">
+    <div class="video-card tier-s">
       <div class="video-thumb">
-        <img src="../../assets/cases/case-05-luis-felipe.svg" alt="Luis Felipe · vídeo testimonial">
+        <img src="../../assets/cases/case-02-bruno.svg" alt="Bruno Criativo · depoimento">
         <span class="play">▶</span>
         <span class="duration">60s</span>
       </div>
       <div class="video-meta">
-        <span class="vt-tag">Tier A · Tangível</span>
-        <h4>Luis Felipe</h4>
-        <p>1 sessão de coaching → posto de gasolina · 5 anos.</p>
+        <span class="vt-tag">⭐ Tier S · Depoimento</span>
+        <h4>Bruno Criativo</h4>
+        <p>Abordagem genérica → agência reposicionada · 4× receita sem mexer no produto.</p>
+      </div>
+    </div>
+
+    <div class="video-card tier-s">
+      <div class="video-thumb">
+        <img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses · depoimento">
+        <span class="play">▶</span>
+        <span class="duration">90s</span>
+      </div>
+      <div class="video-meta">
+        <span class="vt-tag">⭐ Tier S · Depoimento</span>
+        <h4>Tony Burses</h4>
+        <p>Aluno coaching 2020 → maior infoprodutor BR · Porsche · 6 anos depois.</p>
       </div>
     </div>
   </div>
 
   <!-- ============================================
-       BLOCO 2 · GRID 3x3 DOS 9 CASES
+       BLOCO 2 · GRID 6 DEPOIMENTOS
        ============================================ -->
-  <p class="cases-grid-header">9 CASES MAPEADOS · ANTES → DEPOIS</p>
+  <p class="cases-grid-header">+ 6 DEPOIMENTOS · ANTES → DEPOIS</p>
 
   <div class="cases-grid">
-
-    <article class="case-card tier-s">
-      <div class="case-img"><img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry"></div>
-      <div class="case-body">
-        <span class="case-tier">Tier S · Case Premium</span>
-        <h5>Kauê Petry <small>@kauepetry_</small></h5>
-        <div class="case-numbers">
-          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>vendia iPhone usado</em></div>
-          <span class="arrow">→</span>
-          <div><span>Depois</span><b>1º MILHÃO</b><em>antes dos 30 · 3 negócios</em></div>
-        </div>
-        <p class="case-frase">"O que mudou não foi a estratégia — foi o cara que entrava na sala vender."</p>
-        <span class="case-time">⏱ <span class="pendente">{N} meses</span> · vídeo 60s ✓</span>
-      </div>
-    </article>
-
-    <article class="case-card tier-a">
-      <div class="case-img"><img src="../../assets/cases/case-02-bruno.svg" alt="Bruno Criativo"></div>
-      <div class="case-body">
-        <span class="case-tier">Tier A · Case Forte</span>
-        <h5>Bruno Criativo <small>@criativobruno</small></h5>
-        <div class="case-numbers">
-          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>abordagem genérica</em></div>
-          <span class="arrow">→</span>
-          <div><span>Depois</span><b class="placeholder">R$ {Y}/mês</b><em>agência reposicionada</em></div>
-        </div>
-        <p class="case-frase">"Mudou a abordagem profissional e pessoal — sem mexer no produto."</p>
-        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
-      </div>
-    </article>
-
-    <article class="case-card tier-s spotlight">
-      <div class="case-img"><img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses"></div>
-      <div class="case-body">
-        <span class="case-tier">⭐ Tier S · Case Premium</span>
-        <h5>Tony Burses <small>aluno coaching · 2020</small></h5>
-        <div class="case-numbers">
-          <div><span>Antes (2020)</span><b>aluno coaching</b><em class="placeholder-em">R$ {X}/mês</em></div>
-          <span class="arrow">→</span>
-          <div><span>Hoje (2026)</span><b>Porsche</b><em>maior infoprodutor BR</em></div>
-        </div>
-        <p class="case-frase">"6 anos depois — o método continua dentro de cada decisão."</p>
-        <span class="case-time">⏱ 6 anos · vídeo 90s ✓</span>
-      </div>
-    </article>
 
     <article class="case-card tier-b">
       <div class="case-img"><img src="../../assets/cases/case-04-aline-joel.svg" alt="Aline e Joel Daleprane"></div>
@@ -820,32 +827,17 @@ body::after {
   </div>
 
   <!-- ============================================
-       BLOCO 3 · ENDOSSO INSTITUCIONAL
+       BLOCO 3 · CREDENCIAIS DE AUTORIDADE
        ============================================ -->
-  <div class="endorse-block">
-    <div class="endorse-photo">
-      <img src="../../assets/cases/endorse-emerson.svg" alt="Emerson Ventura · ex-presidente Luci Luci">
-    </div>
-    <div class="endorse-content">
-      <span class="endorse-tag">🏛️ Endosso Institucional</span>
-      <h4>Emerson Ventura</h4>
-      <div class="endorse-role">Ex-presidente da Luci Luci · empresa onde Augustto foi CMO</div>
-      <p class="endorse-quote placeholder">
-        "{frase de endosso · 1-2 linhas validando o profissional Augustto · em coleta de autorização escrita}"
-      </p>
-      <span class="endorse-note">Selo de validação institucional · imagem liberada 15/05/2026</span>
-    </div>
-  </div>
+  <p class="cases-grid-header">CREDENCIAIS · POR QUE OUVIR O AUGUSTTO</p>
 
-  <!-- ============================================
-       BLOCO 4 · STATS AGREGADOS
-       ============================================ -->
   <div class="cases-stats">
-    <div class="stat"><b>9</b><span>cases mapeados</span></div>
-    <div class="stat"><b>3</b><span>vídeos prioritários</span></div>
-    <div class="stat"><b>+100k</b><span>pessoas treinadas</span></div>
+    <div class="stat"><b>Practitioner</b><span>em PNL</span></div>
+    <div class="stat"><b>+100k</b><span>cérebros treinados</span></div>
     <div class="stat"><b>+R$100M</b><span>movimentados</span></div>
     <div class="stat"><b>Tony Robbins</b><span>aluno presencial · 2019</span></div>
+    <div class="stat"><b>CMO</b><span>&amp; Personal Branding</span></div>
+    <div class="stat"><b>Mestre</b><span>de Comunicação &amp; Presença</span></div>
   </div>
 
   <!-- ============================================
@@ -863,21 +855,23 @@ body::after {
 <!-- TICKER -->
 <div class="rocha-rail">
   <div class="rocha-track">
-    <span>Nome · Rosto · Número</span>
-    <span>Não é teoria. É prova material</span>
-    <span>9 alunos · 1 endosso institucional</span>
-    <span>+100 mil pessoas treinadas</span>
+    <span>Nome · Rosto · Voz</span>
+    <span>1 endosso institucional · 3 vídeos · 6 depoimentos</span>
+    <span>Practitioner em PNL</span>
+    <span>+100 mil cérebros treinados</span>
     <span>+R$100 milhões movimentados</span>
     <span>Aluno presencial de Tony Robbins · 2019</span>
-    <span>Especificidade é o antídoto contra ceticismo</span>
+    <span>CMO &amp; Personal Branding</span>
+    <span>Mestre de Comunicação &amp; Presença</span>
     <span>Eles ativaram. Sua vez é agora</span>
-    <span>Nome · Rosto · Número</span>
-    <span>Não é teoria. É prova material</span>
-    <span>9 alunos · 1 endosso institucional</span>
-    <span>+100 mil pessoas treinadas</span>
+    <span>Nome · Rosto · Voz</span>
+    <span>1 endosso institucional · 3 vídeos · 6 depoimentos</span>
+    <span>Practitioner em PNL</span>
+    <span>+100 mil cérebros treinados</span>
     <span>+R$100 milhões movimentados</span>
     <span>Aluno presencial de Tony Robbins · 2019</span>
-    <span>Especificidade é o antídoto contra ceticismo</span>
+    <span>CMO &amp; Personal Branding</span>
+    <span>Mestre de Comunicação &amp; Presença</span>
     <span>Eles ativaram. Sua vez é agora</span>
   </div>
 </div>
