@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 08 · CASES + PROVAS v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --citrino: #FFA500;
+  --quartzo: #FFD83A;
+  --pedra-esmeralda: #1FB95E;
+  --safira: #2A4FFF;
+  --ametista: #7B2FBE;
+  --pedra-rubi: #E81F26;
+  --diamante: #E0E0E0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-ambar { background: var(--ambar); }
+.halo-cobalt { background: var(--cobalt); }
+.halo-esmeralda { background: var(--esmeralda); }
+.halo-rubi { background: var(--rubi); }
+.halo-ametista { background: var(--ametista); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--magenta), var(--magenta-bright)); color: var(--white); box-shadow: 0 0 24px rgba(132,21,188,0.4); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(132,21,188,0.6); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 08 · CASES + PROVAS · v3.4
+   ============================================================ */
+.section-cases {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1820px, 92vw); margin: 0 auto;
+}
+
+.cases-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--esmeralda-bright);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center;
+  width: 100%;
+}
+.cases-kicker::before, .cases-kicker::after {
+  content: ""; height: 1px; width: clamp(30px, 3vw, 60px);
+  background: var(--esmeralda); opacity: 0.4;
+}
+
+.cases-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(48px, 7.5vw, 120px);
+  line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: clamp(28px, 3vw, 44px);
+  text-wrap: balance;
+}
+.cases-title-mega .accent {
+  color: var(--esmeralda-bright);
+  text-shadow:
+    0 0 30px rgba(45,214,111,0.5),
+    0 0 70px rgba(45,214,111,0.3);
+}
+
+.cases-h2 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 34px);
+  line-height: 1.3; letter-spacing: -0.01em;
+  color: var(--white);
+  text-align: center;
+  max-width: 1080px; margin: 0 auto clamp(20px, 2vw, 32px);
+  text-wrap: balance;
+}
+.cases-h2 b { font-weight: 700; }
+.cases-h2 .hl-esmeralda { color: var(--esmeralda-bright); text-shadow: 0 0 16px rgba(45,214,111,0.45); }
+.cases-h2 .hl-rubi { color: var(--rubi-bright); }
+
+.cases-sub {
+  font-family: var(--body); font-weight: 300;
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.6; color: var(--gray-body);
+  text-align: center;
+  max-width: 920px; margin: 0 auto clamp(28px, 3vw, 48px);
+  text-wrap: balance;
+}
+.cases-sub b { color: var(--white); }
+
+/* Aviso de coleta */
+.coleta-warn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--display); font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ambar);
+  background: rgba(255,214,0,0.06);
+  border: 1px solid rgba(255,214,0,0.3);
+  padding: 10px 18px; border-radius: 999px;
+  margin: 0 auto clamp(56px, 6vw, 88px);
+  text-align: center;
+}
+.coleta-warn::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ambar); animation: pulse 1.6s ease-in-out infinite;
+}
+.coleta-wrap { text-align: center; }
+
+/* ---- BLOCO 1 · 3 VÍDEO-TESTIMONIALS PRIORITÁRIOS ---- */
+.videos-row-header {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 13px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--silver);
+  text-align: center;
+  margin-bottom: clamp(20px, 2vw, 32px);
+}
+.videos-row-header .star { color: var(--ambar); }
+
+.videos-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2vw, 32px);
+  max-width: 1480px; margin: 0 auto clamp(70px, 7vw, 110px);
+}
+.video-card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(45,214,111,0.35);
+  box-shadow: 0 14px 60px rgba(45,214,111,0.15);
+}
+.video-card.tier-s {
+  border-color: rgba(255,214,0,0.4);
+  box-shadow: 0 0 28px rgba(255,214,0,0.08);
+}
+.video-card.tier-s:hover {
+  border-color: rgba(255,214,0,0.7);
+  box-shadow: 0 14px 60px rgba(255,214,0,0.22);
+}
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(45,214,111,0.06), rgba(132,21,188,0.06));
+}
+.video-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.95;
+  transition: transform .6s ease, opacity .4s;
+}
+.video-card:hover .video-thumb img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+.video-thumb .play {
+  position: absolute; inset: 0; margin: auto;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(11,11,11,0.78);
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-size: 22px; line-height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  transition: transform .25s, background .25s;
+}
+.video-card:hover .play { transform: scale(1.12); background: var(--esmeralda); }
+.video-thumb .duration {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(11,11,11,0.85);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--white);
+  font-family: var(--display); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.video-meta {
+  padding: clamp(18px, 2vw, 26px);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.video-meta .vt-tag {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(9px, 0.8vw, 11px);
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ambar);
+}
+.video-card.tier-a .video-meta .vt-tag { color: var(--esmeralda-bright); }
+.video-meta h4 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.video-meta p {
+  font-size: clamp(13px, 1vw, 15px);
+  color: var(--gray-body);
+  line-height: 1.55;
+}
+
+/* ---- BLOCO 2 · GRID 3x3 DOS 9 CASES ---- */
+.cases-grid-header {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 13px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--silver);
+  text-align: center;
+  margin-bottom: clamp(20px, 2vw, 32px);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2vw, 28px);
+  max-width: 1480px; margin: 0 auto clamp(70px, 7vw, 110px);
+}
+.case-card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(45,214,111,0.35);
+  box-shadow: 0 12px 50px rgba(45,214,111,0.12);
+}
+.case-card.tier-s {
+  border-color: rgba(255,214,0,0.35);
+}
+.case-card.tier-s:hover {
+  border-color: rgba(255,214,0,0.7);
+  box-shadow: 0 12px 50px rgba(255,214,0,0.18);
+}
+.case-card.spotlight::after {
+  content: "✦"; position: absolute; top: 12px; right: 14px;
+  color: var(--ambar); font-size: 16px;
+  text-shadow: 0 0 12px var(--ambar);
+}
+
+.case-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(45,214,111,0.04), rgba(132,21,188,0.05));
+}
+.case-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.92;
+  transition: transform .55s ease, opacity .35s;
+}
+.case-card:hover .case-img img { transform: scale(1.03); opacity: 1; }
+
+.case-body {
+  padding: clamp(18px, 1.9vw, 26px);
+  display: flex; flex-direction: column; gap: 12px;
+  flex: 1;
+}
+.case-tier {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--esmeralda-bright);
+}
+.case-card.tier-s .case-tier { color: var(--ambar); }
+.case-card.tier-b .case-tier { color: var(--silver); }
+.case-body h5 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(19px, 1.5vw, 24px);
+  letter-spacing: -0.01em;
+  color: var(--white);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
+}
+.case-body h5 small {
+  font-size: 60%; font-weight: 400; color: var(--silver);
+  letter-spacing: 0.04em;
+}
+
+.case-numbers {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(8px, 1vw, 14px);
+  align-items: center;
+  padding: clamp(12px, 1.2vw, 16px);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+.case-numbers > div:not(.arrow) { display: flex; flex-direction: column; gap: 2px; }
+.case-numbers span {
+  font-family: var(--display); font-size: 9px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--silver);
+}
+.case-numbers b {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.15vw, 17px);
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.case-numbers em {
+  font-size: 11px; font-style: normal; color: var(--gray-body);
+  line-height: 1.35;
+}
+.case-numbers .arrow {
+  color: var(--esmeralda-bright);
+  font-size: 22px; font-weight: 700;
+  text-shadow: 0 0 10px rgba(45,214,111,0.45);
+}
+/* Placeholder visual nas células {X}/{N}/{Y} */
+.case-numbers b.placeholder {
+  color: var(--ambar);
+  background: rgba(255,214,0,0.08);
+  border: 1px dashed rgba(255,214,0,0.4);
+  padding: 2px 8px; border-radius: 6px;
+  font-size: 12px; letter-spacing: 0.06em;
+}
+
+.case-frase {
+  font-family: var(--display); font-weight: 500; font-style: italic;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.45; color: var(--white);
+  letter-spacing: -0.005em;
+  padding-left: 14px;
+  border-left: 2px solid var(--esmeralda);
+  text-wrap: balance;
+}
+.case-card.tier-s .case-frase { border-left-color: var(--ambar); }
+
+.case-time {
+  font-family: var(--display); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gray-body);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: auto;
+}
+.case-time .pendente {
+  color: var(--ambar);
+  font-weight: 700;
+}
+
+/* ---- BLOCO 3 · ENDOSSO INSTITUCIONAL ---- */
+.endorse-block {
+  display: grid;
+  grid-template-columns: clamp(140px, 14vw, 200px) 1fr;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+  max-width: 1080px; margin: 0 auto clamp(60px, 6vw, 100px);
+  padding: clamp(28px, 3vw, 44px);
+  background: linear-gradient(135deg, rgba(132,21,188,0.06), rgba(56,24,232,0.04));
+  border: 1px solid rgba(132,21,188,0.3);
+  border-radius: 16px;
+  position: relative; overflow: hidden;
+}
+.endorse-block::before {
+  content: ""; position: absolute; top: -40%; right: -10%;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, var(--magenta) 0%, transparent 65%);
+  opacity: 0.18; pointer-events: none; filter: blur(60px);
+}
+.endorse-photo {
+  position: relative; z-index: 1;
+  aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 40px rgba(132,21,188,0.25);
+}
+.endorse-photo img { width: 100%; height: 100%; object-fit: cover; }
+.endorse-content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+.endorse-tag {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--magenta-bright);
+}
+.endorse-content h4 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(24px, 2.2vw, 34px);
+  letter-spacing: -0.015em;
+  color: var(--white);
+}
+.endorse-role {
+  font-family: var(--display); font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gray-body);
+}
+.endorse-quote {
+  font-family: var(--display); font-weight: 500; font-style: italic;
+  font-size: clamp(16px, 1.4vw, 22px);
+  line-height: 1.45; color: var(--white);
+  padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-wrap: balance;
+}
+.endorse-quote.placeholder {
+  color: var(--ambar);
+  background: rgba(255,214,0,0.05);
+  border-color: rgba(255,214,0,0.25);
+  padding: 14px 18px; border-radius: 8px;
+  border-top: 1px dashed rgba(255,214,0,0.4);
+  border-bottom: 1px dashed rgba(255,214,0,0.4);
+}
+.endorse-note {
+  font-family: var(--display); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--silver);
+}
+
+/* ---- BLOCO 4 · STATS AGREGADOS ---- */
+.cases-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(14px, 1.6vw, 26px);
+  max-width: 1280px; margin: 0 auto clamp(60px, 6vw, 90px);
+  padding: clamp(28px, 3vw, 44px) clamp(20px, 2vw, 32px);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+}
+.cases-stats .stat { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.cases-stats .stat b {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 48px);
+  letter-spacing: -0.02em; color: var(--white);
+  line-height: 1;
+}
+.cases-stats .stat:nth-child(odd) b { color: var(--esmeralda-bright); text-shadow: 0 0 14px rgba(45,214,111,0.35); }
+.cases-stats .stat:nth-child(5) b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.4); }
+.cases-stats .stat span {
+  font-family: var(--display); font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--silver);
+}
+
+/* ---- MEGATYPE FINAL ---- */
+.cases-megatype {
+  margin-top: clamp(40px, 5vw, 80px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.cases-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(45,214,111,0.06) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.cases-megatype .line {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(34px, 5.5vw, 88px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.cases-megatype .line .hl-esmeralda {
+  color: var(--esmeralda-bright);
+  text-shadow:
+    0 0 30px rgba(45,214,111,0.6),
+    0 0 70px rgba(45,214,111,0.4);
+}
+.cases-megatype .sub {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(15px, 1.4vw, 20px);
+  color: var(--silver);
+  margin-top: clamp(18px, 2vw, 28px);
+  text-wrap: balance;
+}
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--esmeralda-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .videos-row { grid-template-columns: repeat(2, 1fr); }
+  .video-card:last-child { grid-column: 1 / -1; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .cases-stats { grid-template-columns: repeat(3, 1fr); }
+  .endorse-block { grid-template-columns: 1fr; text-align: center; }
+  .endorse-photo { max-width: 180px; margin: 0 auto; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-cases { padding: 175px 14px 70px; }
+  .videos-row { grid-template-columns: 1fr; }
+  .video-card:last-child { grid-column: auto; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-stats { grid-template-columns: repeat(2, 1fr); }
+  .cases-megatype .line { font-size: 28px; }
+  .case-numbers { grid-template-columns: 1fr; gap: 6px; }
+  .case-numbers .arrow { transform: rotate(90deg); }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(45,214,111,0.95); color: #000;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 08 · CASES + PROVAS v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">QUERO ATIVAR →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 08 CASES -->
+<section class="section-cases" id="cases">
+  <div class="halo halo-esmeralda" style="top:6%; left:-8%; width:500px; height:500px; opacity:0.16;"></div>
+  <div class="halo halo-ambar" style="top:38%; right:-8%; width:420px; height:420px; opacity:0.12;"></div>
+  <div class="halo halo-magenta" style="bottom:8%; left:8%; width:380px; height:380px; opacity:0.13;"></div>
+
+  <div style="text-align:center;">
+    <span class="cases-kicker">PROVA MATERIAL · 9 CASES + 1 ENDOSSO</span>
+  </div>
+
+  <h1 class="cases-title-mega">
+    ELES JÁ <span class="accent">ATIVARAM.</span>
+  </h1>
+
+  <h2 class="cases-h2">
+    Não é teoria. É <b class="hl-esmeralda">nome, rosto, número</b>.<br>
+    9 alunos, 1 endosso institucional e <b>3 vídeos prioritários</b>.
+  </h2>
+
+  <p class="cases-sub">
+    Cada card tem <b>foto, transformação e frase em 1ª pessoa</b>. Onde está marcado em amarelo, é dado <b>em coleta</b> — substituído pelo número auditado em até 7 dias.
+  </p>
+
+  <div class="coleta-wrap">
+    <span class="coleta-warn">DADOS EM COLETA · ATUALIZAÇÃO ATÉ 24/05/2026</span>
+  </div>
+
+  <!-- ============================================
+       BLOCO 1 · 3 VÍDEO-TESTIMONIALS PRIORITÁRIOS
+       ============================================ -->
+  <p class="videos-row-header"><span class="star">⭐</span> 3 VÍDEOS PRIORITÁRIOS · ACIMA DA DOBRA <span class="star">⭐</span></p>
+
+  <div class="videos-row">
+    <div class="video-card tier-s">
+      <div class="video-thumb">
+        <img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses · vídeo testimonial">
+        <span class="play">▶</span>
+        <span class="duration">90s</span>
+      </div>
+      <div class="video-meta">
+        <span class="vt-tag">⭐ Tier S · Prioridade Máxima</span>
+        <h4>Tony Burses</h4>
+        <p>Aluno coaching 2020 → maior infoprodutor BR · Porsche · 6 anos depois.</p>
+      </div>
+    </div>
+
+    <div class="video-card tier-s">
+      <div class="video-thumb">
+        <img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry · vídeo testimonial">
+        <span class="play">▶</span>
+        <span class="duration">60s</span>
+      </div>
+      <div class="video-meta">
+        <span class="vt-tag">⭐ Tier S</span>
+        <h4>Kauê Petry</h4>
+        <p>iPhone usado → 1º milhão antes dos 30 · 3 negócios.</p>
+      </div>
+    </div>
+
+    <div class="video-card tier-a">
+      <div class="video-thumb">
+        <img src="../../assets/cases/case-05-luis-felipe.svg" alt="Luis Felipe · vídeo testimonial">
+        <span class="play">▶</span>
+        <span class="duration">60s</span>
+      </div>
+      <div class="video-meta">
+        <span class="vt-tag">Tier A · Tangível</span>
+        <h4>Luis Felipe</h4>
+        <p>1 sessão de coaching → posto de gasolina · 5 anos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       BLOCO 2 · GRID 3x3 DOS 9 CASES
+       ============================================ -->
+  <p class="cases-grid-header">9 CASES MAPEADOS · ANTES → DEPOIS</p>
+
+  <div class="cases-grid">
+
+    <article class="case-card tier-s">
+      <div class="case-img"><img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier S · Case Premium</span>
+        <h5>Kauê Petry <small>@kauepetry_</small></h5>
+        <div class="case-numbers">
+          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>vendia iPhone usado</em></div>
+          <span class="arrow">→</span>
+          <div><span>Depois</span><b>1º MILHÃO</b><em>antes dos 30 · 3 negócios</em></div>
+        </div>
+        <p class="case-frase">"O que mudou não foi a estratégia — foi o cara que entrava na sala vender."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span> · vídeo 60s ✓</span>
+      </div>
+    </article>
+
+    <article class="case-card tier-a">
+      <div class="case-img"><img src="../../assets/cases/case-02-bruno.svg" alt="Bruno Criativo"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier A · Case Forte</span>
+        <h5>Bruno Criativo <small>@criativobruno</small></h5>
+        <div class="case-numbers">
+          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>abordagem genérica</em></div>
+          <span class="arrow">→</span>
+          <div><span>Depois</span><b class="placeholder">R$ {Y}/mês</b><em>agência reposicionada</em></div>
+        </div>
+        <p class="case-frase">"Mudou a abordagem profissional e pessoal — sem mexer no produto."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+    <article class="case-card tier-s spotlight">
+      <div class="case-img"><img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses"></div>
+      <div class="case-body">
+        <span class="case-tier">⭐ Tier S · Case Premium</span>
+        <h5>Tony Burses <small>aluno coaching · 2020</small></h5>
+        <div class="case-numbers">
+          <div><span>Antes (2020)</span><b>aluno coaching</b><em class="placeholder-em">R$ {X}/mês</em></div>
+          <span class="arrow">→</span>
+          <div><span>Hoje (2026)</span><b>Porsche</b><em>maior infoprodutor BR</em></div>
+        </div>
+        <p class="case-frase">"6 anos depois — o método continua dentro de cada decisão."</p>
+        <span class="case-time">⏱ 6 anos · vídeo 90s ✓</span>
+      </div>
+    </article>
+
+    <article class="case-card tier-b">
+      <div class="case-img"><img src="../../assets/cases/case-04-aline-joel.svg" alt="Aline e Joel Daleprane"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier B · Case Duplo</span>
+        <h5>Aline e Joel Daleprane</h5>
+        <div class="case-numbers">
+          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>casal empreendedor</em></div>
+          <span class="arrow">→</span>
+          <div><span>Depois</span><b class="placeholder">R$ {Y}/mês</b><em>operação conjunta</em></div>
+        </div>
+        <p class="case-frase">"O método travou pra nós dois ao mesmo tempo."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+    <article class="case-card tier-a spotlight">
+      <div class="case-img"><img src="../../assets/cases/case-05-luis-felipe.svg" alt="Luis Felipe"></div>
+      <div class="case-body">
+        <span class="case-tier">⭐ Tier A · Case Tangível</span>
+        <h5>Luis Felipe <small>sessão pós-formação · 2020</small></h5>
+        <div class="case-numbers">
+          <div><span>Antes (2020)</span><b>1 sessão</b><em class="placeholder-em">R$ {X}/mês</em></div>
+          <span class="arrow">→</span>
+          <div><span>Hoje</span><b>POSTO DE GASOLINA</b><em>ativo físico tangível</em></div>
+        </div>
+        <p class="case-frase">"Uma sessão de coaching virou um posto de gasolina em 5 anos."</p>
+        <span class="case-time">⏱ 5 anos · foto NO posto · vídeo 60s ✓</span>
+      </div>
+    </article>
+
+    <article class="case-card tier-a">
+      <div class="case-img"><img src="../../assets/cases/case-06-lucas-passos.svg" alt="Lucas Passos"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier A · Case Forte</span>
+        <h5>Lucas Passos <small>@lucasp.passos</small></h5>
+        <div class="case-numbers">
+          <div><span>Antes</span><b class="placeholder">R$ {X}/mês</b><em>constrangido publicamente</em></div>
+          <span class="arrow">→</span>
+          <div><span>Depois</span><b>4× MAIS</b><em>sem mexer no produto</em></div>
+        </div>
+        <p class="case-frase">"Minha competência não importava se minha presença não sustentava."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+    <article class="case-card tier-b">
+      <div class="case-img"><img src="../../assets/cases/case-07-marcelo.svg" alt="Marcelo Brick"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier B · Volume</span>
+        <h5>Marcelo Brick <small>@marcelobrick</small></h5>
+        <p class="case-frase">"Vi meu verdadeiro potencial — e usei habilidades que eu já tinha."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+    <article class="case-card tier-b">
+      <div class="case-img"><img src="../../assets/cases/case-08-nata.svg" alt="Natã Kesller"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier B · Volume</span>
+        <h5>Natã Kesller <small>@nkesller</small></h5>
+        <p class="case-frase">"Posicionamento no mercado + qualidade de vida. Os dois juntos pela primeira vez."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+    <article class="case-card tier-b">
+      <div class="case-img"><img src="../../assets/cases/case-09-andre.svg" alt="André Antunes"></div>
+      <div class="case-body">
+        <span class="case-tier">Tier B · Volume</span>
+        <h5>André Antunes <small>@andrefeb3</small></h5>
+        <p class="case-frase">"Encontrei o verdadeiro eu — e o potencial que tava em modo silencioso."</p>
+        <span class="case-time">⏱ <span class="pendente">{N} meses</span></span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ============================================
+       BLOCO 3 · ENDOSSO INSTITUCIONAL
+       ============================================ -->
+  <div class="endorse-block">
+    <div class="endorse-photo">
+      <img src="../../assets/cases/endorse-emerson.svg" alt="Emerson Ventura · ex-presidente Luci Luci">
+    </div>
+    <div class="endorse-content">
+      <span class="endorse-tag">🏛️ Endosso Institucional</span>
+      <h4>Emerson Ventura</h4>
+      <div class="endorse-role">Ex-presidente da Luci Luci · empresa onde Augustto foi CMO</div>
+      <p class="endorse-quote placeholder">
+        "{frase de endosso · 1-2 linhas validando o profissional Augustto · em coleta de autorização escrita}"
+      </p>
+      <span class="endorse-note">Selo de validação institucional · imagem liberada 15/05/2026</span>
+    </div>
+  </div>
+
+  <!-- ============================================
+       BLOCO 4 · STATS AGREGADOS
+       ============================================ -->
+  <div class="cases-stats">
+    <div class="stat"><b>9</b><span>cases mapeados</span></div>
+    <div class="stat"><b>3</b><span>vídeos prioritários</span></div>
+    <div class="stat"><b>+100k</b><span>pessoas treinadas</span></div>
+    <div class="stat"><b>+R$100M</b><span>movimentados</span></div>
+    <div class="stat"><b>Tony Robbins</b><span>aluno presencial · 2019</span></div>
+  </div>
+
+  <!-- ============================================
+       MEGATYPE FINAL
+       ============================================ -->
+  <div class="cases-megatype">
+    <p class="line">
+      ELES <span class="hl-esmeralda">ATIVARAM.</span><br>
+      SUA VEZ É <span class="hl-esmeralda">AGORA.</span>
+    </p>
+    <p class="sub">— a prova existe. falta o seu nome na lista.</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>Nome · Rosto · Número</span>
+    <span>Não é teoria. É prova material</span>
+    <span>9 alunos · 1 endosso institucional</span>
+    <span>+100 mil pessoas treinadas</span>
+    <span>+R$100 milhões movimentados</span>
+    <span>Aluno presencial de Tony Robbins · 2019</span>
+    <span>Especificidade é o antídoto contra ceticismo</span>
+    <span>Eles ativaram. Sua vez é agora</span>
+    <span>Nome · Rosto · Número</span>
+    <span>Não é teoria. É prova material</span>
+    <span>9 alunos · 1 endosso institucional</span>
+    <span>+100 mil pessoas treinadas</span>
+    <span>+R$100 milhões movimentados</span>
+    <span>Aluno presencial de Tony Robbins · 2019</span>
+    <span>Especificidade é o antídoto contra ceticismo</span>
+    <span>Eles ativaram. Sua vez é agora</span>
+  </div>
+</div>
+
+<!-- VAGAS counter -->
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
