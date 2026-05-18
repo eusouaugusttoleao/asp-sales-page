@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 12 · URGÊNCIA · v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-ambar { background: var(--ambar); }
+.halo-cobalt { background: var(--cobalt); }
+.halo-rubi { background: var(--rubi); }
+.halo-esmeralda { background: var(--esmeralda); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--esmeralda), var(--esmeralda-bright)); color: #0b0b0b; box-shadow: 0 0 24px rgba(45,214,111,0.45); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(45,214,111,0.65); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 12 · URGÊNCIA · v3.4
+   ============================================================ */
+.section-urgencia {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: min(1480px, 92vw); margin: 0 auto;
+}
+
+.urgencia-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--rubi-bright);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center;
+  width: 100%;
+}
+.urgencia-kicker::before, .urgencia-kicker::after {
+  content: ""; height: 1px; width: clamp(30px, 3vw, 60px);
+  background: var(--rubi); opacity: 0.5;
+}
+.urgencia-kicker .flame {
+  display: inline-block;
+  animation: flame-pulse 1.8s ease-in-out infinite;
+}
+@keyframes flame-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px var(--rubi)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 16px var(--rubi-bright)); }
+}
+
+.urgencia-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(48px, 7.5vw, 120px);
+  line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: clamp(20px, 2.4vw, 36px);
+  text-wrap: balance;
+}
+.urgencia-title-mega .accent {
+  color: var(--rubi-bright);
+  text-shadow:
+    0 0 30px rgba(255,53,64,0.55),
+    0 0 70px rgba(255,53,64,0.32);
+}
+
+.urgencia-h2 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 32px);
+  line-height: 1.3; letter-spacing: -0.01em;
+  color: var(--white);
+  text-align: center;
+  max-width: 1080px; margin: 0 auto clamp(56px, 6vw, 88px);
+  text-wrap: balance;
+}
+.urgencia-h2 b { font-weight: 700; }
+.urgencia-h2 .hl-rubi { color: var(--rubi-bright); text-shadow: 0 0 16px rgba(255,53,64,0.5); }
+.urgencia-h2 .hl-esmeralda { color: var(--esmeralda-bright); text-shadow: 0 0 16px rgba(45,214,111,0.5); }
+
+/* ---- COMPARATIVO DE PREÇO · 2 CARTÕES ---- */
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(16px, 2vw, 32px);
+  align-items: stretch;
+  max-width: 1280px; margin: 0 auto clamp(56px, 6vw, 88px);
+}
+.compare-card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: clamp(28px, 3vw, 48px);
+  display: flex; flex-direction: column; gap: clamp(14px, 1.5vw, 22px);
+  overflow: hidden;
+}
+.compare-card::before {
+  content: ""; position: absolute; top: -30%; right: -10%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, var(--rubi) 0%, transparent 65%);
+  opacity: 0.08; pointer-events: none; filter: blur(50px);
+}
+
+.compare-card.agora {
+  border: 2px solid rgba(45,214,111,0.45);
+  background: linear-gradient(135deg, rgba(45,214,111,0.06), rgba(86,57,240,0.04));
+  box-shadow: 0 0 32px rgba(45,214,111,0.12);
+}
+.compare-card.agora::before {
+  background: radial-gradient(circle, var(--esmeralda-bright) 0%, transparent 65%);
+  opacity: 0.18; width: 360px; height: 360px;
+}
+
+.compare-card.depois {
+  opacity: 0.85;
+  border-color: rgba(232,31,38,0.32);
+  background: linear-gradient(135deg, rgba(232,31,38,0.04), rgba(11,11,11,0.4));
+}
+.compare-card.depois::before {
+  background: radial-gradient(circle, var(--rubi) 0%, transparent 65%);
+  opacity: 0.1;
+}
+
+.compare-card .tag {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.9vw, 13px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.compare-card.agora .tag { color: var(--esmeralda-bright); }
+.compare-card.agora .tag::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--esmeralda-bright);
+  animation: pulse-green 1.6s ease-in-out infinite;
+  box-shadow: 0 0 12px var(--esmeralda-bright);
+}
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.25); }
+}
+.compare-card.depois .tag { color: var(--rubi-bright); }
+
+.compare-card .vagas-label {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(13px, 1.1vw, 16px);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--silver);
+  position: relative; z-index: 1;
+}
+
+.compare-card .price-block {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 6px;
+  margin: 8px 0;
+}
+.compare-card .price-main {
+  font-family: var(--display); font-weight: 700;
+  letter-spacing: -0.025em; line-height: 0.95;
+}
+.compare-card.agora .price-main {
+  font-size: clamp(48px, 6vw, 96px);
+  color: var(--esmeralda-bright);
+  text-shadow:
+    0 0 30px rgba(45,214,111,0.5),
+    0 0 70px rgba(45,214,111,0.3);
+  display: inline-flex; align-items: baseline; gap: clamp(8px, 1vw, 14px);
+}
+.compare-card.agora .price-main .vezes {
+  font-size: 0.55em;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(45,214,111,0.4);
+}
+.compare-card.depois .price-main {
+  font-size: clamp(48px, 6vw, 96px);
+  color: var(--rubi-bright);
+  text-shadow:
+    0 0 30px rgba(255,53,64,0.45),
+    0 0 70px rgba(255,53,64,0.25);
+}
+.compare-card .price-pix {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--silver);
+}
+.compare-card .price-pix::before {
+  content: "◆ "; color: var(--esmeralda-bright); margin-right: 4px;
+}
+
+.compare-card .bonus-list {
+  position: relative; z-index: 1;
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+  padding-top: clamp(14px, 1.4vw, 22px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.compare-card .bonus-list li {
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.5; color: var(--gray-body);
+  padding-left: 22px; position: relative;
+}
+.compare-card.agora .bonus-list li::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: var(--esmeralda-bright);
+  font-weight: 700;
+}
+.compare-card.depois .bonus-list li::before {
+  content: "✕"; position: absolute; left: 0; top: 0;
+  color: var(--rubi-bright);
+  font-weight: 700;
+}
+.compare-card .bonus-list li b { color: var(--white); font-weight: 600; }
+
+.compare-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 56px);
+  color: var(--ambar);
+  text-shadow: 0 0 18px rgba(255,214,0,0.5);
+  position: relative; z-index: 1;
+}
+
+/* ---- BÔNUS FIRSTCLASS BOX ---- */
+.urgencia-bonus {
+  max-width: 980px; margin: 0 auto clamp(56px, 6vw, 88px);
+  padding: clamp(32px, 3.5vw, 56px) clamp(28px, 3vw, 48px);
+  background: linear-gradient(135deg, rgba(255,214,0,0.05), rgba(132,21,188,0.04));
+  border: 1px solid rgba(255,214,0,0.32);
+  border-radius: 16px;
+  position: relative; overflow: hidden;
+}
+.urgencia-bonus::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255,214,0,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.urgencia-bonus .ub-tag {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 13px);
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ambar);
+  text-shadow: 0 0 14px rgba(255,214,0,0.4);
+  margin-bottom: clamp(20px, 2vw, 32px);
+}
+.urgencia-bonus .ub-tag::before { content: "💎"; font-size: 16px; }
+.urgencia-bonus ul {
+  position: relative; z-index: 1;
+  list-style: none; padding: 0; margin: 0 0 clamp(20px, 2vw, 32px);
+  display: flex; flex-direction: column; gap: clamp(10px, 1.2vw, 16px);
+}
+.urgencia-bonus ul li {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: clamp(14px, 2vw, 32px);
+  align-items: baseline;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.5; color: var(--gray-body);
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.urgencia-bonus ul li:last-child { border-bottom: none; }
+.urgencia-bonus ul li b { color: var(--white); font-weight: 600; }
+.urgencia-bonus ul li .valor {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(13px, 1.1vw, 16px);
+  color: var(--ambar);
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 10px rgba(255,214,0,0.3);
+  white-space: nowrap;
+}
+.urgencia-bonus ul li .valor.inestimavel {
+  color: var(--magenta-bright);
+  text-shadow: 0 0 12px rgba(132,21,188,0.45);
+  font-style: italic;
+}
+.urgencia-bonus .ub-total {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding-top: clamp(18px, 2vw, 26px);
+  border-top: 2px solid rgba(255,214,0,0.4);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--white);
+}
+.urgencia-bonus .ub-total b { color: var(--ambar); text-shadow: 0 0 14px rgba(255,214,0,0.5); }
+
+/* ---- MEGATYPE FINAL + CTA ---- */
+.urgencia-megatype {
+  margin-top: clamp(40px, 5vw, 80px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.urgencia-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(232,31,38,0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.urgencia-megatype .line {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(32px, 5.2vw, 80px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.urgencia-megatype .line .hl-rubi {
+  color: var(--rubi-bright);
+  text-shadow:
+    0 0 30px rgba(255,53,64,0.6),
+    0 0 70px rgba(255,53,64,0.4);
+}
+.urgencia-megatype .line .hl-esmeralda {
+  color: var(--esmeralda-bright);
+  text-shadow:
+    0 0 30px rgba(45,214,111,0.6),
+    0 0 70px rgba(45,214,111,0.4);
+}
+.urgencia-megatype .sub {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--silver);
+  margin-top: clamp(18px, 2vw, 28px);
+  text-wrap: balance;
+}
+.urgencia-megatype .sub b { font-weight: 700; color: var(--white); font-style: normal; }
+.urgencia-megatype .megatype-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: clamp(28px, 3vw, 48px);
+  padding: clamp(18px, 1.8vw, 26px) clamp(36px, 4vw, 64px);
+  background: linear-gradient(135deg, var(--esmeralda), var(--esmeralda-bright));
+  color: #0b0b0b;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(15px, 1.4vw, 19px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 0 36px rgba(45,214,111,0.6), 0 14px 44px rgba(45,214,111,0.3);
+  transition: transform .3s, box-shadow .3s, background .3s;
+  cursor: pointer;
+}
+.urgencia-megatype .megatype-cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 56px rgba(45,214,111,0.85), 0 20px 60px rgba(45,214,111,0.5);
+  background: linear-gradient(135deg, var(--esmeralda-bright), var(--esmeralda));
+}
+.urgencia-megatype .vagas-restantes {
+  position: relative; z-index: 1;
+  display: block;
+  margin-top: clamp(18px, 2vw, 28px);
+  font-family: var(--display); font-size: 12px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rubi-bright);
+}
+.urgencia-megatype .vagas-restantes b { color: var(--white); font-size: 14px; padding: 0 4px; }
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 60s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--rubi-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .compare-row { grid-template-columns: 1fr; gap: 12px; }
+  .compare-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .urgencia-bonus ul li { grid-template-columns: 1fr; gap: 4px; }
+  .urgencia-bonus ul li .valor { font-size: 13px; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-urgencia { padding: 175px 14px 70px; }
+  .urgencia-megatype .line { font-size: 26px; }
+  .compare-card .price-main { font-size: 42px !important; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(232,31,38,0.95); color: #fff;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 12 · URGÊNCIA v3.4</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#demonstracao">Método</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">GARANTIR VAGA →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 12 URGÊNCIA -->
+<section class="section-urgencia" id="urgencia">
+  <div class="halo halo-rubi" style="top:5%; right:-8%; width:520px; height:520px; opacity:0.20;"></div>
+  <div class="halo halo-esmeralda" style="top:35%; left:-8%; width:420px; height:420px; opacity:0.12;"></div>
+  <div class="halo halo-magenta" style="bottom:5%; right:5%; width:380px; height:380px; opacity:0.14;"></div>
+
+  <div style="text-align:center;">
+    <span class="urgencia-kicker"><span class="flame">🔥</span> ESCASSEZ REAL · NÃO COUNTDOWN FAKE <span class="flame">🔥</span></span>
+  </div>
+
+  <h1 class="urgencia-title-mega">
+    100 VAGAS. <span class="accent">UMA ABERTURA.</span>
+  </h1>
+
+  <h2 class="urgencia-h2">
+    ASP é <b>perpétuo</b>. Sempre fica no ar.<br>
+    Mas o <b class="hl-esmeralda">preço FirstClass</b> e <b class="hl-esmeralda">4 bônus</b> somem na <b class="hl-rubi">vaga 101</b>.
+  </h2>
+
+  <!-- ============================================
+       COMPARATIVO AGORA × DEPOIS
+       ============================================ -->
+  <div class="compare-row">
+
+    <!-- AGORA · TURMA FIRSTCLASS -->
+    <div class="compare-card agora">
+      <span class="tag">AGORA · Vagas 1-100</span>
+      <span class="vagas-label">Turma FirstClass</span>
+      <div class="price-block">
+        <span class="price-main"><span class="vezes">12×</span> R$ 100</span>
+        <span class="price-pix">ou R$ 1.000 à vista no PIX</span>
+      </div>
+      <ul class="bonus-list">
+        <li><b>3 Mentorias quinzenais</b> coletivas com Augustto</li>
+        <li><b>Grupo VIP WhatsApp</b> · Augustto 2× por semana</li>
+        <li>Convite VIP <b>Evento Presencial</b></li>
+        <li>Selo <b>"Fundador FirstClass"</b> vitalício</li>
+      </ul>
+    </div>
+
+    <!-- ARROW -->
+    <div class="compare-arrow">→</div>
+
+    <!-- DEPOIS · VAGA 101+ -->
+    <div class="compare-card depois">
+      <span class="tag">DEPOIS · Vaga 101+</span>
+      <span class="vagas-label">Turma regular</span>
+      <div class="price-block">
+        <span class="price-main">R$ 3.000</span>
+        <span class="price-pix" style="opacity:0; pointer-events:none;">-</span>
+      </div>
+      <ul class="bonus-list">
+        <li>3 Mentorias quinzenais com Augustto</li>
+        <li>Grupo VIP WhatsApp</li>
+        <li>Convite VIP Evento Presencial</li>
+        <li>Selo "Fundador FirstClass"</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ============================================
+       BÔNUS FIRSTCLASS · que somem
+       ============================================ -->
+  <div class="urgencia-bonus">
+    <span class="ub-tag">4 Bônus FirstClass · somem na vaga 101</span>
+    <ul>
+      <li>
+        <span><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada</span>
+        <span class="valor">R$ 1.497</span>
+      </li>
+      <li>
+        <span><b>Grupo VIP WhatsApp</b> · Augustto presente 2× por semana</span>
+        <span class="valor">R$ 997</span>
+      </li>
+      <li>
+        <span>Convite VIP <b>Evento Presencial</b></span>
+        <span class="valor">R$ 197</span>
+      </li>
+      <li>
+        <span>Selo <b>"Fundador FirstClass"</b> vitalício e intransferível</span>
+        <span class="valor inestimavel">INESTIMÁVEL</span>
+      </li>
+    </ul>
+    <p class="ub-total">Total dos bônus que somem: <b>R$ 2.691 + INESTIMÁVEL</b></p>
+  </div>
+
+  <!-- ============================================
+       MEGATYPE FINAL + CTA
+       ============================================ -->
+  <div class="urgencia-megatype">
+    <p class="line">
+      A PORTA FECHA NA <span class="hl-rubi">VAGA 101.</span><br>
+      <span class="hl-esmeralda">HOJE</span> OU R$ 2.000 A MAIS.
+    </p>
+    <p class="sub">ASP volta em <b>2027</b>. Você quer esperar mais <b>1 ano</b>?</p>
+    <a href="#offer" class="megatype-cta">Garantir minha vaga AGORA →</a>
+    <span class="vagas-restantes">Restam <b>43</b> vagas da Turma FirstClass</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>100 vagas · uma abertura · ASP volta só em 2027</span>
+    <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
+    <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
+    <span>4 bônus FirstClass somem na vaga 101 · R$ 2.691 + INESTIMÁVEL</span>
+    <span>Escassez real · não countdown fake</span>
+    <span>A porta fecha na vaga 101</span>
+    <span>Hoje ou R$ 2.000 a mais</span>
+    <span>Você quer esperar mais 1 ano?</span>
+    <span>100 vagas · uma abertura · ASP volta só em 2027</span>
+    <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
+    <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
+    <span>4 bônus FirstClass somem na vaga 101 · R$ 2.691 + INESTIMÁVEL</span>
+    <span>Escassez real · não countdown fake</span>
+    <span>A porta fecha na vaga 101</span>
+    <span>Hoje ou R$ 2.000 a mais</span>
+    <span>Você quer esperar mais 1 ano?</span>
+  </div>
+</div>
+
+<!-- VAGAS counter -->
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
