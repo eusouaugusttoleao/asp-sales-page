@@ -367,6 +367,17 @@ body::after {
   text-shadow: 0 0 12px rgba(132,21,188,0.45);
   font-style: italic;
 }
+.urgencia-bonus ul li .valor-breakdown {
+  display: block;
+  font-family: var(--display); font-size: 10px;
+  font-weight: 500; color: var(--silver);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-top: 4px;
+  text-shadow: none;
+}
+.urgencia-bonus ul li .valor-sub-line {
+  display: none;
+}
 .urgencia-bonus .ub-foot {
   position: relative; z-index: 1;
   margin-top: clamp(14px, 1.5vw, 22px);
@@ -560,8 +571,8 @@ body::after {
   </h1>
 
   <h2 class="urgencia-h2">
-    ASP é <b>perpétuo</b>. Sempre fica no ar.<br>
-    Mas o <b class="hl-esmeralda">preço FirstClass</b> e <b class="hl-esmeralda">R$ 2.791 + INESTIMÁVEL em bônus exclusivos</b> somem na <b class="hl-rubi">vaga 101</b>.
+    Acesso à plataforma é <b>anual</b>.<br>
+    Mas quem entra na <b class="hl-esmeralda">Turma FirstClass</b> ganha <b class="hl-esmeralda">acesso VITALÍCIO</b> + <b class="hl-esmeralda">R$ 5.785 em bônus exclusivos</b> que somem na <b class="hl-rubi">vaga 101</b>.
   </h2>
 
   <!-- ============================================
@@ -578,7 +589,8 @@ body::after {
         <span class="price-pix">ou R$ 1.000 à vista no PIX</span>
       </div>
       <ul class="bonus-list">
-        <li><b>3 Mentorias quinzenais</b> coletivas com Augustto</li>
+        <li><b>Acesso VITALÍCIO</b> à plataforma</li>
+        <li><b>3 Mentorias quinzenais</b> coletivas com Augustto (90 min cada)</li>
         <li><b>Grupo VIP WhatsApp</b> · Augustto 2× por semana</li>
         <li>Convite VIP <b>Evento Presencial</b></li>
         <li>Selo <b>"Fundador FirstClass"</b> vitalício</li>
@@ -597,6 +609,7 @@ body::after {
         <span class="price-pix" style="opacity:0; pointer-events:none;">-</span>
       </div>
       <ul class="bonus-list">
+        <li>Acesso ANUAL à plataforma</li>
         <li>3 Mentorias quinzenais com Augustto</li>
         <li>Grupo VIP WhatsApp</li>
         <li>Convite VIP Evento Presencial</li>
@@ -610,11 +623,11 @@ body::after {
        STACK COMPLETO · TUDO QUE VOCÊ RECEBE
        ============================================ -->
   <div class="urgencia-bonus">
-    <span class="ub-tag">Stack completo · R$ 8.973 + INESTIMÁVEL</span>
+    <span class="ub-tag">Stack completo · R$ 11.967 + INESTIMÁVEL</span>
     <ul>
       <li>
         <span class="item-marker regular">✓ Incluso</span>
-        <span class="item-desc"><b>O PROGRAMA</b> · 7 Pedras · 51 aulas · área Netflix · acesso anual · comunidade FirstClass</span>
+        <span class="item-desc"><b>O PROGRAMA</b> · 7 Pedras · 51 aulas · área Netflix · comunidade FirstClass</span>
         <span class="valor">R$ 3.000</span>
       </li>
       <li>
@@ -629,8 +642,13 @@ body::after {
       </li>
       <li class="firstclass-only">
         <span class="item-marker fc">★ FirstClass</span>
-        <span class="item-desc"><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada · <i>×3 sessões</i></span>
-        <span class="valor">R$ 1.497</span>
+        <span class="item-desc"><b>Acesso VITALÍCIO</b> à plataforma · enquanto o ASP existir, você acessa</span>
+        <span class="valor inestimavel">INESTIMÁVEL</span>
+      </li>
+      <li class="firstclass-only">
+        <span class="item-marker fc">★ FirstClass</span>
+        <span class="item-desc"><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada<span class="valor-sub-line">R$ 1.497 por sessão · 3 sessões</span></span>
+        <span class="valor">R$ 4.491<span class="valor-breakdown">3× R$ 1.497</span></span>
       </li>
       <li class="firstclass-only">
         <span class="item-marker fc">★ FirstClass</span>
@@ -648,8 +666,8 @@ body::after {
         <span class="valor inestimavel">INESTIMÁVEL</span>
       </li>
     </ul>
-    <p class="ub-total">Valor total declarado: <b>R$ 8.973 + INESTIMÁVEL</b></p>
-    <p class="ub-foot">★ Os <b>4 bônus FirstClass</b> (R$ 2.791 + INESTIMÁVEL) somem na vaga 101.</p>
+    <p class="ub-total">Valor total declarado: <b>R$ 11.967 + INESTIMÁVEL</b></p>
+    <p class="ub-foot">★ Os <b>5 bônus FirstClass</b> (R$ 5.785 + INESTIMÁVEL × 2) somem na vaga 101.</p>
   </div>
 
   <!-- ============================================
@@ -660,7 +678,7 @@ body::after {
       A PORTA FECHA NA <span class="hl-rubi">VAGA 101.</span><br>
       <span class="hl-esmeralda">HOJE</span> OU R$ 2.000 A MAIS.
     </p>
-    <p class="sub">ASP volta em <b>2027</b>. Você quer esperar mais <b>1 ano</b>?</p>
+    <p class="sub">Próxima janela <b>FirstClass</b>: só na próxima turma. <b>Mais 1 ano</b> sem acesso vitalício, sem mentoria com Augustto, sem o Selo Fundador.</p>
     <a href="#offer" class="megatype-cta">Garantir minha vaga AGORA →</a>
     <span class="vagas-restantes">Restam <b>43</b> vagas da Turma FirstClass</span>
   </div>
@@ -669,22 +687,22 @@ body::after {
 <!-- TICKER -->
 <div class="rocha-rail">
   <div class="rocha-track">
-    <span>100 vagas · uma abertura · ASP volta só em 2027</span>
+    <span>100 vagas · uma abertura · janela FirstClass anual</span>
     <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
-    <span>Stack completo R$ 8.973 · 4 bônus FirstClass R$ 2.791 somem na vaga 101</span>
+    <span>Stack completo R$ 11.967 · 5 bônus FirstClass R$ 5.785 somem na vaga 101</span>
     <span>Escassez real · não countdown fake</span>
     <span>A porta fecha na vaga 101</span>
     <span>Hoje ou R$ 2.000 a mais</span>
-    <span>Você quer esperar mais 1 ano?</span>
-    <span>100 vagas · uma abertura · ASP volta só em 2027</span>
+    <span>Mais 1 ano sem acesso vitalício · sem mentoria com Augustto</span>
+    <span>100 vagas · uma abertura · janela FirstClass anual</span>
     <span>Vagas 1-100 · 12× R$ 100 ou R$ 1.000 no PIX</span>
     <span>Vaga 101+ · R$ 3.000 cheio · sem bônus</span>
-    <span>Stack completo R$ 8.973 · 4 bônus FirstClass R$ 2.791 somem na vaga 101</span>
+    <span>Stack completo R$ 11.967 · 5 bônus FirstClass R$ 5.785 somem na vaga 101</span>
     <span>Escassez real · não countdown fake</span>
     <span>A porta fecha na vaga 101</span>
     <span>Hoje ou R$ 2.000 a mais</span>
-    <span>Você quer esperar mais 1 ano?</span>
+    <span>Mais 1 ano sem acesso vitalício · sem mentoria com Augustto</span>
   </div>
 </div>
 
