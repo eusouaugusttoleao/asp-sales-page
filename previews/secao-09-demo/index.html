@@ -401,10 +401,31 @@ body::after {
 .demo-megatype .sub {
   position: relative; z-index: 1;
   font-family: var(--display); font-style: italic;
-  font-size: clamp(15px, 1.4vw, 20px);
+  font-size: clamp(16px, 1.5vw, 22px);
   color: var(--silver);
   margin-top: clamp(18px, 2vw, 28px);
   text-wrap: balance;
+}
+.demo-megatype .sub b { font-weight: 700; color: var(--white); font-style: normal; }
+.demo-megatype .megatype-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: clamp(28px, 3vw, 48px);
+  padding: clamp(16px, 1.6vw, 22px) clamp(32px, 3.5vw, 56px);
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-bright));
+  color: var(--white);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(14px, 1.3vw, 18px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 0 32px rgba(132,21,188,0.5), 0 12px 40px rgba(132,21,188,0.25);
+  transition: transform .3s, box-shadow .3s, background .3s;
+  cursor: pointer;
+}
+.demo-megatype .megatype-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 48px rgba(132,21,188,0.75), 0 18px 50px rgba(132,21,188,0.4);
+  background: linear-gradient(135deg, var(--magenta-bright), var(--magenta));
 }
 
 /* TICKER */
@@ -580,10 +601,7 @@ body::after {
 
     <!-- CARD 07 FINAL · DESTAQUE FULL-WIDTH -->
     <div class="demo-card demo-card-final">
-      <div class="demo-pedra-img-pair">
-        <img class="demo-pedra-img p6" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
-        <img class="demo-pedra-img p7" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
-      </div>
+      <img class="demo-pedra-img p7" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
       <div class="demo-content">
         <div class="left">
           <div class="demo-n">07</div>
@@ -611,10 +629,10 @@ body::after {
   <!-- MEGATYPE FINAL -->
   <div class="demo-megatype">
     <p class="line">
-      O QUE <span class="hl-cobalt">VOCÊ FAZ</span><br>
-      É O QUE <span class="hl-magenta">VOCÊ VIRA.</span>
+      VOCÊ É O QUE <span class="hl-cobalt">PENSA!</span>
     </p>
-    <p class="sub">— 51 aulas, 7 frentes, 1 promessa: virar prática.</p>
+    <p class="sub">E como você pensa <b>define seus resultados</b>.</p>
+    <a href="#offer" class="megatype-cta">Ative-se AGORA →</a>
   </div>
 </section>
 
@@ -629,6 +647,7 @@ body::after {
     <span>Assessment Arquétipos · MAAC · Tracker 21 dias</span>
     <span>Metas SMART · Mapa Produtividade 05h-23h45</span>
     <span>Toda aula termina com uma Ação a ser Executada</span>
+    <span>Você é o que pensa · Ative-se agora</span>
     <span>7 frentes · 51 aulas · 7 habilidades destravadas</span>
     <span>5 ferramentas práticas · 1 nova vida</span>
     <span>Autoridade &amp; Coerência</span>
@@ -637,6 +656,7 @@ body::after {
     <span>Assessment Arquétipos · MAAC · Tracker 21 dias</span>
     <span>Metas SMART · Mapa Produtividade 05h-23h45</span>
     <span>Toda aula termina com uma Ação a ser Executada</span>
+    <span>Você é o que pensa · Ative-se agora</span>
   </div>
 </div>
 
