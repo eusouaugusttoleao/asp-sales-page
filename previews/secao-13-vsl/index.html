@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Seção 13 · VSL · 90 SEGUNDOS v3.4 · Ative Seu Poder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0b;
+  --bg-deep: #050505;
+  --magenta: #8715bc;
+  --magenta-bright: #a420dd;
+  --cobalt: #3818E8;
+  --cobalt-bright: #5639F0;
+  --ambar: #FFD600;
+  --ambar-bright: #FFEE00;
+  --white: #ffffff;
+  --silver: #9A9A9A;
+  --gray-body: #B8B8B8;
+  --rubi: #E81F26;
+  --rubi-bright: #FF3540;
+  --esmeralda: #1FB95E;
+  --esmeralda-bright: #2DD66F;
+  --ametista: #7B2FBE;
+  --ametista-bright: #9C45E0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; line-height: 1.5; overflow-x: hidden; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ""; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1;
+}
+.halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; pointer-events: none; z-index: 0; }
+.halo-magenta { background: var(--magenta); }
+.halo-ambar { background: var(--ambar); }
+.halo-cobalt { background: var(--cobalt); }
+.halo-rubi { background: var(--rubi); }
+.halo-esmeralda { background: var(--esmeralda); }
+.halo-ametista { background: var(--ametista); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(11,11,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); z-index: 100; padding: 0 32px; height: 60px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1480px; margin: 0 auto; height: 100%; }
+.nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.nav-links a { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { font-family: var(--display); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--esmeralda), var(--esmeralda-bright)); color: #0b0b0b; box-shadow: 0 0 24px rgba(45,214,111,0.45); transition: transform .2s, box-shadow .2s; margin-left: 8px; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(45,214,111,0.65); }
+
+/* ESCASSEZ */
+.escassez-bar { position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(90deg, rgba(232,31,38,0.1) 0%, rgba(132,21,188,0.1) 100%); border-bottom: 1px solid rgba(232,31,38,0.3); z-index: 99; padding: 0 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; height: 50px; font-family: var(--display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.escassez-vagas { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+.escassez-vagas .label { color: var(--rubi); display: flex; align-items: center; gap: 8px; }
+.escassez-vagas .label b { color: var(--white); font-size: 13px; padding: 0 4px; }
+.escassez-vagas .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rubi); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,31,38,0.7); } 50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(232,31,38,0); } }
+.vagas-progress { width: 160px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.vagas-fill { height: 100%; width: 43%; background: linear-gradient(90deg, var(--magenta-bright), var(--rubi)); transition: width 1s ease; }
+.escassez-timer { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.escassez-timer .time { font-size: 13px; letter-spacing: 0.18em; font-weight: 700; color: var(--white); text-shadow: 0 0 14px rgba(232,31,38,0.4); }
+.escassez-price { text-align: right; color: var(--silver); }
+.escassez-price b { color: var(--rubi); font-size: 13px; font-weight: 700; }
+
+/* ============================================================
+   SEÇÃO 13 · VSL · v3.4
+   ============================================================ */
+.section-vsl {
+  position: relative; z-index: 2;
+  padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
+  max-width: 1280px; margin: 0 auto;
+}
+
+.vsl-kicker {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 14px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ametista-bright);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  display: inline-flex; align-items: center; gap: 14px;
+  text-align: center; justify-content: center;
+  width: 100%;
+}
+.vsl-kicker::before, .vsl-kicker::after {
+  content: ""; height: 1px; width: clamp(30px, 3vw, 60px);
+  background: var(--ametista-bright); opacity: 0.5;
+}
+
+.vsl-title-mega {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 96px);
+  line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: clamp(20px, 2.4vw, 36px);
+  text-wrap: balance;
+}
+.vsl-title-mega .accent {
+  color: var(--ametista-bright);
+  text-shadow:
+    0 0 30px rgba(156,69,224,0.55),
+    0 0 70px rgba(156,69,224,0.32);
+}
+
+.vsl-direction {
+  font-family: var(--display); font-style: italic;
+  font-weight: 500;
+  font-size: clamp(13px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: var(--silver);
+  text-align: center;
+  max-width: 820px; margin: 0 auto clamp(40px, 4.5vw, 64px);
+  padding: clamp(16px, 1.8vw, 24px) clamp(20px, 2vw, 32px);
+  background: rgba(123,47,190,0.04);
+  border: 1px dashed rgba(123,47,190,0.32);
+  border-radius: 10px;
+  letter-spacing: 0.02em;
+}
+.vsl-direction b { font-style: normal; font-weight: 700; color: var(--white); }
+.vsl-direction::before {
+  content: "🎬 ";
+  margin-right: 6px;
+  font-style: normal;
+}
+
+/* ---- VIDEO FRAME ---- */
+.vsl-frame {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto clamp(40px, 4.5vw, 72px);
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a0a26, #0b0b0b 60%, #2a1240);
+  border: 1px solid rgba(156,69,224,0.32);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.5),
+    0 0 64px rgba(123,47,190,0.18);
+  cursor: pointer;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.vsl-frame:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.6),
+    0 0 96px rgba(123,47,190,0.32);
+}
+.vsl-frame::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(156,69,224,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(132,21,188,0.14) 0%, transparent 50%);
+  pointer-events: none;
+}
+.vsl-frame::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.vsl-frame .scene-marker {
+  position: absolute; top: clamp(16px, 2vw, 24px); left: clamp(16px, 2vw, 24px);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ametista-bright);
+  background: rgba(11,11,11,0.7);
+  border: 1px solid rgba(156,69,224,0.45);
+  padding: 6px 12px;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+.vsl-frame .scene-marker::before {
+  content: "● ";
+  color: var(--rubi-bright);
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+@keyframes rec-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.vsl-frame .duration {
+  position: absolute; bottom: clamp(16px, 2vw, 24px); right: clamp(16px, 2vw, 24px);
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.2em;
+  color: var(--white);
+  background: rgba(11,11,11,0.78);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 12px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.vsl-frame .play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(90px, 8vw, 120px);
+  height: clamp(90px, 8vw, 120px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ametista), var(--ametista-bright));
+  border: 3px solid var(--white);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-size: clamp(28px, 2.8vw, 40px);
+  box-shadow:
+    0 0 0 0 rgba(156,69,224,0.6),
+    0 0 60px rgba(156,69,224,0.5);
+  animation: play-pulse 2.4s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 2;
+  padding-left: 6px;
+  transition: transform .25s ease;
+}
+@keyframes play-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(156,69,224,0.6), 0 0 60px rgba(156,69,224,0.5); }
+  50% { box-shadow: 0 0 0 24px rgba(156,69,224,0), 0 0 80px rgba(156,69,224,0.7); }
+}
+.vsl-frame:hover .play-btn { transform: translate(-50%, -50%) scale(1.08); }
+
+.vsl-frame .caption {
+  position: absolute; bottom: clamp(56px, 6vw, 88px); left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - clamp(40px, 5vw, 80px));
+  max-width: 720px;
+  text-align: center;
+  font-family: var(--display); font-style: italic; font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 22px);
+  line-height: 1.4;
+  color: var(--white);
+  text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(123,47,190,0.4);
+  z-index: 2;
+  text-wrap: balance;
+}
+
+/* ---- ROTEIRO COMPLETO ---- */
+.vsl-roteiro {
+  max-width: 880px; margin: 0 auto clamp(60px, 6vw, 100px);
+  padding: clamp(32px, 3.5vw, 56px) clamp(28px, 3vw, 48px);
+  background: linear-gradient(180deg, rgba(123,47,190,0.04) 0%, transparent 100%);
+  border-left: 3px solid var(--ametista);
+  border-radius: 0 12px 12px 0;
+}
+.vsl-roteiro::before {
+  content: "ROTEIRO · 90s";
+  display: block;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ametista-bright);
+  margin-bottom: clamp(20px, 2vw, 28px);
+}
+.vsl-roteiro p {
+  font-family: var(--body); font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.65;
+  color: var(--gray-body);
+  margin-bottom: clamp(14px, 1.5vw, 20px);
+  text-wrap: pretty;
+}
+.vsl-roteiro p:last-child { margin-bottom: 0; }
+.vsl-roteiro p i {
+  font-style: italic;
+  color: var(--white);
+  background: rgba(232,31,38,0.06);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.vsl-roteiro p b {
+  font-weight: 700;
+  color: var(--white);
+}
+.vsl-roteiro p b.hl-magenta { color: var(--magenta-bright); }
+.vsl-roteiro p b.hl-ametista { color: var(--ametista-bright); }
+
+.vsl-roteiro .rocha-line {
+  margin-top: clamp(24px, 2.5vw, 36px);
+  padding: clamp(20px, 2.2vw, 32px);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(232,31,38,0.06), rgba(132,21,188,0.06));
+  border: 1px solid rgba(232,31,38,0.25);
+  border-radius: 10px;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(16px, 1.6vw, 22px);
+  letter-spacing: -0.005em;
+  color: var(--white);
+  text-shadow: 0 0 14px rgba(232,31,38,0.3);
+  text-wrap: balance;
+}
+
+/* ---- LUGAR A vs LUGAR B ---- */
+.lugares-bloco {
+  margin: 0 auto clamp(60px, 6vw, 100px);
+  max-width: 1180px;
+  text-align: center;
+}
+.lugares-titulo {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: clamp(40px, 4vw, 64px);
+  text-wrap: balance;
+}
+.lugares-titulo .accent {
+  color: var(--ametista-bright);
+  text-shadow: 0 0 20px rgba(156,69,224,0.5);
+}
+.lugares-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(20px, 2.5vw, 40px);
+  align-items: stretch;
+}
+.lugar-card {
+  position: relative;
+  background: rgba(255,255,255,0.022);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: clamp(28px, 3vw, 44px);
+  text-align: left;
+  display: flex; flex-direction: column; gap: clamp(14px, 1.5vw, 20px);
+}
+.lugar-card .tag {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.9vw, 12px);
+  letter-spacing: 0.32em; text-transform: uppercase;
+}
+.lugar-card.lugar-a .tag { color: var(--silver); }
+.lugar-card.lugar-b .tag { color: var(--ametista-bright); }
+.lugar-card h4 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.15; letter-spacing: -0.015em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.lugar-card .desc {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6; color: var(--gray-body);
+}
+.lugar-card .desc b { color: var(--white); }
+
+.lugar-card.lugar-a {
+  background: rgba(232,31,38,0.04);
+  border-color: rgba(232,31,38,0.2);
+  opacity: 0.85;
+}
+.lugar-card.lugar-a h4 { color: var(--silver); }
+.lugar-card.lugar-b {
+  background: linear-gradient(135deg, rgba(156,69,224,0.08), rgba(132,21,188,0.04));
+  border: 2px solid rgba(156,69,224,0.5);
+  box-shadow: 0 0 32px rgba(156,69,224,0.15);
+}
+.lugar-card.lugar-b h4 { color: var(--ametista-bright); }
+
+.lugares-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 56px);
+  color: var(--ambar);
+  text-shadow: 0 0 18px rgba(255,214,0,0.5);
+}
+
+/* ---- MEGATYPE FINAL ---- */
+.vsl-megatype {
+  margin-top: clamp(40px, 5vw, 80px);
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 3vw, 60px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.vsl-megatype::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(156,69,224,0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.vsl-megatype .frase-rocha {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-style: italic; font-weight: 500;
+  font-size: clamp(18px, 1.8vw, 28px);
+  line-height: 1.45; color: var(--white);
+  max-width: 880px; margin: 0 auto clamp(40px, 4vw, 64px);
+  text-wrap: balance;
+}
+.vsl-megatype .frase-rocha::before, .vsl-megatype .frase-rocha::after {
+  content: "'";
+  color: var(--ametista-bright);
+  opacity: 0.6;
+  margin: 0 4px;
+  font-style: normal;
+  font-weight: 700;
+}
+.vsl-megatype .frase-rocha-label {
+  position: relative; z-index: 1;
+  display: block;
+  font-family: var(--display); font-weight: 500; font-style: normal;
+  font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.7;
+  margin-bottom: clamp(40px, 4vw, 64px);
+}
+
+.vsl-megatype .signature-mega {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 72px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: clamp(20px, 2vw, 32px);
+  text-wrap: balance;
+}
+.vsl-megatype .signature-mega .hl-magenta {
+  color: var(--magenta-bright);
+  text-shadow:
+    0 0 30px rgba(164,32,221,0.55),
+    0 0 70px rgba(164,32,221,0.32);
+}
+.vsl-megatype .signature-mega .hl-ametista {
+  color: var(--ametista-bright);
+  text-shadow:
+    0 0 30px rgba(156,69,224,0.6),
+    0 0 70px rgba(156,69,224,0.35);
+}
+.vsl-megatype .signature-author {
+  position: relative; z-index: 1;
+  display: block;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--silver);
+  margin-bottom: clamp(36px, 4vw, 56px);
+}
+.vsl-megatype .signature-author::before { content: "— "; color: var(--ametista-bright); }
+
+.vsl-megatype .megatype-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: clamp(20px, 2.2vw, 30px) clamp(40px, 4.5vw, 72px);
+  background: linear-gradient(135deg, var(--esmeralda), var(--esmeralda-bright));
+  color: #0b0b0b;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(16px, 1.6vw, 22px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow:
+    0 0 40px rgba(45,214,111,0.6),
+    0 16px 50px rgba(45,214,111,0.32);
+  transition: transform .3s, box-shadow .3s, background .3s;
+  cursor: pointer;
+}
+.vsl-megatype .megatype-cta:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 0 64px rgba(45,214,111,0.85),
+    0 24px 70px rgba(45,214,111,0.5);
+  background: linear-gradient(135deg, var(--esmeralda-bright), var(--esmeralda));
+}
+.vsl-megatype .cta-foot {
+  position: relative; z-index: 1;
+  display: block;
+  margin-top: clamp(22px, 2.5vw, 36px);
+  font-family: var(--display); font-size: 12px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--silver);
+}
+.vsl-megatype .cta-foot b { color: var(--white); }
+.vsl-megatype .cta-foot .vagas-num { color: var(--rubi-bright); }
+
+/* TICKER */
+.rocha-rail { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); border-top: 1px solid rgba(255,255,255,0.08); padding: 8px 0; z-index: 99; overflow: hidden; height: 36px; }
+.rocha-track { display: flex; gap: 64px; white-space: nowrap; animation: rochaScroll 70s linear infinite; width: max-content; }
+.rocha-track span { font-family: var(--display); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-body); }
+.rocha-track span::before { content: "◆ "; color: var(--ametista-bright); margin-right: 8px; }
+@keyframes rochaScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .lugares-grid { grid-template-columns: 1fr; gap: 12px; }
+  .lugares-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
+  .escassez-vagas { justify-content: center; }
+  .escassez-timer { justify-content: center; }
+  .escassez-price { text-align: center; }
+  .vagas-progress { width: 120px; }
+  .nav { padding: 0 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.2em; }
+}
+@media (max-width: 640px) {
+  .section-vsl { padding: 175px 14px 70px; }
+  .vsl-megatype .signature-mega { font-size: 26px; }
+  .lugares-titulo { font-size: 22px; }
+  .vsl-frame .caption { font-size: 13px; }
+  .vsl-roteiro { padding: 22px 16px; }
+  .escassez-bar { font-size: 9px; padding: 6px 12px; }
+  .escassez-bar .label b { font-size: 11px; }
+  .escassez-timer .time { font-size: 11px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.15em; }
+  .nav-links { gap: 10px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { font-size: 9px; padding: 8px 14px; margin-left: 0; }
+}
+
+.preview-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  background: rgba(156,69,224,0.95); color: #fff;
+  font-family: var(--display); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 3px 12px;
+  z-index: 200; font-weight: 700;
+  border-radius: 0 0 6px 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW · SEÇÃO 13 · VSL 90s v3.4 · FINAL</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#faq">FAQ</a>
+      <a href="#vsl">VSL</a>
+      <a href="#offer" class="nav-cta">GARANTIR VAGA →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ESCASSEZ -->
+<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>
+
+<!-- SEÇÃO 13 VSL -->
+<section class="section-vsl" id="vsl">
+  <div class="halo halo-ametista" style="top:5%; left:50%; transform:translateX(-50%); width:560px; height:560px; opacity:0.18;"></div>
+  <div class="halo halo-magenta" style="bottom:5%; right:-8%; width:420px; height:420px; opacity:0.14;"></div>
+  <div class="halo halo-cobalt" style="top:50%; left:-8%; width:380px; height:380px; opacity:0.12;"></div>
+
+  <div style="text-align:center;">
+    <span class="vsl-kicker">⏱ 90 SEGUNDOS · A CENA</span>
+  </div>
+
+  <h1 class="vsl-title-mega">
+    Veja a cena. <span class="accent">Uma voz da mentira CALA.</span>
+  </h1>
+
+  <p class="vsl-direction">
+    Augustto voz-over em <b>preto e branco</b> · ator <b>Luis Felipe</b> atuando em cor. Cena no <b>carro</b>. <b>Luz da manhã</b>. <b>Foto de 1 ano atrás</b> na galeria do celular.
+  </p>
+
+  <!-- ============================================
+       VIDEO FRAME · PLACEHOLDER
+       ============================================ -->
+  <div class="vsl-frame">
+    <span class="scene-marker">REC · 90s</span>
+    <span class="duration">01:30</span>
+    <div class="play-btn">▶</div>
+    <p class="caption">"Há um ano eu não acreditava que esse cara podia ser eu."</p>
+  </div>
+
+  <!-- ============================================
+       ROTEIRO COMPLETO
+       ============================================ -->
+  <div class="vsl-roteiro">
+    <p>Há um ano, esse cara aí <b>não acreditava</b> que podia ser ele.</p>
+    <p>Tinha uma voz dentro da cabeça dizendo <i>"tenho que cuidar com o que vão pensar de mim"</i>. Outra voz dizendo <i>"melhor ficar quieto antes de pagar mico"</i>. Outra dizendo <i>"quem sou eu pra cobrar isso?"</i>.</p>
+    <p><b>7 vozes. Operando em cadeia. Sustentando uma algema.</b></p>
+    <p>Aí ele lapidou a <b>primeira pedra</b>. A voz #1 calou. Lapidou a <b>segunda</b>. A #2 calou. <b class="hl-ametista">Não foi mágica. Foi método.</b></p>
+    <p>Agora ele tá no carro de manhã. Calmo. Não eufórico — <b class="hl-magenta">calmo</b>. Conta organizada. Calendar com networking marcado. Cliente novo no WhatsApp. E o reflexo no espelho do carro mostra <b>postura diferente</b>.</p>
+    <p class="rocha-line">NINGUÉM COMPRA UM DERROTADO. E ELE JÁ NÃO TÁ SENDO UM.</p>
+  </div>
+
+  <!-- ============================================
+       LUGAR A × LUGAR B
+       ============================================ -->
+  <div class="lugares-bloco">
+    <h2 class="lugares-titulo">
+      Em 90 dias você vai estar<br>
+      em <span class="accent">um dos dois lugares.</span>
+    </h2>
+
+    <div class="lugares-grid">
+      <div class="lugar-card lugar-a">
+        <span class="tag">Lugar A · O hoje</span>
+        <h4>Exatamente onde está agora.</h4>
+        <p class="desc">Mais <b>90 dias</b> na conta do "vou começar amanhã". As mesmas <b>7 vozes</b> operando. A mesma algema. A mesma biografia.</p>
+      </div>
+
+      <div class="lugares-arrow">→</div>
+
+      <div class="lugar-card lugar-b">
+        <span class="tag">Lugar B · O depois</span>
+        <h4>7 Pedras lapidadas.</h4>
+        <p class="desc"><b>7 vozes silenciadas</b>. Postura diferente no espelho. Conta organizada. Networking marcado. <b>Outra biografia.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MEGATYPE FINAL · FRASE-ROCHA + ASSINATURA
+       ============================================ -->
+  <div class="vsl-megatype">
+    <span class="frase-rocha-label">11ª frase-rocha</span>
+    <p class="frase-rocha">
+      Lapide a pedra. A joia ativa o poder. <b>O poder desativa a voz da mentira.</b>
+    </p>
+
+    <p class="signature-mega">
+      VOCÊ É O QUE <span class="hl-ametista">PENSA.</span><br>
+      COMUNIQUE-SE, APAREÇA, <span class="hl-magenta">SEJA VOCÊ</span> — E F!
+    </p>
+    <span class="signature-author">Augustto Leão</span>
+
+    <a href="#offer" class="megatype-cta">Quero ativar meu poder · AGORA →</a>
+    <span class="cta-foot">Restam <b class="vagas-num">43</b> vagas da Turma FirstClass · <b>12× R$ 100</b> ou <b>R$ 1.000</b> no PIX</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="rocha-rail">
+  <div class="rocha-track">
+    <span>90 segundos · A cena · uma voz da mentira cala</span>
+    <span>Não foi mágica · foi método</span>
+    <span>Calmo · não eufórico · calmo</span>
+    <span>Ninguém compra um derrotado · e ele já não tá sendo um</span>
+    <span>Em 90 dias você tá em um dos dois lugares</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz</span>
+    <span>Você é o que pensa · comunique-se · apareça · seja você</span>
+    <span>— Augustto Leão</span>
+    <span>90 segundos · A cena · uma voz da mentira cala</span>
+    <span>Não foi mágica · foi método</span>
+    <span>Calmo · não eufórico · calmo</span>
+    <span>Ninguém compra um derrotado · e ele já não tá sendo um</span>
+    <span>Em 90 dias você tá em um dos dois lugares</span>
+    <span>Lapide a pedra · a joia ativa o poder · o poder desativa a voz</span>
+    <span>Você é o que pensa · comunique-se · apareça · seja você</span>
+    <span>— Augustto Leão</span>
+  </div>
+</div>
+
+<!-- VAGAS counter -->
+<script>
+(function(){
+  const startVagas = 43;
+  const startTime = Date.now();
+  function updateVagas() {
+    const elapsedMin = (Date.now() - startTime) / 60000;
+    const vagas = Math.max(8, startVagas - Math.floor(elapsedMin / 45));
+    document.getElementById('vagas-num').textContent = vagas;
+    document.getElementById('vagas-fill').style.width = vagas + '%';
+  }
+  setInterval(updateVagas, 60000);
+  updateVagas();
+})();
+</script>
+
+</body>
+</html>
