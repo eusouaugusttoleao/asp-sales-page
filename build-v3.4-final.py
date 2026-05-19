@@ -72,15 +72,31 @@ def main():
 
     sections_html = "\n".join(section_blocks)
 
-    # Pega nav e escassez do preview 01 (são iguais nos demais)
-    nav_m = re.search(r"(<nav class=\"nav\">.*?</nav>)", previews["01-hero"], re.S)
-    nav_html = nav_m.group(1) if nav_m else ""
-
-    escassez_m = re.search(r"(<!-- ESCASSEZ.*?-->\s*<div class=\"escassez-bar\">.*?</div>\s*</div>\s*</div>)", previews["01-hero"], re.S)
-    # Fallback simpler match
-    if not escassez_m:
-        escassez_m = re.search(r"(<div class=\"escassez-bar\">.*?</div>\s*</div>\s*</div>)", previews["01-hero"], re.S)
-    escassez_html = escassez_m.group(1) if escassez_m else ""
+    # Nav e escassez hardcoded (iguais em todos previews · regex aninhado é frágil)
+    nav_html = """<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">ASP® · Ative Seu Poder</div>
+    <div class="nav-links">
+      <a href="#problema">Problema</a>
+      <a href="#offer">Oferta</a>
+      <a href="#atos">História</a>
+      <a href="#joalheria">7 Pedras</a>
+      <a href="#vozes">7 Vozes</a>
+      <a href="#cases">Provas</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#faq">FAQ</a>
+      <a href="#offer" class="nav-cta">GARANTIR VAGA →</a>
+    </div>
+  </div>
+</nav>"""
+    escassez_html = """<div class="escassez-bar">
+  <div class="escassez-vagas">
+    <span class="label">VAGAS RESTANTES <b id="vagas-num">43</b>/100</span>
+    <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+  </div>
+  <div class="escassez-timer"><span class="time">🔥 FECHA AO COMPLETAR 100 VAGAS</span></div>
+  <div class="escassez-price">DEPOIS · <b>R$ 3.000</b></div>
+</div>"""
 
     # Ticker: pega do preview 12-urgencia (clima de fechamento, mas qualquer um funciona)
     ticker_m = re.search(r"(<div class=\"rocha-rail\">.*?</div>\s*</div>)", previews["12-urgencia"], re.S)
