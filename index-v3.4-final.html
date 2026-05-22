@@ -1671,6 +1671,32 @@ body::after {
   opacity: 0.65;
 }
 
+/* Slots 4 fotos atos 1-4 (placeholder dashed) */
+.ato-photos {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(8px, 0.9vw, 14px);
+  margin-top: clamp(18px, 1.8vw, 24px);
+}
+.ato-photos .slot {
+  aspect-ratio: 4/3;
+  border: 1.5px dashed rgba(255,255,255,0.18);
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 10px, transparent 10px 20px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--silver); opacity: 0.45;
+  font-family: var(--display); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  transition: opacity .3s, border-color .3s;
+}
+.ato-photos .slot:hover { opacity: 0.7; border-color: rgba(255,255,255,0.32); }
+
+.hist-sub-emph {
+  display: inline-block; margin-top: 10px;
+  color: var(--white); font-weight: 600;
+  border-left: 2px solid var(--ambar); padding-left: 12px;
+}
+
 /* Galeria 6 fotos ATO 5 */
 .ato5-gallery {
   display: grid; grid-template-columns: repeat(3, 1fr);
@@ -1957,6 +1983,92 @@ body::after {
   text-shadow: 0 0 14px rgba(255,214,0,0.4);
 }
 
+/* REVEAL ROW (item 08 escondido) */
+.stack-row.reveal-row {
+  background: linear-gradient(90deg, rgba(255,214,0,0.04) 0%, transparent 100%);
+}
+.stack-row .price.reveal-price {
+  color: var(--ambar);
+  font-size: clamp(10px, 0.85vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  text-align: right;
+  text-shadow: 0 0 14px rgba(255,214,0,0.35);
+  animation: revealPulse 2.4s ease-in-out infinite;
+}
+@keyframes revealPulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+/* RECAP DETALHADO (3 blocos antes do stack) */
+.decisao-recap {
+  margin: clamp(40px, 4.5vw, 70px) auto clamp(36px, 4vw, 56px);
+  max-width: 1200px;
+}
+.recap-kicker {
+  display: block; text-align: center;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(11px, 0.95vw, 13px);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--silver); opacity: 0.7;
+  margin-bottom: clamp(20px, 2vw, 28px);
+}
+.recap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.4vw, 22px);
+}
+.recap-bloco {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: clamp(20px, 2vw, 30px);
+}
+.recap-bloco.firstclass {
+  background: rgba(255,214,0,0.04);
+  border-color: rgba(255,214,0,0.22);
+}
+.recap-tag {
+  display: inline-block;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--magenta-bright);
+  padding: 5px 10px; border-radius: 999px;
+  background: rgba(132,21,188,0.12);
+  margin-bottom: clamp(14px, 1.4vw, 20px);
+}
+.recap-tag.firstclass {
+  color: var(--ambar); background: rgba(255,214,0,0.12);
+}
+.recap-tag.firstclass::before { content: "⭐ "; }
+.recap-bloco ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.recap-bloco li {
+  font-family: var(--body);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.45; color: var(--gray-body);
+  padding-left: 16px; position: relative;
+}
+.recap-bloco li::before {
+  content: "▸"; position: absolute; left: 0;
+  color: var(--magenta-bright); font-weight: 700;
+}
+.recap-bloco.firstclass li::before { color: var(--ambar); }
+.recap-bloco li b { color: var(--white); }
+.recap-bloco li em.reveal-mark {
+  display: inline-block; margin-left: 4px;
+  font-family: var(--display); font-style: normal;
+  font-size: clamp(9px, 0.78vw, 11px); font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ambar);
+  padding: 3px 8px; border-radius: 999px;
+  background: rgba(255,214,0,0.1);
+  border: 1px solid rgba(255,214,0,0.3);
+}
+@media (max-width: 900px) {
+  .recap-grid { grid-template-columns: 1fr; }
+}
+
 /* TOTAL · destaque */
 .stack-total {
   padding: clamp(28px, 3vw, 44px);
@@ -2201,6 +2313,39 @@ body::after {
 /* ============================================================
    SEÇÃO 06 · 7 PEDRAS DO PODER · v3.4
    ============================================================ */
+
+/* TESE LOCKUP · transição antes do MECANISMO */
+.tese-lockup-section {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+}
+.tese-lockup-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.tese-lockup-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.tese-lockup-section::before,
+.tese-lockup-section::after {
+  content: ""; position: absolute; left: 0; right: 0; height: clamp(40px, 5vw, 80px);
+  pointer-events: none; z-index: 2;
+}
+.tese-lockup-section::before {
+  top: 0; background: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+.tese-lockup-section::after {
+  bottom: 0; background: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
 .section-pedras {
   position: relative; z-index: 2;
   padding: clamp(130px, 14vh, 180px) clamp(20px, 5vw, 96px) clamp(60px, 7vw, 110px);
@@ -2302,6 +2447,45 @@ body::after {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.06); }
 }
+
+/* FOOTER VISUAL · 7 pedras em linha · 20% size · acabamento */
+.pedras-footer {
+  position: relative; z-index: 2;
+  padding: clamp(40px, 5vw, 80px) clamp(20px, 4vw, 60px) clamp(60px, 6vw, 100px);
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 36px; /* respira do rocha-rail fixo */
+}
+.pedras-footer-line {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: clamp(12px, 2vw, 40px);
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+}
+.pf-pedra {
+  width: clamp(28px, 2.6vw, 44px); height: clamp(28px, 2.6vw, 44px);
+  object-fit: contain;
+  animation: pedraBreathe 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px currentColor);
+  opacity: 0.85;
+  transition: opacity .35s ease, filter .35s ease;
+}
+.pf-pedra.p1 { color: var(--citrino); animation-delay: 0s; }
+.pf-pedra.p2 { color: var(--quartzo); animation-delay: 0.5s; }
+.pf-pedra.p3 { color: var(--pedra-esmeralda); animation-delay: 1s; }
+.pf-pedra.p4 { color: var(--safira); animation-delay: 1.5s; }
+.pf-pedra.p5 { color: var(--ametista); animation-delay: 2s; }
+.pf-pedra.p6 { color: var(--pedra-rubi); animation-delay: 2.5s; }
+.pf-pedra.p7 { color: var(--diamante); animation-delay: 3s; }
+.pf-pedra:hover {
+  opacity: 1;
+  animation-duration: 1.2s;
+  filter: drop-shadow(0 0 22px currentColor) brightness(1.15);
+}
+@media (max-width: 640px) {
+  .pedras-footer-line { padding: 0 12px; gap: 6px; }
+  .pf-pedra { width: 24px; height: 24px; }
+}
 .pedra-card:hover .pedra-img {
   animation-duration: 1.2s;
   filter: drop-shadow(0 0 32px currentColor) brightness(1.15);
@@ -2356,13 +2540,32 @@ body::after {
 }
 .pedra-row {
   display: grid;
-  grid-template-columns: clamp(48px, 4vw, 64px) clamp(140px, 14vw, 220px) 1fr 1fr;
+  grid-template-columns: clamp(48px, 4vw, 64px) clamp(56px, 5vw, 80px) clamp(140px, 14vw, 220px) 1fr 1fr;
   gap: clamp(14px, 1.6vw, 28px);
   padding: clamp(20px, 2vw, 32px) clamp(20px, 2vw, 32px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  align-items: start;
+  align-items: center;
   border-left: 4px solid transparent;
   transition: background .25s, border-left-color .25s;
+}
+.pedra-row .row-pedra {
+  width: clamp(48px, 4.5vw, 72px); height: clamp(48px, 4.5vw, 72px);
+  object-fit: contain; display: block;
+  animation: pedraBreathe 3.5s ease-in-out infinite;
+  color: var(--white);
+  filter: drop-shadow(0 0 14px currentColor);
+  transition: filter .35s ease;
+}
+.pedra-row.p1 .row-pedra { color: var(--citrino); animation-delay: 0s; }
+.pedra-row.p2 .row-pedra { color: var(--quartzo); animation-delay: 0.5s; }
+.pedra-row.p3 .row-pedra { color: var(--pedra-esmeralda); animation-delay: 1s; }
+.pedra-row.p4 .row-pedra { color: var(--safira); animation-delay: 1.5s; }
+.pedra-row.p5 .row-pedra { color: var(--ametista); animation-delay: 2s; }
+.pedra-row.p6 .row-pedra { color: var(--pedra-rubi); animation-delay: 2.5s; }
+.pedra-row.p7 .row-pedra { color: var(--diamante); animation-delay: 3s; }
+.pedra-row:hover .row-pedra {
+  animation-duration: 1.2s;
+  filter: drop-shadow(0 0 26px currentColor) brightness(1.15);
 }
 .pedra-row:hover { background: rgba(255,255,255,0.02); }
 .pedra-row.p1 { border-left-color: var(--citrino); }
@@ -2420,7 +2623,7 @@ body::after {
 /* Headers da tabela */
 .tabela-header {
   display: grid;
-  grid-template-columns: clamp(48px, 4vw, 64px) clamp(140px, 14vw, 220px) 1fr 1fr;
+  grid-template-columns: clamp(48px, 4vw, 64px) clamp(56px, 5vw, 80px) clamp(140px, 14vw, 220px) 1fr 1fr;
   gap: clamp(14px, 1.6vw, 28px);
   padding: clamp(14px, 1.4vw, 20px) clamp(20px, 2vw, 32px);
   border-bottom: 2px solid rgba(255,255,255,0.12);
@@ -2431,6 +2634,21 @@ body::after {
 }
 .tabela-header .h-desativa { color: var(--rubi); }
 .tabela-header .h-ativa { color: var(--esmeralda-bright); }
+
+/* ENCERRAMENTO · mensagem-âncora antes do megatype */
+.pedras-encerramento {
+  max-width: 1100px; margin: clamp(50px, 5.5vw, 80px) auto 0;
+  padding: clamp(28px, 3vw, 44px) clamp(24px, 2.6vw, 40px);
+  text-align: center;
+  font-family: var(--body); font-weight: 300;
+  font-size: clamp(16px, 1.4vw, 22px);
+  line-height: 1.55; color: var(--gray-body);
+  border-top: 1px solid rgba(255,214,0,0.18);
+  border-bottom: 1px solid rgba(255,214,0,0.18);
+  background: linear-gradient(180deg, rgba(255,214,0,0.03) 0%, transparent 100%);
+  text-wrap: balance;
+}
+.pedras-encerramento b { color: var(--white); }
 
 /* MEGATYPE FINAL */
 .pedras-megatype {
@@ -2483,11 +2701,12 @@ body::after {
 /* RESPONSIVO */
 @media (max-width: 1100px) {
   .pedras-grid { grid-template-columns: repeat(4, 1fr); }
-  .pedra-row, .tabela-header { grid-template-columns: 36px 1fr; }
-  .pedra-row .row-desativa, .pedra-row .row-ativa { grid-column: 2; }
+  .pedra-row, .tabela-header { grid-template-columns: 36px 48px 1fr; }
+  .pedra-row .row-desativa, .pedra-row .row-ativa { grid-column: 1 / -1; }
   .pedra-row .row-name { font-size: 16px; }
+  .pedra-row .row-pedra { width: 44px; height: 44px; }
   .tabela-header .h-pedra { display: block; }
-  .tabela-header .h-num, .tabela-header .h-desativa, .tabela-header .h-ativa { display: none; }
+  .tabela-header .h-num, .tabela-header .h-pedra-img, .tabela-header .h-desativa, .tabela-header .h-ativa { display: none; }
   .escassez-bar { grid-template-columns: 1fr; gap: 6px; padding: 8px 16px; height: auto; text-align: center; font-size: 9.5px; }
   .escassez-vagas { justify-content: center; }
   .escassez-timer { justify-content: center; }
@@ -2671,7 +2890,22 @@ body::after {
 .voz-card:hover {
   background: rgba(255,255,255,0.04);
   transform: translateY(-4px);
+  opacity: 0.35;
+  filter: grayscale(0.7);
 }
+.voz-card .voz-frase {
+  transition: text-decoration-color .45s ease, color .45s ease;
+}
+.voz-card:hover .voz-frase {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rubi);
+  color: var(--silver);
+}
+.voz-card:hover .voz-footer .pedra-cor {
+  filter: drop-shadow(0 0 4px var(--voz-color)) grayscale(0.4);
+}
+/* mantém classe .silenced pra compat */
 .voz-card.silenced {
   opacity: 0.35;
   filter: grayscale(0.7);
@@ -4050,6 +4284,112 @@ body::after {
 }
 .bonus-sub b { color: var(--white); }
 
+/* ---- REVEAL BLOCK · 3 MENTORIAS ---- */
+.reveal-block {
+  max-width: 980px; margin: 0 auto clamp(50px, 5vw, 80px);
+  padding: clamp(28px, 3vw, 44px);
+  background: linear-gradient(135deg, rgba(255,214,0,0.06) 0%, rgba(132,21,188,0.06) 100%);
+  border: 1px solid rgba(255,214,0,0.32);
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 0 80px rgba(255,214,0,0.08);
+}
+.reveal-tag {
+  display: inline-block; padding: 6px 14px;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ambar);
+  background: rgba(255,214,0,0.12);
+  border: 1px solid rgba(255,214,0,0.32);
+  border-radius: 999px;
+  margin-bottom: clamp(16px, 1.6vw, 22px);
+}
+.reveal-title {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.2; color: var(--white);
+  margin: 0 0 clamp(20px, 2vw, 28px);
+  text-wrap: balance;
+}
+.reveal-title b { color: var(--ambar); text-shadow: 0 0 30px rgba(255,214,0,0.4); }
+.reveal-math .r-line {
+  display: block;
+  font-family: var(--body); font-style: italic;
+  font-size: clamp(13px, 1vw, 15px);
+  color: var(--silver); opacity: 0.8;
+  margin-bottom: clamp(14px, 1.4vw, 20px);
+}
+.r-formula {
+  display: inline-flex; align-items: center; gap: clamp(14px, 1.6vw, 22px);
+  flex-wrap: wrap; justify-content: center;
+  padding: clamp(16px, 1.6vw, 22px) clamp(20px, 2vw, 30px);
+  background: rgba(0,0,0,0.3);
+  border-radius: 14px;
+  margin-bottom: clamp(18px, 1.8vw, 24px);
+}
+.r-num {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 36px); color: var(--white);
+}
+.r-times, .r-equals {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(20px, 2vw, 28px); color: var(--silver); opacity: 0.6;
+}
+.r-total {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 48px);
+  color: var(--ambar);
+  text-shadow: 0 0 26px rgba(255,214,0,0.5);
+  letter-spacing: -0.01em;
+}
+.r-bridge {
+  font-family: var(--body);
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.6; color: var(--gray-body);
+  max-width: 640px; margin: 0 auto;
+}
+.r-bridge b { color: var(--white); }
+
+/* ---- PACOTE 04 · FIRSTCLASS DETAIL LIST ---- */
+.firstclass-detail {
+  list-style: none; padding: 0; margin: 0 0 18px;
+  display: flex; flex-direction: column;
+  gap: 0;
+}
+.firstclass-detail li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: clamp(12px, 1.2vw, 16px) 0;
+  border-bottom: 1px solid rgba(255,214,0,0.12);
+}
+.firstclass-detail li:last-child { border-bottom: 0; }
+.firstclass-detail .fc-item {
+  font-family: var(--body);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.4; color: var(--gray-body);
+}
+.firstclass-detail .fc-item b { color: var(--white); }
+.firstclass-detail .fc-item small {
+  display: block; margin-top: 3px;
+  font-size: clamp(11px, 0.85vw, 12px);
+  color: var(--silver); opacity: 0.65;
+}
+.firstclass-detail .fc-valor {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(15px, 1.3vw, 19px);
+  color: var(--ambar);
+  text-align: right;
+  text-shadow: 0 0 14px rgba(255,214,0,0.3);
+  white-space: nowrap;
+}
+.firstclass-detail .fc-valor.fc-inest {
+  font-size: clamp(10px, 0.85vw, 12px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+
 /* ---- GRID 4 PACOTES ---- */
 .pacotes-grid {
   display: grid;
@@ -5000,6 +5340,34 @@ body::after {
 }
 .compare-card .bonus-list li b { color: var(--white); font-weight: 600; }
 
+/* Bonus list com valor à direita (turma FirstClass) */
+.compare-card .bonus-list.bonus-list-detail li {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding-right: 4px;
+  border-bottom: 1px dashed rgba(255,214,0,0.12);
+  padding-bottom: 8px;
+}
+.compare-card .bonus-list.bonus-list-detail li:last-child { border-bottom: 0; }
+.compare-card .bl-valor {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(12px, 1vw, 15px);
+  color: var(--ambar); white-space: nowrap;
+  text-shadow: 0 0 12px rgba(255,214,0,0.3);
+}
+.compare-card .bl-valor.bl-inest {
+  font-size: clamp(9px, 0.75vw, 11px);
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.compare-card .bonus-list-foot {
+  margin-top: clamp(12px, 1.2vw, 16px);
+  padding-top: clamp(10px, 1vw, 14px);
+  border-top: 1px solid rgba(255,214,0,0.18);
+  font-family: var(--body); font-size: clamp(11px, 0.85vw, 13px);
+  line-height: 1.5; color: var(--silver); opacity: 0.85;
+  text-align: center;
+}
+.compare-card .bonus-list-foot b { color: var(--ambar); }
+
 .compare-arrow {
   display: flex; align-items: center; justify-content: center;
   font-family: var(--display); font-weight: 700;
@@ -5284,7 +5652,7 @@ body::after {
   <div class="halo halo-cobalt" style="bottom:-15%; right:-10%; width:480px; height:480px; opacity:0.22;"></div>
 
   <div class="hero-left">
-    <div class="hero-badge">DE R$ 8.873 · POR R$ 1.000 · TURMA FIRSTCLASS</div>
+    <div class="hero-badge">DE R$ 11.967 · POR R$ 1.000 · TURMA FIRSTCLASS</div>
 
     <h1>
       Desative o que te prende,
@@ -5332,7 +5700,7 @@ body::after {
   </div>
 
   <div class="hero-right">
-    <img src="../../assets/hero-lockup.jpg" alt="Augustto Leão · Lockup oficial">
+    <img src="assets/hero-lockup.jpg" alt="Augustto Leão · Lockup oficial">
   </div>
 </section>
 
@@ -5470,7 +5838,7 @@ body::after {
     <!-- HEADER · imagem aviso + kicker amarelo grande -->
     <div class="nao-e-header">
       <div class="aviso-img-wrap">
-        <img class="aviso-img" src="../../assets/secao2.5/aviso-img.png" alt="Aviso essencial">
+        <img class="aviso-img" src="assets/secao2.5/aviso-img.png" alt="Aviso essencial">
       </div>
       <div class="nao-e-kicker">
         ⚠ Aviso essencial · pra quem este programa <b>NÃO</b> é
@@ -5596,15 +5964,6 @@ body::after {
     <p class="sub">E só <b>conquista</b> quem <b>aparece e se posiciona</b>.</p>
   </div>
 
-  <!-- CLOSING · NINGUÉM COMPRA UM DERROTADO -->
-  <div class="derrotado-block">
-    <div class="title">
-      <span class="hl-magenta">Ninguém compra um derrotado.</span>
-    </div>
-    <p class="sub">
-      Nem o <b>mercado</b>, nem sua <b>família</b>, nem <b>você</b> quando se olha no espelho e se sente um.
-    </p>
-  </div>
 </section>
 
 
@@ -5622,7 +5981,8 @@ body::after {
       <span class="accent">Eu vivi cada uma dessas algemas.</span>
     </h2>
     <p class="hist-sub">
-      Foram <b>mais de meio milhão de reais</b> em cursos, mentorias e treinamentos para <b>arrebentar correntes</b> e <b>calar as vozes</b> que me prendiam.
+      Foram <b>mais de meio milhão de reais</b> em cursos, mentorias e treinamentos para <b>arrebentar correntes</b> e <b>calar as vozes</b> que me prendiam.<br>
+      <span class="hist-sub-emph">Foi mais um milhão ao longo de 10 anos, vivendo esses desafios e quebrando essas algemas.</span>
     </p>
   </div>
 
@@ -5643,6 +6003,12 @@ body::after {
       <div class="ato-cristal">01</div>
       <div class="ato-side right">
         <p class="ato-aside">A primeira voz a calar.<br>Tudo começa aqui.</p>
+        <div class="ato-photos">
+          <div class="slot">foto 01</div>
+          <div class="slot">foto 02</div>
+          <div class="slot">foto 03</div>
+          <div class="slot">foto 04</div>
+        </div>
       </div>
     </div>
 
@@ -5650,14 +6016,20 @@ body::after {
     <div class="ato ato-2">
       <div class="ato-side left">
         <p class="ato-aside">Quando o externo te força<br>a virar a chave por dentro.</p>
+        <div class="ato-photos">
+          <div class="slot">foto 01</div>
+          <div class="slot">foto 02</div>
+          <div class="slot">foto 03</div>
+          <div class="slot">foto 04</div>
+        </div>
       </div>
       <div class="ato-cristal">02</div>
       <div class="ato-side right">
         <div class="ato-label">Acto 02 · Minha filha no hospital público</div>
         <h3 class="ato-titulo">Quase perdi minha filha. Naquele corredor, prometi: nunca mais ser pobre.</h3>
         <p class="ato-quote">
-          Não era ambição. Era promessa de pai. Foi onde entendi que se eu não virasse a chave por dentro, ela ia pagar por fora.
-          <em>O seu externo é o reflexo do seu interno.</em>
+          Não era ambição. Era a promessa de um pai. Foi onde eu entendi que <b>se eu não pagasse o preço do sucesso, ela pagaria o preço por meu fracasso</b>.
+          <em>Pra quem você deixaria essa conta hoje?</em>
         </p>
         <div class="ato-pedra">▸ Pedras 3-4 · Posicionamento + Disciplina</div>
       </div>
@@ -5677,6 +6049,12 @@ body::after {
       <div class="ato-cristal">03</div>
       <div class="ato-side right">
         <p class="ato-aside">Quando a joia ativa,<br>você não precisa do aval<br>de quem te traiu.</p>
+        <div class="ato-photos">
+          <div class="slot">foto 01</div>
+          <div class="slot">foto 02</div>
+          <div class="slot">foto 03</div>
+          <div class="slot">foto 04</div>
+        </div>
       </div>
     </div>
 
@@ -5684,6 +6062,12 @@ body::after {
     <div class="ato ato-4">
       <div class="ato-side left">
         <p class="ato-aside">A gênese do método.<br>O dia em que ATIVAR<br>virou linguagem.</p>
+        <div class="ato-photos">
+          <div class="slot">foto 01</div>
+          <div class="slot">foto 02</div>
+          <div class="slot">foto 03</div>
+          <div class="slot">foto 04</div>
+        </div>
       </div>
       <div class="ato-cristal">04</div>
       <div class="ato-side right">
@@ -5711,12 +6095,12 @@ body::after {
       <div class="ato-cristal">05</div>
       <div class="ato-side right">
         <div class="ato5-gallery">
-          <img src="../../assets/ato5/ato5-dubai.svg"    alt="Dubai">
-          <img src="../../assets/ato5/ato5-caribe.svg"   alt="Caribe">
-          <img src="../../assets/ato5/ato5-harley.svg"   alt="Harley">
-          <img src="../../assets/ato5/ato5-palestra.svg" alt="Palestra">
-          <img src="../../assets/ato5/ato5-familia.svg"  alt="Família">
-          <img src="../../assets/ato5/ato5-palco.svg"    alt="Palco">
+          <img src="assets/ato5/ato5-dubai.svg"    alt="Dubai">
+          <img src="assets/ato5/ato5-caribe.svg"   alt="Caribe">
+          <img src="assets/ato5/ato5-harley.svg"   alt="Harley">
+          <img src="assets/ato5/ato5-palestra.svg" alt="Palestra">
+          <img src="assets/ato5/ato5-familia.svg"  alt="Família">
+          <img src="assets/ato5/ato5-palco.svg"    alt="Palco">
         </div>
       </div>
     </div>
@@ -5764,6 +6148,42 @@ body::after {
     <p class="closer-cta">↓ veja todos os seus ganhos ↓</p>
   </div>
 
+  <!-- RECAP DETALHADO POR BLOCOS -->
+  <div class="decisao-recap">
+    <p class="recap-kicker">RECAP · O QUE VOCÊ RECEBE QUANDO ENTRA</p>
+    <div class="recap-grid">
+      <div class="recap-bloco">
+        <span class="recap-tag">CORE · O PROGRAMA</span>
+        <ul>
+          <li><b>ASP completo</b> · 7 Pedras · 51 aulas</li>
+          <li><b>Onboarding</b> "Ativação do Poder Infinito" · 7 aulas</li>
+          <li><b>MAAC</b> · esmerilhadeira VOZ + CORPO + EMOÇÃO</li>
+          <li><b>Kit 5 ferramentas</b> · DISC · 21 Dias · SMART · Produtividade · Tracker</li>
+          <li><b>Certificação MINDCREATOR Nível 1</b></li>
+          <li><b>Fireflix</b> embutido</li>
+        </ul>
+      </div>
+      <div class="recap-bloco">
+        <span class="recap-tag">COMUNIDADE + GAMIFICAÇÃO</span>
+        <ul>
+          <li><b>Aulas mensais AO VIVO</b> com Augustto · 90 dias</li>
+          <li><b>Comunidade WhatsApp</b> da turma</li>
+          <li><b>Área de membros estilo Netflix</b> · de qualquer lugar do mundo</li>
+        </ul>
+      </div>
+      <div class="recap-bloco firstclass">
+        <span class="recap-tag firstclass">BÔNUS FIRSTCLASS · só pros 100 primeiros</span>
+        <ul>
+          <li><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada <em class="reveal-mark">você descobrirá o valor ao final desta página</em></li>
+          <li><b>Grupo VIP WhatsApp</b> · Augustto presente 2× por semana</li>
+          <li><b>Convite VIP Evento Presencial</b> Augustto Leão</li>
+          <li><b>Selo "Fundador FirstClass"</b> vitalício</li>
+          <li><b>Acesso VITALÍCIO</b> à plataforma · upgrade do anual</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- STACK 11 itens -->
   <div class="stack">
 
@@ -5807,10 +6227,10 @@ body::after {
     </div>
 
     <div class="stack-divider firstclass">BÔNUS FIRSTCLASS · só pros 100 primeiros</div>
-    <div class="stack-row">
+    <div class="stack-row reveal-row">
       <span class="num">08</span>
       <span class="item">3 Mentorias QUINZENAIS coletivas com Augustto <small>1 a cada 15 dias · 90min cada</small></span>
-      <span class="price">R$ 1.497</span>
+      <span class="price reveal-price">↓ revelado ao final desta página ↓</span>
     </div>
     <div class="stack-row">
       <span class="num">09</span>
@@ -5825,17 +6245,17 @@ body::after {
     <div class="stack-row">
       <span class="num">10</span>
       <span class="item">Convite VIP Evento Presencial Augustto Leão</span>
-      <span class="price">R$ 197</span>
+      <span class="price">R$ 297</span>
     </div>
 
-    <!-- TOTAL -->
+    <!-- TOTAL INTERMEDIÁRIO -->
     <div class="stack-total">
-      <div class="label">Valor total declarado</div>
+      <div class="label">Valor intermediário declarado <small>(item 08 ainda não revelado)</small></div>
       <div class="value">
-        <span class="strike">R$ 8.873</span>
+        <span class="strike">R$ 7.476</span>
         <span class="now">R$ 1.000</span>
       </div>
-      <div class="save">Economia <b>R$ 7.873</b> · vaga 101+ paga R$ 3.000</div>
+      <div class="save">E ainda falta revelar o <b>maior bônus</b> · continue lendo ↓</div>
     </div>
   </div>
 
@@ -5874,68 +6294,89 @@ body::after {
 </section>
 
 
+<!-- ========== TESE LOCKUP · ANTES DE O MECANISMO ========== -->
+<section class="tese-lockup-section" aria-label="A tese das 7 Pedras do Poder">
+  <div class="tese-lockup-wrap">
+    <img src="assets/tese-lockup.jpg" alt="A Tese das 7 Pedras do Poder · Augustto Leão" class="tese-lockup-img">
+  </div>
+</section>
+
+
 <!-- ========== SEÇÃO 06-PEDRAS ========== -->
 <section class="section-pedras" id="joalheria">
   <div class="halo halo-ambar" style="top:8%; right:-8%; width:480px; height:480px; opacity:0.15;"></div>
   <div class="halo halo-magenta" style="bottom:30%; left:-10%; width:440px; height:440px; opacity:0.14;"></div>
   <div class="halo halo-cobalt" style="bottom:5%; right:5%; width:380px; height:380px; opacity:0.12;"></div>
 
-  <div style="text-align: center;">
-    <span class="pedras-kicker">O MECANISMO</span>
+  <!-- HEADER tabela · "Veja o que cada pedra ativa" -->
+  <div class="tabela-intro">
+    <span class="ti-kicker">— Veja o que cada pedra ativa —</span>
   </div>
 
-  <h2 class="pedras-title-mega">
-    AS <span class="accent">7 PEDRAS</span><br>
-    DO PODER
-  </h2>
+  <!-- TABELA DESATIVA / ATIVA · com pedra PNG ao lado do número -->
+  <div class="pedras-tabela">
+    <div class="tabela-header">
+      <span class="h-num">#</span>
+      <span class="h-pedra-img">Pedra</span>
+      <span class="h-pedra">Nome</span>
+      <span class="h-desativa">DESATIVA</span>
+      <span class="h-ativa">ATIVA</span>
+    </div>
 
-  <p class="pedras-sub">
-    Não é mais um curso de motivação. <b class="hl-ambar">É um PROGRAMA DE ATIVAÇÃO!</b> É o <b>GPS pra quem está estagnado e sem direcionamento</b> — desativa o que te prende, ativa quem você nasceu pra ser, na <b>ordem que funciona</b>, com método que comprova.
-  </p>
+    <div class="pedra-row p1">
+      <span class="row-num">01</span>
+      <img class="row-pedra" src="assets/pedras/pedra-1.png" alt="Citrino">
+      <div class="row-name">Autoimagem<small>Citrino</small></div>
+      <div class="row-desativa">Crença de infância · piloto automático · auto-sabotagem</div>
+      <div class="row-ativa">Autoimagem reprogramada · mentalidade de dono · DISC mapeado</div>
+    </div>
 
-  <!-- GRID 7 PEDRAS COM PNGs -->
-  <div class="pedras-grid">
-    <div class="pedra-card p1">
-      <img class="pedra-img" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino · Autocontrole">
-      <span class="pedra-num">PEDRA 1</span>
-      <span class="pedra-name">Autoimagem</span>
-      <span class="pedra-gema">Citrino</span>
+    <div class="pedra-row p2">
+      <span class="row-num">02</span>
+      <img class="row-pedra" src="assets/pedras/pedra-2.png" alt="Quartzo">
+      <div class="row-name">Persuasão<small>Quartzo</small></div>
+      <div class="row-desativa">Vender empurrando · medo de se posicionar</div>
+      <div class="row-ativa">Comunicação magnética · Vendedor → Comunicador</div>
     </div>
-    <div class="pedra-card p2">
-      <img class="pedra-img" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo · Persuasão">
-      <span class="pedra-num">PEDRA 2</span>
-      <span class="pedra-name">Persuasão</span>
-      <span class="pedra-gema">Quartzo</span>
+
+    <div class="pedra-row p3">
+      <span class="row-num">03</span>
+      <img class="row-pedra" src="assets/pedras/pedra-3.png" alt="Esmeralda">
+      <div class="row-name">Posicionamento<small>Esmeralda</small></div>
+      <div class="row-desativa">Invisibilidade · "qualquer um do nicho"</div>
+      <div class="row-ativa">Branding pessoal · arquétipo definido · imagem fala antes de você</div>
     </div>
-    <div class="pedra-card p3">
-      <img class="pedra-img" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda · Posicionamento">
-      <span class="pedra-num">PEDRA 3</span>
-      <span class="pedra-name">Posicionamento</span>
-      <span class="pedra-gema">Esmeralda</span>
+
+    <div class="pedra-row p4">
+      <span class="row-num">04</span>
+      <img class="row-pedra" src="assets/pedras/pedra-4.png" alt="Safira">
+      <div class="row-name">Disciplina<small>Safira</small></div>
+      <div class="row-desativa">Promessa vazia · procrastinação · meta engavetada</div>
+      <div class="row-ativa">Hábitos rodando · Metas SMART · Mapa Produtividade Extraordinária</div>
     </div>
-    <div class="pedra-card p4">
-      <img class="pedra-img" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira · Disciplina">
-      <span class="pedra-num">PEDRA 4</span>
-      <span class="pedra-name">Disciplina</span>
-      <span class="pedra-gema">Safira</span>
+
+    <div class="pedra-row p5">
+      <span class="row-num">05</span>
+      <img class="row-pedra" src="assets/pedras/pedra-5.png" alt="Ametista">
+      <div class="row-name">Autoridade<small>Ametista</small></div>
+      <div class="row-desativa">Síndrome do impostor · "falta credibilidade"</div>
+      <div class="row-ativa">Percepção de especialista · congruência · de igual pra igual</div>
     </div>
-    <div class="pedra-card p5">
-      <img class="pedra-img" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista · Autoridade">
-      <span class="pedra-num">PEDRA 5</span>
-      <span class="pedra-name">Autoridade</span>
-      <span class="pedra-gema">Ametista</span>
+
+    <div class="pedra-row p6">
+      <span class="row-num">06</span>
+      <img class="row-pedra" src="assets/pedras/pedra-6.png" alt="Rubi">
+      <div class="row-name">Irreverência<small>Rubi</small></div>
+      <div class="row-desativa">Cópia genérica · medo de quebrar padrão</div>
+      <div class="row-ativa">Autoralidade · marca que ninguém replica</div>
     </div>
-    <div class="pedra-card p6">
-      <img class="pedra-img" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi · Irreverência">
-      <span class="pedra-num">PEDRA 6</span>
-      <span class="pedra-name">Irreverência</span>
-      <span class="pedra-gema">Rubi</span>
-    </div>
-    <div class="pedra-card p7">
-      <img class="pedra-img" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante · Poder">
-      <span class="pedra-num">PEDRA 7</span>
-      <span class="pedra-name">Poder</span>
-      <span class="pedra-gema">Diamante</span>
+
+    <div class="pedra-row p7">
+      <span class="row-num">07</span>
+      <img class="row-pedra" src="assets/pedras/pedra-7.png" alt="Diamante">
+      <div class="row-name">Poder<small>Diamante</small></div>
+      <div class="row-desativa">Dependência de validação · refém do acaso</div>
+      <div class="row-ativa">Poder pessoal integrado · constância · liderança ética</div>
     </div>
   </div>
 
@@ -5949,69 +6390,10 @@ body::after {
     </p>
   </div>
 
-  <!-- HEADER tabela · "Veja o que cada pedra ativa" -->
-  <div class="tabela-intro">
-    <span class="ti-kicker">— Veja o que cada pedra ativa —</span>
-  </div>
-
-  <!-- TABELA DESATIVA / ATIVA -->
-  <div class="pedras-tabela">
-    <div class="tabela-header">
-      <span class="h-num">#</span>
-      <span class="h-pedra">Pedra</span>
-      <span class="h-desativa">DESATIVA</span>
-      <span class="h-ativa">ATIVA</span>
-    </div>
-
-    <div class="pedra-row p1">
-      <span class="row-num">01</span>
-      <div class="row-name">Autoimagem<small>Citrino</small></div>
-      <div class="row-desativa">Crença de infância · piloto automático · auto-sabotagem</div>
-      <div class="row-ativa">Autoimagem reprogramada · mentalidade de dono · DISC mapeado</div>
-    </div>
-
-    <div class="pedra-row p2">
-      <span class="row-num">02</span>
-      <div class="row-name">Persuasão<small>Quartzo</small></div>
-      <div class="row-desativa">Vender empurrando · medo de se posicionar</div>
-      <div class="row-ativa">Comunicação magnética · Vendedor → Comunicador</div>
-    </div>
-
-    <div class="pedra-row p3">
-      <span class="row-num">03</span>
-      <div class="row-name">Posicionamento<small>Esmeralda</small></div>
-      <div class="row-desativa">Invisibilidade · "qualquer um do nicho"</div>
-      <div class="row-ativa">Branding pessoal · arquétipo definido · imagem fala antes de você</div>
-    </div>
-
-    <div class="pedra-row p4">
-      <span class="row-num">04</span>
-      <div class="row-name">Disciplina<small>Safira</small></div>
-      <div class="row-desativa">Promessa vazia · procrastinação · meta engavetada</div>
-      <div class="row-ativa">Hábitos rodando · Metas SMART · Mapa Produtividade Extraordinária</div>
-    </div>
-
-    <div class="pedra-row p5">
-      <span class="row-num">05</span>
-      <div class="row-name">Autoridade<small>Ametista</small></div>
-      <div class="row-desativa">Síndrome do impostor · "falta credibilidade"</div>
-      <div class="row-ativa">Percepção de especialista · congruência · de igual pra igual</div>
-    </div>
-
-    <div class="pedra-row p6">
-      <span class="row-num">06</span>
-      <div class="row-name">Irreverência<small>Rubi</small></div>
-      <div class="row-desativa">Cópia genérica · medo de quebrar padrão</div>
-      <div class="row-ativa">Autoralidade · marca que ninguém replica</div>
-    </div>
-
-    <div class="pedra-row p7">
-      <span class="row-num">07</span>
-      <div class="row-name">Poder<small>Diamante</small></div>
-      <div class="row-desativa">Dependência de validação · refém do acaso</div>
-      <div class="row-ativa">Poder pessoal integrado · constância · liderança ética</div>
-    </div>
-  </div>
+  <!-- ENCERRAMENTO · mensagem-âncora movida da abertura -->
+  <p class="pedras-encerramento">
+    Não é mais um curso de motivação. <b class="hl-ambar">É um PROGRAMA DE ATIVAÇÃO!</b> É o <b>GPS pra quem está estagnado e sem direcionamento</b> — desativa o que te prende, ativa quem você nasceu pra ser, na <b>ordem que funciona</b>, com método que comprova.
+  </p>
 
   <!-- FECHAMENTO · citação joalheria + megatype VALOR -->
   <div class="pedras-megatype">
@@ -6041,8 +6423,8 @@ body::after {
   </h1>
 
   <h2 class="vozes-h2">
-    Antes de <b>ATIVAR</b>, você precisa <span class="hl-rubi">SILENCIAR</span>.<br>
-    Conhece estas 7 vozes?
+    Antes de <b>ATIVAR</b>, você precisa <span class="hl-rubi">SILENCIAR</span> / <span class="hl-rubi">desativar</span>.<br>
+    Você conhece estas 7 vozes?
   </h2>
 
   <p class="vozes-sub">
@@ -6059,7 +6441,7 @@ body::after {
       </div>
       <p class="voz-frase">Tenho que cuidar com o que vão pensar de mim.</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
+        <img class="pedra-cor" src="assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
         <span class="desc">Pedra 1 · <b>Autoimagem</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6072,7 +6454,7 @@ body::after {
       </div>
       <p class="voz-frase">Melhor ficar quieto antes de pagar mico.</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
+        <img class="pedra-cor" src="assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
         <span class="desc">Pedra 2 · <b>Persuasão</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6085,7 +6467,7 @@ body::after {
       </div>
       <p class="voz-frase">Quem sou eu pra cobrar isso?</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
+        <img class="pedra-cor" src="assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
         <span class="desc">Pedra 3 · <b>Posicionamento</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6098,7 +6480,7 @@ body::after {
       </div>
       <p class="voz-frase">Eu nunca termino o que começo. Essa também vai pro mesmo lugar.</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
+        <img class="pedra-cor" src="assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
         <span class="desc">Pedra 4 · <b>Disciplina</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6111,7 +6493,7 @@ body::after {
       </div>
       <p class="voz-frase">Não sou bom o suficiente.</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
+        <img class="pedra-cor" src="assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
         <span class="desc">Pedra 5 · <b>Autoridade</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6124,7 +6506,7 @@ body::after {
       </div>
       <p class="voz-frase">O que vão achar de mim se eu fizer isso?</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
+        <img class="pedra-cor" src="assets/pedras/pedra-6.png" alt="Pedra 6 · Rubi">
         <span class="desc">Pedra 6 · <b>Irreverência</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6137,7 +6519,7 @@ body::after {
       </div>
       <p class="voz-frase">Sem aprovação dele, isso não vale.</p>
       <div class="voz-footer">
-        <img class="pedra-cor" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
+        <img class="pedra-cor" src="assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
         <span class="desc">Pedra 7 · <b>Poder</b></span>
         <span class="arrow">→ cala</span>
       </div>
@@ -6173,7 +6555,7 @@ body::after {
   <div class="halo halo-magenta" style="bottom:8%; left:8%; width:380px; height:380px; opacity:0.13;"></div>
 
   <div style="text-align:center;">
-    <span class="cases-kicker">PROVA MATERIAL · 1 ENDOSSO + 3 VÍDEOS + 6 DEPOIMENTOS</span>
+    <span class="cases-kicker">QUEM SILENCIOU AS VOZES · E HOJE OCUPA O ALTO DO PALCO</span>
   </div>
 
   <h1 class="cases-title-mega">
@@ -6181,16 +6563,15 @@ body::after {
   </h1>
 
   <h2 class="cases-h2">
-    Não é teoria. É <b class="hl-esmeralda">nome, rosto, voz</b>.<br>
-    1 endosso institucional, 3 vídeos prioritários e <b>6 depoimentos</b>.
+    E se a única coisa entre você e o próximo nível for <b class="hl-esmeralda">o som das vozes que você ainda não calou</b>?
   </h2>
 
   <p class="cases-sub">
-    Cada card tem <b>foto, transformação e frase em 1ª pessoa</b>. Onde está marcado em amarelo, é dado <b>em coleta</b> — substituído pelo número auditado em até 7 dias.
+    Conheça a história de quem <b>silenciou as vozes</b> e hoje é <b class="hl-esmeralda">autoridade máxima no que faz</b>.
   </p>
 
   <div class="coleta-wrap">
-    <span class="coleta-warn">DADOS EM COLETA · ATUALIZAÇÃO ATÉ 24/05/2026</span>
+    <span class="coleta-warn">CASES REAIS · NOME, ROSTO, VOZ · ANTES → DEPOIS</span>
   </div>
 
   <!-- ============================================
@@ -6198,12 +6579,12 @@ body::after {
        ============================================ -->
   <div class="endorse-block">
     <div class="endorse-photo">
-      <img src="../../assets/cases/endorse-emerson.svg" alt="Emerson Ventura · ex-presidente Luci Luci">
+      <img src="assets/cases/endorse-emerson.svg" alt="Emerson Ventura · presidente Luci Luci">
     </div>
     <div class="endorse-content">
       <span class="endorse-tag">🏛️ Endosso Institucional · Abertura</span>
       <h4>Emerson Ventura</h4>
-      <div class="endorse-role">Ex-presidente da Luci Luci · empresa onde Augustto foi CMO</div>
+      <div class="endorse-role">PRESIDENTE<sup style="color:var(--ambar);font-weight:700;">*</sup> da Luci Luci · empresa onde Augustto foi CMO</div>
       <p class="endorse-quote placeholder">
         "{frase de endosso · 1-2 linhas validando o profissional Augustto · em coleta de autorização escrita}"
       </p>
@@ -6219,7 +6600,7 @@ body::after {
   <div class="videos-row">
     <div class="video-card tier-s">
       <div class="video-thumb">
-        <img src="../../assets/cases/case-01-kaue.svg" alt="Kauê Petry · vídeo antes e depois">
+        <img src="assets/cases/case-01-kaue.svg" alt="Kauê Petry · vídeo antes e depois">
         <span class="play">▶</span>
         <span class="duration">60s</span>
         <span class="thumb-badge">ANTES & DEPOIS</span>
@@ -6233,7 +6614,7 @@ body::after {
 
     <div class="video-card tier-s">
       <div class="video-thumb">
-        <img src="../../assets/cases/case-02-bruno.svg" alt="Bruno Criativo · depoimento">
+        <img src="assets/cases/case-02-bruno.svg" alt="Bruno Criativo · depoimento">
         <span class="play">▶</span>
         <span class="duration">60s</span>
       </div>
@@ -6246,7 +6627,7 @@ body::after {
 
     <div class="video-card tier-s">
       <div class="video-thumb">
-        <img src="../../assets/cases/case-03-tony.svg" alt="Tony Burses · depoimento">
+        <img src="assets/cases/case-03-tony.svg" alt="Tony Burses · depoimento">
         <span class="play">▶</span>
         <span class="duration">90s</span>
       </div>
@@ -6266,7 +6647,7 @@ body::after {
   <div class="cases-grid">
 
     <article class="case-card tier-b">
-      <div class="case-img"><img src="../../assets/cases/case-04-aline-joel.svg" alt="Aline e Joel Daleprane"></div>
+      <div class="case-img"><img src="assets/cases/case-04-aline-joel.svg" alt="Aline e Joel Daleprane"></div>
       <div class="case-body">
         <span class="case-tier">Tier B · Case Duplo</span>
         <h5>Aline e Joel Daleprane</h5>
@@ -6281,7 +6662,7 @@ body::after {
     </article>
 
     <article class="case-card tier-a spotlight">
-      <div class="case-img"><img src="../../assets/cases/case-05-luis-felipe.svg" alt="Luis Felipe"></div>
+      <div class="case-img"><img src="assets/cases/case-05-luis-felipe.svg" alt="Luis Felipe"></div>
       <div class="case-body">
         <span class="case-tier">⭐ Tier A · Case Tangível</span>
         <h5>Luis Felipe <small>sessão pós-formação · 2020</small></h5>
@@ -6296,7 +6677,7 @@ body::after {
     </article>
 
     <article class="case-card tier-a">
-      <div class="case-img"><img src="../../assets/cases/case-06-lucas-passos.svg" alt="Lucas Passos"></div>
+      <div class="case-img"><img src="assets/cases/case-06-lucas-passos.svg" alt="Lucas Passos"></div>
       <div class="case-body">
         <span class="case-tier">Tier A · Case Forte</span>
         <h5>Lucas Passos <small>@lucasp.passos</small></h5>
@@ -6311,7 +6692,7 @@ body::after {
     </article>
 
     <article class="case-card tier-b">
-      <div class="case-img"><img src="../../assets/cases/case-07-marcelo.svg" alt="Marcelo Brick"></div>
+      <div class="case-img"><img src="assets/cases/case-07-marcelo.svg" alt="Marcelo Brick"></div>
       <div class="case-body">
         <span class="case-tier">Tier B · Volume</span>
         <h5>Marcelo Brick <small>@marcelobrick</small></h5>
@@ -6321,7 +6702,7 @@ body::after {
     </article>
 
     <article class="case-card tier-b">
-      <div class="case-img"><img src="../../assets/cases/case-08-nata.svg" alt="Natã Kesller"></div>
+      <div class="case-img"><img src="assets/cases/case-08-nata.svg" alt="Natã Kesller"></div>
       <div class="case-body">
         <span class="case-tier">Tier B · Volume</span>
         <h5>Natã Kesller <small>@nkesller</small></h5>
@@ -6331,7 +6712,7 @@ body::after {
     </article>
 
     <article class="case-card tier-b">
-      <div class="case-img"><img src="../../assets/cases/case-09-andre.svg" alt="André Antunes"></div>
+      <div class="case-img"><img src="assets/cases/case-09-andre.svg" alt="André Antunes"></div>
       <div class="case-body">
         <span class="case-tier">Tier B · Volume</span>
         <h5>André Antunes <small>@andrefeb3</small></h5>
@@ -6348,10 +6729,10 @@ body::after {
   <p class="cases-grid-header">CREDENCIAIS · POR QUE OUVIR O AUGUSTTO</p>
 
   <div class="cases-stats">
-    <div class="stat"><b>Practitioner</b><span>em PNL</span></div>
+    <div class="stat"><b>PRACTITIONER em PNL</b><span>há mais de 10 anos</span></div>
     <div class="stat"><b>+100k</b><span>cérebros treinados</span></div>
     <div class="stat"><b>+R$100M</b><span>movimentados</span></div>
-    <div class="stat"><b>Tony Robbins</b><span>aluno presencial · 2019</span></div>
+    <div class="stat"><b>Tony Robbins</b><span>aluno presencial</span></div>
     <div class="stat"><b>CMO</b><span>&amp; Personal Branding</span></div>
     <div class="stat"><b>Mestre</b><span>de Comunicação &amp; Presença</span></div>
   </div>
@@ -6405,7 +6786,7 @@ body::after {
 
     <div class="demo-card">
       <div class="demo-n">01</div>
-      <img class="demo-pedra-img p1" src="../../assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
+      <img class="demo-pedra-img p1" src="assets/pedras/pedra-1.png" alt="Pedra 1 · Citrino">
       <div class="demo-pedra">Autoconhecimento</div>
       <h4>DISC + revisão do passado</h4>
       <p>Você sai sabendo <b class="hl-white">quem você é em 4 dimensões</b> — e quais decisões da infância ainda estão te governando.</p>
@@ -6414,7 +6795,7 @@ body::after {
 
     <div class="demo-card">
       <div class="demo-n">02</div>
-      <img class="demo-pedra-img p2" src="../../assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
+      <img class="demo-pedra-img p2" src="assets/pedras/pedra-2.png" alt="Pedra 2 · Quartzo">
       <div class="demo-pedra">Comunicação Pessoal</div>
       <h4>PNL + MAAC aplicado</h4>
       <p>Falar em público · postura · presença. <b class="hl-white">MAAC preenchido (VOZ + CORPO + EMOÇÃO).</b></p>
@@ -6423,7 +6804,7 @@ body::after {
 
     <div class="demo-card">
       <div class="demo-n">03</div>
-      <img class="demo-pedra-img p3" src="../../assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
+      <img class="demo-pedra-img p3" src="assets/pedras/pedra-3.png" alt="Pedra 3 · Esmeralda">
       <div class="demo-pedra">Posicionamento Digital</div>
       <h4>Branding pessoal + arquétipo</h4>
       <p>Imagem que fala antes de você. Você para de ser <b class="hl-white">"qualquer um do nicho"</b>.</p>
@@ -6432,7 +6813,7 @@ body::after {
 
     <div class="demo-card">
       <div class="demo-n">04</div>
-      <img class="demo-pedra-img p4" src="../../assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
+      <img class="demo-pedra-img p4" src="assets/pedras/pedra-4.png" alt="Pedra 4 · Safira">
       <div class="demo-pedra">Produtividade</div>
       <h4>Mapa 05h–23h45 + 21 dias de hábito</h4>
       <p>Agenda em <b class="hl-white">blocos de 15 minutos</b>. Google Agenda configurado. Hábitos rodando no piloto.</p>
@@ -6441,7 +6822,7 @@ body::after {
 
     <div class="demo-card demo-card-support">
       <div class="demo-n">05</div>
-      <img class="demo-pedra-img p6" src="../../assets/pedras/pedra-6.png" alt="Pedra Rubi · Suporte">
+      <img class="demo-pedra-img p6" src="assets/pedras/pedra-6.png" alt="Pedra Rubi · Suporte">
       <div class="demo-pedra">Suporte · Gestão Financeira</div>
       <h4>Clareza financeira pra mudar o resultado</h4>
       <p>Saiba <b class="hl-white">quanto você ganha</b> — e pare de temer calcular suas dívidas. Você só muda seu resultado financeiro quando tem clareza do <b class="hl-white">próximo passo</b>. Aqui você conquista isso.</p>
@@ -6450,7 +6831,7 @@ body::after {
 
     <div class="demo-card">
       <div class="demo-n">06</div>
-      <img class="demo-pedra-img p5" src="../../assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
+      <img class="demo-pedra-img p5" src="assets/pedras/pedra-5.png" alt="Pedra 5 · Ametista">
       <div class="demo-pedra">Networking</div>
       <h4>Conexões que multiplicam</h4>
       <p>Técnicas validadas pra marcar cafés com pessoas que <b class="hl-white">multiplicam você</b> — sem ser o cara que pede tudo.</p>
@@ -6459,7 +6840,7 @@ body::after {
 
     <!-- CARD 07 FINAL · DESTAQUE FULL-WIDTH -->
     <div class="demo-card demo-card-final">
-      <img class="demo-pedra-img p7" src="../../assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
+      <img class="demo-pedra-img p7" src="assets/pedras/pedra-7.png" alt="Pedra 7 · Diamante">
       <div class="demo-content">
         <div class="left">
           <div class="demo-n">07</div>
@@ -6517,6 +6898,28 @@ body::after {
     Cada pacote tem <b>valor declarado de mercado</b>. Nada é "bônus de enchimento". É o que faz o método funcionar — você recebe os <b>4 ao mesmo tempo</b>.
   </p>
 
+  <!-- REVELAÇÃO · 3 MENTORIAS -->
+  <div class="reveal-block">
+    <span class="reveal-tag">★ O BÔNUS QUE VOCÊ NÃO VIU NA SEÇÃO ANTERIOR</span>
+    <h3 class="reveal-title">
+      <b>3 Mentorias quinzenais coletivas com Augustto</b> · 90 min cada
+    </h3>
+    <div class="reveal-math">
+      <span class="r-line">Valor de mercado por sessão de mentoria coletiva com Augustto</span>
+      <div class="r-formula">
+        <span class="r-num">3 sessões</span>
+        <span class="r-times">×</span>
+        <span class="r-num">R$ 1.497</span>
+        <span class="r-equals">=</span>
+        <span class="r-total">R$ 4.491</span>
+      </div>
+      <p class="r-bridge">
+        Você viu na seção anterior um intermediário de <b>R$ 7.476</b>.<br>
+        Somando este bônus revelado: <b>R$ 7.476 + R$ 4.491</b> = <b class="hl-ambar">R$ 11.967</b>.
+      </p>
+    </div>
+  </div>
+
   <!-- ============================================
        GRID 4 PACOTES
        ============================================ -->
@@ -6547,7 +6950,7 @@ body::after {
         <li><b>Certificação MINDCREATOR Nível 1</b></li>
         <li>Bônus Fireflix embutido</li>
       </ul>
-      <div class="pacote-valor">R$ 2.685</div>
+      <div class="pacote-valor">R$ 1.685</div>
     </div>
 
     <!-- PACOTE 03 · SUPORTE PREMIUM -->
@@ -6560,7 +6963,7 @@ body::after {
         <li>Exclusivo da <b>Turma FirstClass</b></li>
         <li>Cada dúvida vira aula gravada na área</li>
       </ul>
-      <div class="pacote-valor">R$ 497</div>
+      <div class="pacote-valor">R$ 1.497</div>
     </div>
 
     <!-- PACOTE 04 · FIRSTCLASS VIP · FULL-WIDTH SPOTLIGHT -->
@@ -6574,14 +6977,29 @@ body::after {
           </h4>
         </div>
         <div class="right">
-          <ul>
-            <li><b>Acesso VITALÍCIO</b> à plataforma · enquanto o ASP existir, você acessa</li>
-            <li><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada (<b>R$ 1.497 por sessão</b>)</li>
-            <li>Grupo VIP <b>WhatsApp</b> · Augustto presente 2× por semana</li>
-            <li>Convite VIP <b>Evento Presencial</b></li>
-            <li>Selo <b>"Fundador FirstClass"</b> vitalício</li>
+          <ul class="firstclass-detail">
+            <li>
+              <span class="fc-item"><b>3 Mentorias quinzenais coletivas</b> com Augustto · 90 min cada<br><small>R$ 1.497 por sessão × 3 sessões</small></span>
+              <span class="fc-valor">R$ 4.491</span>
+            </li>
+            <li>
+              <span class="fc-item">Grupo VIP <b>WhatsApp</b><br><small>Augustto presente 2× por semana</small></span>
+              <span class="fc-valor">R$ 997</span>
+            </li>
+            <li>
+              <span class="fc-item">Convite VIP <b>Evento Presencial</b> Augustto Leão</span>
+              <span class="fc-valor">R$ 297</span>
+            </li>
+            <li>
+              <span class="fc-item"><b>Acesso VITALÍCIO</b> à plataforma<br><small>upgrade do acesso anual · enquanto o ASP existir</small></span>
+              <span class="fc-valor fc-inest">vitalício</span>
+            </li>
+            <li>
+              <span class="fc-item">Selo <b>"Fundador FirstClass"</b> vitalício · intransferível</span>
+              <span class="fc-valor fc-inest">INESTIMÁVEL</span>
+            </li>
           </ul>
-          <div class="pacote-valor">R$ 5.785 <span style="font-size: 0.5em; color: var(--ambar); letter-spacing: 0.2em;">+ INESTIMÁVEL</span></div>
+          <div class="pacote-valor">R$ 5.785 <span style="font-size: 0.5em; color: var(--ambar); letter-spacing: 0.2em;">+ VITALÍCIO + INESTIMÁVEL</span></div>
         </div>
       </div>
     </div>
@@ -6708,7 +7126,7 @@ body::after {
         <span class="faq-toggle">+</span>
       </summary>
       <div class="faq-answer">
-        <p>Não. Master Coach + PNL Practitioner + Neurociência aplicada + Aluno presencial de Tony Robbins 2019 + CMO de uma das maiores do país + <b>R$ 100M movimentados</b>. <b class="hl-magenta">Currículo de mercado, não de feed.</b></p>
+        <p>Não. Master Coach + PNL Practitioner + Neurociência aplicada + Aluno presencial de Tony Robbins + CMO de uma das maiores do país + <b>R$ 100M movimentados</b>. <b class="hl-magenta">Currículo de mercado, não de feed.</b></p>
       </div>
     </details>
 
@@ -6860,13 +7278,14 @@ body::after {
         <span class="price-main"><span class="vezes">12×</span> R$ 100</span>
         <span class="price-pix">ou R$ 1.000 à vista no PIX</span>
       </div>
-      <ul class="bonus-list">
-        <li><b>Acesso VITALÍCIO</b> à plataforma</li>
-        <li><b>3 Mentorias quinzenais</b> coletivas com Augustto (90 min cada)</li>
-        <li><b>Grupo VIP WhatsApp</b> · Augustto 2× por semana</li>
-        <li>Convite VIP <b>Evento Presencial</b></li>
-        <li>Selo <b>"Fundador FirstClass"</b> vitalício</li>
+      <ul class="bonus-list bonus-list-detail">
+        <li><b>3 Mentorias quinzenais</b> com Augustto (3× 90 min) <span class="bl-valor">R$ 4.491</span></li>
+        <li><b>Grupo VIP WhatsApp</b> · Augustto 2×/semana <span class="bl-valor">R$ 997</span></li>
+        <li>Convite VIP <b>Evento Presencial</b> <span class="bl-valor">R$ 297</span></li>
+        <li><b>Acesso VITALÍCIO</b> à plataforma <span class="bl-valor bl-inest">vitalício</span></li>
+        <li>Selo <b>"Fundador FirstClass"</b> intransferível <span class="bl-valor bl-inest">INESTIMÁVEL</span></li>
       </ul>
+      <p class="bonus-list-foot">Subtotal FirstClass declarável: <b>R$ 5.785</b> + acesso vitalício + selo INESTIMÁVEL</p>
     </div>
 
     <!-- ARROW -->
@@ -6905,12 +7324,12 @@ body::after {
       <li>
         <span class="item-marker regular">✓ Incluso</span>
         <span class="item-desc"><b>O KIT OPERACIONAL</b> · Onboarding 7 aulas · MAAC · 5 ferramentas práticas · Certificação MINDCREATOR Nível 1</span>
-        <span class="valor">R$ 2.685</span>
+        <span class="valor">R$ 1.685</span>
       </li>
       <li>
         <span class="item-marker regular">✓ Incluso</span>
         <span class="item-desc"><b>SUPORTE PREMIUM</b> · Suporte 24/7 · Aulas mensais AO VIVO com Augustto · cada dúvida vira aula gravada</span>
-        <span class="valor">R$ 497</span>
+        <span class="valor">R$ 1.497</span>
       </li>
       <li class="firstclass-only">
         <span class="item-marker fc">★ FirstClass</span>
@@ -6953,6 +7372,19 @@ body::after {
     <p class="sub">Próxima janela <b>FirstClass</b>: só na próxima turma. <b>Mais 1 ano</b> sem acesso vitalício, sem mentoria com Augustto, sem o Selo Fundador.</p>
     <a href="#offer" class="megatype-cta">Garantir minha vaga AGORA →</a>
     <span class="vagas-restantes">Restam <b>43</b> vagas da Turma FirstClass</span>
+  </div>
+</section>
+
+<!-- ========== FOOTER VISUAL · 7 PEDRAS EM LINHA ========== -->
+<section class="pedras-footer" aria-label="As 7 Pedras do Poder">
+  <div class="pedras-footer-line">
+    <img class="pf-pedra p1" src="assets/pedras/pedra-1.png" alt="Citrino">
+    <img class="pf-pedra p2" src="assets/pedras/pedra-2.png" alt="Quartzo">
+    <img class="pf-pedra p3" src="assets/pedras/pedra-3.png" alt="Esmeralda">
+    <img class="pf-pedra p4" src="assets/pedras/pedra-4.png" alt="Safira">
+    <img class="pf-pedra p5" src="assets/pedras/pedra-5.png" alt="Ametista">
+    <img class="pf-pedra p6" src="assets/pedras/pedra-6.png" alt="Rubi">
+    <img class="pf-pedra p7" src="assets/pedras/pedra-7.png" alt="Diamante">
   </div>
 </section>
 
