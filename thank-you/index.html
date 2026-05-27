@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bem-vindo · Turma First Class · ATIVE SEU PODER</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0418;
+    --paper: #faf8f5;
+    --asp-purple: #1A0830;
+    --asp-purple-deep: #0d041d;
+    --asp-magenta: #8715bc;
+    --asp-cobalt: #3818E8;
+    --ametista: #7B2FBE;
+    --ametista-soft: #b39ddb;
+    --esmeralda: #1FB95E;
+    --topazio: #E8782E;
+    --rubi: #E81F26;
+    --safira: #2A4FFF;
+    --ambar: #F5B800;
+    --diamante: #C0C0C0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body {
+    background:
+      radial-gradient(ellipse at top right, rgba(123,47,190,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(56,24,232,0.12) 0%, transparent 50%),
+      linear-gradient(180deg, var(--asp-purple-deep) 0%, var(--asp-purple) 100%);
+    color: #ffffff;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.55;
+    padding: 40px 20px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Pedras strip top */
+  .pedras-strip {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+  .pedras-strip span {
+    flex: 1;
+    height: 4px;
+    border-radius: 1px;
+    box-shadow: 0 0 12px currentColor;
+  }
+  .pedras-strip .p1 { background: var(--topazio); color: var(--topazio); }
+  .pedras-strip .p2 { background: var(--ambar); color: var(--ambar); }
+  .pedras-strip .p3 { background: var(--esmeralda); color: var(--esmeralda); }
+  .pedras-strip .p4 { background: var(--safira); color: var(--safira); }
+  .pedras-strip .p5 { background: var(--ametista); color: var(--ametista); }
+  .pedras-strip .p6 { background: var(--rubi); color: var(--rubi); }
+  .pedras-strip .p7 { background: var(--diamante); color: var(--diamante); }
+
+  .badge-confirm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(31,185,94,0.15);
+    color: var(--esmeralda);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    padding: 8px 18px;
+    margin-bottom: 28px;
+    border: 1px solid rgba(31,185,94,0.3);
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .badge-confirm::before {
+    content: "✓";
+    color: var(--esmeralda);
+    font-weight: 900;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+  }
+  h1 .accent {
+    color: var(--ametista);
+    text-shadow: 0 0 24px rgba(123,47,190,0.5);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: #d0c8e2;
+    margin-bottom: 36px;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .countdown-box {
+    background:
+      linear-gradient(135deg, rgba(232,31,38,0.12) 0%, rgba(232,31,38,0.05) 100%);
+    border-left: 4px solid var(--rubi);
+    padding: 16px 22px;
+    margin: 24px 0 40px;
+    border-radius: 0 4px 4px 0;
+  }
+  .countdown-box .label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: #ff6b70;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .countdown-box .text {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: #e8e0f5;
+  }
+  p strong {
+    color: var(--ametista-soft);
+    font-weight: 700;
+  }
+
+  h2.section {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 48px 0 18px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: -0.005em;
+  }
+
+  .offer-box {
+    background:
+      linear-gradient(135deg, rgba(123,47,190,0.18) 0%, rgba(56,24,232,0.12) 100%);
+    border: 1px solid rgba(123,47,190,0.4);
+    border-radius: 8px;
+    padding: 32px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-box::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--topazio), var(--ametista), var(--cobalt));
+  }
+  .offer-box .price-line {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: var(--ametista-soft);
+    margin-bottom: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .offer-box .price-big {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .offer-box .price-big .strike {
+    color: #6b6080;
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    font-size: 0.6em;
+    margin-right: 16px;
+    font-weight: 400;
+  }
+  .offer-box .price-detail {
+    font-size: 14px;
+    color: #d0c8e2;
+    margin-bottom: 0;
+  }
+
+  ul.benefits {
+    list-style: none;
+    margin: 24px 0 8px;
+  }
+  ul.benefits li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    font-size: 15px;
+    color: #e8e0f5;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  ul.benefits li:last-child { border-bottom: none; }
+  ul.benefits li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--ametista);
+    font-size: 12px;
+  }
+
+  .cta-primary {
+    display: block;
+    width: 100%;
+    background:
+      linear-gradient(135deg, var(--ametista) 0%, var(--asp-magenta) 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: center;
+    padding: 20px 24px;
+    margin: 32px 0 12px;
+    border-radius: 6px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(123,47,190,0.35);
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(123,47,190,0.5);
+  }
+  .cta-primary:active { transform: translateY(0); }
+
+  .cta-secondary {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: #b39ddb;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 14px 20px;
+    border: 1px solid rgba(179,157,219,0.3);
+    border-radius: 6px;
+    transition: all 0.18s ease;
+  }
+  .cta-secondary:hover {
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .testimonial {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--esmeralda);
+    padding: 22px 26px;
+    margin: 40px 0;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    color: #d0c8e2;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .testimonial cite {
+    display: block;
+    margin-top: 14px;
+    font-style: normal;
+    font-size: 12px;
+    color: #8a7ea0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: #8a7ea0;
+    text-align: center;
+    line-height: 1.7;
+  }
+  footer .marks {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 10px;
+  }
+  footer .marks span { color: var(--ametista-soft); }
+
+  @media (max-width: 600px) {
+    body { padding: 24px 16px; }
+    .offer-box { padding: 24px 20px; }
+    h2.section { margin: 36px 0 16px; padding-top: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="pedras-strip">
+    <span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span><span class="p6"></span><span class="p7"></span>
+  </div>
+
+  <span class="badge-confirm">Compra confirmada</span>
+
+  <h1>Bem-vindo à <span class="accent">Turma First Class</span><br>ATIVE SEU PODER</h1>
+  <p class="subtitle">Augustto aqui. Em até 5 minutos você recebe o email de acesso. Antes disso, leia até o fim — esta é uma oferta que só existe nesta página e some em 7 dias.</p>
+
+  <div class="countdown-box">
+    <div class="label">⏱ Esta oferta expira em 7 dias</div>
+    <div class="text">Só quem acabou de entrar no ASP recebe esta proposta. Não está em nenhum outro lugar do meu marketing público.</div>
+  </div>
+
+  <p>Você acabou de tomar a decisão certa. A maioria trava no "vou começar segunda" e nunca começa. <strong>Você apertou o botão.</strong></p>
+
+  <p>Mas o ATIVE SEU PODER é o front-end da minha metodologia. Dentro do meu ecossistema existe um nível acima — a <strong>Mentoria AURA</strong> — onde eu opero por 6 meses dentro de um grupo restrito de mentorados, construindo posicionamento, estratégia comercial e presença executiva de cada um.</p>
+
+  <h2 class="section">A oferta que só você vê</h2>
+
+  <p>Pelos próximos 7 dias, você pode usar <strong>todo o valor que pagou agora (R$ 1.000) como crédito integral</strong> pra entrar na Mentoria AURA — minha mentoria em grupo de 6 meses.</p>
+
+  <div class="offer-box">
+    <div class="price-line">Investimento ASP → AURA</div>
+    <div class="price-big"><span class="strike">R$ 7.000</span>R$ 6.000</div>
+    <div class="price-detail">À vista ou parcelado em até 10× · seu R$ 1.000 já pago vira crédito integral · garantia 30 dias mantida</div>
+  </div>
+
+  <p><strong>O que está dentro da Mentoria AURA:</strong></p>
+  <ul class="benefits">
+    <li>6 meses de mentoria em grupo conduzida por Augustto Leão</li>
+    <li>Encontros quinzenais ao vivo · construção de posicionamento executivo</li>
+    <li>Acesso vitalício ao ATIVE SEU PODER (todos os 7 módulos quando lançarem)</li>
+    <li>Grupo restrito de mentorados · networking premium</li>
+    <li>Suporte via comunidade fechada</li>
+    <li>Dossiê estratégico personalizado no início da jornada</li>
+    <li>Garantia de 30 dias incondicional · mantida em ambos os programas</li>
+  </ul>
+
+  <a href="https://calendar.app.google/hgDQYFWuMxkE3THDA" target="_blank" rel="noopener" class="cta-primary">Quero conversar sobre a AURA · agendar call</a>
+  <a href="/area-de-membros" class="cta-secondary">Por agora vou focar só no ATIVE SEU PODER</a>
+
+  <div class="testimonial">
+    "Eu paguei R$ 33 mil pra entrar no Sellect com o Augustto. Não me arrependo um segundo. Mas se você tá começando agora pelo ASP, vou te dar um conselho de quem já tá lá dentro: pula direto pra Mentoria AURA por R$ 7k. É o lugar certo pra absorver o método com calma antes de pensar em ticket maior. Faz a diferença que tu não imagina."
+    <cite>— Bruno Criativo · @criativobruno · Aluno Sellect</cite>
+  </div>
+
+  <h2 class="section">Por que faço isso</h2>
+
+  <p>Porque alguém que decide entrar no ASP no preço First Class tem uma chance real de ser quem eu quero conduzir dentro do meu grupo de mentorados. E eu prefiro um grupo coeso e seleto, formado a partir dos próprios alunos do ASP, do que abrir vagas pra mercado frio.</p>
+
+  <p>Se sua decisão de hoje foi a primeira de uma sequência maior, conversa comigo antes do prazo expirar.</p>
+
+  <footer>
+    Email de acesso chega em até 5 minutos · Qualquer dúvida no momento da entrada: WhatsApp Talita +55 61 98614-4474<br>
+    Garantia incondicional de 30 dias mantida em ambos os programas<br>
+    <span style="opacity:0.7; font-size: 11px;">Quer 1×1 mensal comigo? Peça pra Talita te apresentar o AURA Sellect (tier alto · R$ 33k · 6 sessões individuais)</span>
+    <div class="marks">
+      <span>ASP®</span><span>AURA</span><span>AUGUSTTO LEÃO</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
