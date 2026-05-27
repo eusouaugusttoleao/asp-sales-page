@@ -1,20 +1,45 @@
 # ASP Sales Page · STATE
-**Última atualização:** 2026-05-19
+**Última atualização:** 2026-05-27 (rodada 2 · 15h50)
 **Arquivo de trabalho:** `~/Desktop/asp-sales-page/index-v3.4-final.html`
+**Backup com depoimentos:** `index-v3.4-COM-DEPOIMENTOS-backup-2026-05-27.html`
 
 ---
 
-## 🟢 Onde paramos
+## 🟢 Rodada 2 · 27/05 15h50 · 11 ajustes aplicados
 
-Auditoria completa de imagens concluída. Página `index-v3.4-final.html` está estável com:
-- Reorganização da seção O MECANISMO (tabela subiu · pedras inline · grid removido · encerramento ao final · footer visual com 7 pedras 20%)
-- Auditoria de preços fechada (A DECISÃO R$ 7.476 intermediário · BÔNUS REVELADOS R$ 11.967 · 3 mentorias reveladas no meio)
-- Tese lockup banner adicionado antes de O MECANISMO
-- 11 correções da última rodada aplicadas (duplicata removida · ato 2 reescrito · vozes com hover silence · cases novo hook · Emerson PRESIDENTE · Practitioner 10 anos · oferta R$1.685/R$1.497)
+1. **Hero** · imagem aumentada · `grid: 1fr 1.05fr` + `align-items: stretch` + `.hero-right height:100%`
+2. **Nav-cta GARANTIR VAGA** · fonte verde escura `#062b12` + `font-weight: 800`
+3. **Algemas SVG** · subidas · `.algema-grid align: flex-start` + `.algema-visual position: sticky top:90px` + padding-top
+4. **Frase "meio milhão"** · reescrita: "Foi mais um milhão ao longo de 10 anos, em cursos, mentorias e treinamentos, eventos e imersões..."
+5. **ATO 2 enquadramento** · `aspect-ratio: 4/5` + `object-position: center 25%` (preserva rostos)
+6. **ATO 3 título** · prefixado "Em 2019 todos que ajudei..."
+7. **ATO 3 aside** · completado "E encontra quem acredita em você."
+8. **ATO 4 enquadramento** · idem ATO 2 (CSS comum `.ato-photos img`)
+9. **ATO 5 aumentado** · grid `repeat(2, 1fr)` + `aspect-ratio: 4/5` + 5ª foto wide span 2
+10. **Endorse Emerson** · quote real ("Augustto é um monstro...") + role-note ("De vendedor de perfume, a CMO de Multinacional.")
+11. **REMOVIDOS temporariamente** (preservados no backup): 3 vídeos prioritários + 6 depoimentos antes/depois + megatype "ELES ATIVARAM"
 
 ---
 
-## 🔴 PRÓXIMA AÇÃO · aguardando 32 imagens do Franklin
+## 🟢 Rodada 1 · 27/05 manhã · Imagens reais inseridas (24 de 32)
+- ATO 1 · 4/4 fotos reais
+- ATO 2 · 5/4 fotos (ganhou 5ª "Hospital público" em formato wide) · narrativa 03+04 atualizada (destaque nacional · coordenador nacional)
+- ATO 3 · 4/4 fotos reais
+- ATO 4 · 4/4 fotos · narrativa 02+03 atualizada (despedida da indústria · Itália reconstrução pessoal)
+- ATO 5 · 5 fotos (sem palestra que não chegou · caribe trocado por salto de paraquedas em Dubai)
+- DEPOIMENTOS · endorse-emerson + case-01-kaue reais · cases 02-09 ainda em SVG placeholder
+
+CSS aditivo: `.ato-photos img` (4:3 cover · radius 10 · saturate 0.9) + `.ato-photos img.wide` (span 2 · 16:9) pra foto 05 do ATO 2.
+
+---
+
+## 🟡 PRÓXIMA AÇÃO · 8 cases pendentes
+- case-02-bruno · case-03-tony · case-04-aline-joel · case-05-luis-felipe · case-06-lucas-passos · case-07-marcelo · case-08-nata · case-09-andre
+- Quando chegarem: substituir `.svg` por `.jpg` nos `<img>` correspondentes.
+
+---
+
+## 📦 Histórico anterior · aguardando 32 imagens do Franklin
 
 Estrutura de pastas criada em `~/Desktop/asp-sales-page/assets/`:
 
