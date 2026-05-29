@@ -5652,6 +5652,35 @@ body::after {
 
 
 </style>
+
+<!-- ============================================
+     META PIXEL · Augustto Leão (master pixel reusado · 488895402930133)
+     · Trafego ASP diferenciado via content_category="ASP"
+     · 6 botoes Kiwify disparam InitiateCheckout no clique
+     ============================================ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '488895402930133');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_category: 'ASP',
+  content_name: 'Sales Page ASP FirstClass',
+  content_ids: ['asp-firstclass'],
+  value: 1000.00,
+  currency: 'BRL'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=488895402930133&ev=PageView&noscript=1&cd[content_category]=ASP"/></noscript>
+<!-- End Meta Pixel -->
+
 </head>
 <body>
 
@@ -7441,6 +7470,29 @@ body::after {
   }
   setInterval(updateVagas, 60000);
   updateVagas();
+})();
+
+// ============================================
+// Tracking · cliques nos 6 botoes Kiwify
+// Dispara fbq InitiateCheckout no Pixel 488895402930133
+// (gtag begin_checkout sera adicionado quando GA4 estiver configurado)
+// ============================================
+(function(){
+  document.querySelectorAll('a[href*="pay.kiwify.com.br/2gISXBf"]').forEach(function(link){
+    link.addEventListener('click', function(){
+      var cta = link.getAttribute('data-cta') || link.textContent.trim().substring(0, 30);
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_category: 'ASP',
+          content_name: 'ASP FirstClass',
+          content_ids: ['asp-firstclass'],
+          value: 1000.00,
+          currency: 'BRL',
+          cta_label: cta
+        });
+      }
+    });
+  });
 })();
 </script>
 
