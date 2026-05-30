@@ -31,6 +31,29 @@
 <link rel="icon" type="image/jpeg" href="/assets/og-image-square.jpg">
 <link rel="apple-touch-icon" href="/assets/og-image-square.jpg">
 
+<!-- ============ GOOGLE ANALYTICS 4 (G-6FTL9KS924) · property ASP - Ative Seu Poder ============ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FTL9KS924"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6FTL9KS924', {
+    page_title: 'Ative Seu Poder · ASP® · Augustto Leão',
+    send_page_view: true
+  });
+  gtag('event', 'view_item', {
+    currency: 'BRL',
+    value: 1000.00,
+    items: [{
+      item_id: 'asp-firstclass',
+      item_name: 'ASP FirstClass',
+      item_category: 'ASP',
+      price: 1000.00,
+      quantity: 1
+    }]
+  });
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -7474,13 +7497,14 @@ fbq('track', 'ViewContent', {
 
 // ============================================
 // Tracking · cliques nos 6 botoes Kiwify
-// Dispara fbq InitiateCheckout no Pixel 488895402930133
-// (gtag begin_checkout sera adicionado quando GA4 estiver configurado)
+// Dispara fbq InitiateCheckout (Meta Pixel 488895402930133)
+// + gtag begin_checkout (GA4 G-6FTL9KS924)
 // ============================================
 (function(){
   document.querySelectorAll('a[href*="pay.kiwify.com.br/2gISXBf"]').forEach(function(link){
     link.addEventListener('click', function(){
       var cta = link.getAttribute('data-cta') || link.textContent.trim().substring(0, 30);
+      // Meta Pixel
       if (typeof fbq === 'function') {
         fbq('track', 'InitiateCheckout', {
           content_category: 'ASP',
@@ -7489,6 +7513,21 @@ fbq('track', 'ViewContent', {
           value: 1000.00,
           currency: 'BRL',
           cta_label: cta
+        });
+      }
+      // GA4
+      if (typeof gtag === 'function') {
+        gtag('event', 'begin_checkout', {
+          currency: 'BRL',
+          value: 1000.00,
+          cta_label: cta,
+          items: [{
+            item_id: 'asp-firstclass',
+            item_name: 'ASP FirstClass',
+            item_category: 'ASP',
+            price: 1000.00,
+            quantity: 1
+          }]
         });
       }
     });
